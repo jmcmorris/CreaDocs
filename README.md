@@ -8,7 +8,7 @@ http://playcrea.com
 Contributing
 ------------
 
-You want to contribute? Great! Please follow the standard [forking](https://help.github.com/articles/fork-a-repo) and [sending pull requests](https://help.github.com/articles/using-pull-requests) procedures. The goal is to get the documentation close to something like [Python's Documentation](http://python.org/doc/). When in doubt on how to do something, look to see how they do it.
+You want to contribute? Great! Please follow the standard [forking](https://help.github.com/articles/fork-a-repo) and [sending pull requests](https://help.github.com/articles/using-pull-requests) procedures. The goal is to get the documentation close to something like [Python's Documentation](http://python.org/doc/). Consequently, it is highly recommended to read their [documentation guide](http://docs.python.org/devguide/documenting.html).
 
 This documentation is built using [Sphinx](http://sphinx-doc.org/). Their site is a great source for learning how to work with Sphinx.
 
