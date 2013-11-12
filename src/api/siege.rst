@@ -2172,17 +2172,24 @@ Player
 
    .. method:: canEquip( slot, item)
 
-      
+      Checks to see if an item can be equipped by the player.
 
-      :param slot: 
+
+      :param slot:  (str) Name of the equipment slot.
+
 
       :type slot: str
 
-      :param item: 
+      :param item:  (:class:`InventoryItem`) The item to check if it is equippable.
+
 
       :type item: :class:`InventoryItem`
 
+      :returns: Whether the player can equip item or not.
+
+
       :rtype: bool
+
 
    .. method:: loadInfo( contentStash, entityManager, playerPath)
 
@@ -2207,17 +2214,20 @@ Player
 
    .. method:: save( uid, contentStash, writers)
 
-      
+      Saves the character to file.
+
 
       :param uid: 
 
       :type uid: int
 
-      :param contentStash: 
+      :param contentStash:  The :class:`ContentStash` provided by :class:`Game`.
+
 
       :type contentStash: :class:`ContentStash`
 
-      :param writers: 
+      :param writers:  A dictionary of {str: callable}. The callable should have the following signature - (player, stream).
+
 
       :type writers: :class:`ObjectMap`
 
@@ -2239,16 +2249,18 @@ Player
 
    .. attribute:: entity
 
-       |      (:class:`:class:`Entity``) The :class:`:class:`Entity`` instance for the :class:`Player`.
+       |      (:class:`Entity`) The :class:`Entity` instance for the :class:`Player`.
 
 
    .. attribute:: flipPlacedItems
 
-      
+       |      (bool) Whether or not placed items by player are flipped horizontally.
+
 
    .. attribute:: grabbed
 
-      
+       |      (:class:`GrabbedItem`) The item the player currently has grabbed with the mouse.
+
 
    .. attribute:: info
 
@@ -2256,11 +2268,13 @@ Player
 
    .. attribute:: networkId
 
-      
+       |      (:class:`NetworkId`) The :class:`NetworkId` associated with this player.
+
 
    .. attribute:: onGrabbedChange
 
-      
+       |      (:class:`GameEvent`) Invoked(player, previousGrabbed, grabbed) when :attr:`grabbed` changes.
+
 
    .. attribute:: playMode
 
@@ -2274,15 +2288,18 @@ Player
 
    .. attribute:: useTimer
 
-      
+       |      (:class:`Timer`) Tracks the amount of time until the player can use an item again.
+
 
    .. attribute:: viewport
 
-      
+       |      (:class:`PixelRect`) The player's viewport. The area of the world that the player currently sees.
+
 
    .. attribute:: viewportSize
 
-      
+       |      (:class:`PixelVector`) Size of the player's viewport.
+
 
 SceneManager
 -----------------------------------
