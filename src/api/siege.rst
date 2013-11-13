@@ -25,10 +25,6 @@ GrabbedItemLocation
 
    .. data:: TOOLBAR = siege.GrabbedItemLocation.TOOLBAR
 
-   .. data:: names = {'BAG': siege.GrabbedItemLocation.BAG, 'BAGSLOT': siege.Grabbe...
-
-   .. data:: values = {0: siege.GrabbedItemLocation.NONE, 1: siege.GrabbedItemLocat...
-
 PlayMode
 -----------------------------------
 .. class:: PlayMode
@@ -43,10 +39,6 @@ PlayMode
 
    .. data:: Normal = siege.PlayMode.Normal
 
-   .. data:: names = {'Creative': siege.PlayMode.Creative, 'Easy': siege.PlayMode.E...
-
-   .. data:: values = {0: siege.PlayMode.Easy, 1: siege.PlayMode.Normal, 2: siege.P...
-
 SkillType
 -----------------------------------
 .. class:: SkillType
@@ -56,10 +48,6 @@ SkillType
    .. data:: Active = siege.SkillType.Active
 
    .. data:: Passive = siege.SkillType.Passive
-
-   .. data:: names = {'Active': siege.SkillType.Active, 'Passive': siege.SkillType....
-
-   .. data:: values = {0: siege.SkillType.Active, 1: siege.SkillType.Passive}
 
 ActiveTalent
 -----------------------------------
@@ -685,7 +673,7 @@ Entity
 
       :type component: :class:`Component`
 
-   .. method:: destroy( [unload=False]])
+   .. method:: destroy( [unload=False])
 
       
 
@@ -881,7 +869,7 @@ EntityManager
 
       :rtype: :class:`Content`
 
-   .. method:: create( [components=[]]])
+   .. method:: create( [components=[]])
 
       
 
@@ -2175,12 +2163,12 @@ Player
       Checks to see if an item can be equipped by the player.
 
 
-      :param slot:  (str) Name of the equipment slot.
+      :param slot:  Name of the equipment slot.
 
 
       :type slot: str
 
-      :param item:  (:class:`InventoryItem`) The item to check if it is equippable.
+      :param item:  The item to check if it is equippable.
 
 
       :type item: :class:`InventoryItem`
@@ -2226,7 +2214,7 @@ Player
 
       :type contentStash: :class:`ContentStash`
 
-      :param writers:  A dictionary of {str: callable}. The callable should have the following signature - (player, stream).
+      :param writers:  A dictionary of {str: callable}. The callable should have the following signature ``(player, stream)``.
 
 
       :type writers: :class:`ObjectMap`
@@ -2273,7 +2261,7 @@ Player
 
    .. attribute:: onGrabbedChange
 
-       |      (:class:`GameEvent`) Invoked(player, previousGrabbed, grabbed) when :attr:`grabbed` changes.
+       |      (:class:`GameEvent`) Invoked with ``(player, previousGrabbed, grabbed)`` when :attr:`grabbed` changes.
 
 
    .. attribute:: playMode
@@ -2601,7 +2589,7 @@ TimerSystem
 
    
 
-   .. method:: add( time, callback[, isPrecise=False]])
+   .. method:: add( time, callback[, isPrecise=False])
 
       
 
@@ -2681,7 +2669,7 @@ AudioManager
 
       
 
-   .. method:: play( name[, volume=100[, broadcast=False]]]])
+   .. method:: play( name[, volume=100[, broadcast=False]])
 
       
 
@@ -2699,7 +2687,7 @@ AudioManager
 
       :rtype: :class:`Sound`
 
-   .. method:: playAt( name, position[, volume=100[, broadcast=False]]]])
+   .. method:: playAt( name, position[, volume=100[, broadcast=False]])
 
       
 

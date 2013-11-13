@@ -17,10 +17,6 @@ DistributeResult
 
    .. data:: SUCCESS = siege.world.realm.DistributeResult.SUCCESS
 
-   .. data:: names = {'BREAK': siege.world.realm.DistributeResult.BREAK, 'CONTINUE'...
-
-   .. data:: values = {0: siege.world.realm.DistributeResult.CONTINUE, 1: siege.wor...
-
 Layer
 -----------------------------------
 .. class:: Layer
@@ -50,10 +46,6 @@ Layer
    .. data:: Wall = siege.world.realm.Layer.Wall
 
    .. data:: WallAndGround = siege.world.realm.Layer.WallAndGround
-
-   .. data:: names = {'Active': siege.world.realm.Layer.Active, 'BG1': siege.world....
-
-   .. data:: values = {0: siege.world.realm.Layer.None, 1: siege.world.realm.Layer....
 
 ActiveTile
 -----------------------------------
@@ -643,7 +635,7 @@ DroppedHandler
 
    
 
-   .. method:: create( item, position, velocity[, delay=500]])
+   .. method:: create( item, position, velocity[, delay=500])
 
       
 
@@ -975,7 +967,7 @@ TileLayer
 
       :rtype: :class:`TileComponent`
 
-   .. method:: getTileInDirection( position, direction[, solidOnly=False]])
+   .. method:: getTileInDirection( position, direction[, solidOnly=False])
 
       
 
@@ -1185,7 +1177,7 @@ LayerManager
 
       :rtype: bool
 
-   .. method:: setTile( layer, tilePos, tileId[, forced=False]])
+   .. method:: setTile( layer, tilePos, tileId[, forced=False])
 
       
 
@@ -1979,7 +1971,7 @@ RealmArea
 
    
 
-   .. method:: __init__( area[, onSurface=False[, isUnderground=False]]]])
+   .. method:: __init__( area[, onSurface=False[, isUnderground=False]])
 
       
 

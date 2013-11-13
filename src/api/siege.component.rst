@@ -23,10 +23,6 @@ AxisType
 
    .. data:: AXIS_WALL = siege.component.AxisType.AXIS_WALL
 
-   .. data:: names = {'AXIS_BACKWALL': siege.component.AxisType.AXIS_BACKWALL, 'AXI...
-
-   .. data:: values = {0: siege.component.AxisType.AXIS_NONE, 1: siege.component.Ax...
-
 CombatStatus
 -----------------------------------
 .. class:: CombatStatus
@@ -40,10 +36,6 @@ CombatStatus
    .. data:: Dead = siege.component.CombatStatus.Dead
 
    .. data:: Idle = siege.component.CombatStatus.Idle
-
-   .. data:: names = {'Attacking': siege.component.CombatStatus.Attacking, 'Casting...
-
-   .. data:: values = {0: siege.component.CombatStatus.Idle, 1: siege.component.Com...
 
 CombatTeam
 -----------------------------------
@@ -62,10 +54,6 @@ CombatTeam
    .. data:: OMEGA = siege.component.CombatTeam.OMEGA
 
    .. data:: ZETA = siege.component.CombatTeam.ZETA
-
-   .. data:: names = {'ALPHA': siege.component.CombatTeam.ALPHA, 'DELTA': siege.com...
-
-   .. data:: values = {0: siege.component.CombatTeam.NONE, 1: siege.component.Comba...
 
 Direction
 -----------------------------------
@@ -89,10 +77,6 @@ Direction
 
    .. data:: VERTICAL = siege.component.Direction.VERTICAL
 
-   .. data:: names = {'ALL': siege.component.Direction.ALL, 'BOTTOM': siege.compone...
-
-   .. data:: values = {0: siege.component.Direction.NONE, 1: siege.component.Direct...
-
 Slope
 -----------------------------------
 .. class:: Slope
@@ -104,10 +88,6 @@ Slope
    .. data:: NONE = siege.component.Slope.NONE
 
    .. data:: RIGHT = siege.component.Slope.RIGHT
-
-   .. data:: names = {'LEFT': siege.component.Slope.LEFT, 'NONE': siege.component.S...
-
-   .. data:: values = {0: siege.component.Slope.NONE, 1: siege.component.Slope.LEFT...
 
 SupportType
 -----------------------------------
@@ -123,10 +103,6 @@ SupportType
 
    .. data:: SUPPORT_TOP = siege.component.SupportType.SUPPORT_TOP
 
-   .. data:: names = {'SUPPORT_BOTTOM': siege.component.SupportType.SUPPORT_BOTTOM,...
-
-   .. data:: values = {0: siege.component.SupportType.SUPPORT_TOP, 1: siege.compone...
-
 ToolbarSlot
 -----------------------------------
 .. class:: ToolbarSlot
@@ -136,10 +112,6 @@ ToolbarSlot
    .. data:: LEFT = siege.component.ToolbarSlot.LEFT
 
    .. data:: RIGHT = siege.component.ToolbarSlot.RIGHT
-
-   .. data:: names = {'LEFT': siege.component.ToolbarSlot.LEFT, 'RIGHT': siege.comp...
-
-   .. data:: values = {0: siege.component.ToolbarSlot.LEFT, 1: siege.component.Tool...
 
 ActiveEffect
 -----------------------------------
@@ -240,7 +212,7 @@ BodyCustomization
 
       
 
-   .. method:: __init__( group, mapping[, supportsColor=True[, isOptional=False]]]])
+   .. method:: __init__( group, mapping[, supportsColor=True[, isOptional=False]])
 
       
 
@@ -432,7 +404,7 @@ AnimationComponent
 
    
 
-   .. method:: clearQueue( [group='']])
+   .. method:: clearQueue( [group=''])
 
       
 
@@ -450,7 +422,7 @@ AnimationComponent
 
       :rtype: int
 
-   .. method:: getAnimationName( [group='']])
+   .. method:: getAnimationName( [group=''])
 
       
 
@@ -460,7 +432,7 @@ AnimationComponent
 
       :rtype: str
 
-   .. method:: getFrame( [group='']])
+   .. method:: getFrame( [group=''])
 
       
 
@@ -470,7 +442,7 @@ AnimationComponent
 
       :rtype: int
 
-   .. method:: getFrameTime( [group='']])
+   .. method:: getFrameTime( [group=''])
 
       
 
@@ -480,7 +452,7 @@ AnimationComponent
 
       :rtype: int
 
-   .. method:: getPlayTime( [group='']])
+   .. method:: getPlayTime( [group=''])
 
       
 
@@ -490,7 +462,7 @@ AnimationComponent
 
       :rtype: int
 
-   .. method:: has( name[, group='']])
+   .. method:: has( name[, group=''])
 
       
 
@@ -504,7 +476,7 @@ AnimationComponent
 
       :rtype: bool
 
-   .. method:: hide( [group='']])
+   .. method:: hide( [group=''])
 
       
 
@@ -512,7 +484,7 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: hold( [group='']])
+   .. method:: hold( [group=''])
 
       
 
@@ -520,7 +492,7 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: isPlaying( name[, group='']])
+   .. method:: isPlaying( name[, group=''])
 
       
 
@@ -534,7 +506,7 @@ AnimationComponent
 
       :rtype: bool
 
-   .. method:: isPlayingGroup( [group='']])
+   .. method:: isPlayingGroup( [group=''])
 
       
 
@@ -544,7 +516,7 @@ AnimationComponent
 
       :rtype: bool
 
-   .. method:: pause( [group='']])
+   .. method:: pause( [group=''])
 
       
 
@@ -552,7 +524,7 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: play( [name=''[, group=''[, forceRestart=False]]]]]])
+   .. method:: play( [name=''[, group=''[, forceRestart=False]]])
 
       
 
@@ -568,7 +540,7 @@ AnimationComponent
 
       :type forceRestart: bool
 
-   .. method:: queue( name[, group='']])
+   .. method:: queue( name[, group=''])
 
       
 
@@ -580,7 +552,7 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: scale( totalDelay[, group=''[, downOnly=True]]]])
+   .. method:: scale( totalDelay[, group=''[, downOnly=True]])
 
       
 
@@ -596,7 +568,7 @@ AnimationComponent
 
       :type downOnly: bool
 
-   .. method:: stop( [group='']])
+   .. method:: stop( [group=''])
 
       
 
@@ -604,7 +576,7 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: wasPlaying( name[, group='']])
+   .. method:: wasPlaying( name[, group=''])
 
       
 
@@ -1002,7 +974,7 @@ EffectsComponent
 
       :rtype: bool
 
-   .. method:: remove( effect[, duration=0]])
+   .. method:: remove( effect[, duration=0])
 
       
 
@@ -1028,7 +1000,7 @@ EquipmentComponent
 
    
 
-   .. method:: addAttribute( attribute[, ignoreMax=False]])
+   .. method:: addAttribute( attribute[, ignoreMax=False])
 
       
 
@@ -1144,7 +1116,7 @@ GearComponent
 
       :rtype: object
 
-   .. method:: canEquip( item[, slotName='']])
+   .. method:: canEquip( item[, slotName=''])
 
       
 
@@ -1158,7 +1130,7 @@ GearComponent
 
       :rtype: bool
 
-   .. method:: consume( slotName[, quantity=1]])
+   .. method:: consume( slotName[, quantity=1])
 
       
 
@@ -1204,7 +1176,7 @@ GearComponent
 
       :type category: str
 
-   .. method:: equip( item[, slotName='']])
+   .. method:: equip( item[, slotName=''])
 
       
 
@@ -2016,7 +1988,7 @@ RenderComponent
 
       :rtype: bool
 
-   .. method:: getFrame( [group='']])
+   .. method:: getFrame( [group=''])
 
       
 
@@ -2080,7 +2052,7 @@ RenderComponent
 
       :rtype: bool
 
-   .. method:: render( target[, realmHalfWidth=0]])
+   .. method:: render( target[, realmHalfWidth=0])
 
       
 
@@ -2282,7 +2254,7 @@ ModularRenderComponent
 
       :type arg2: str
 
-   .. method:: render( target[, realmHalfWidth=0]])
+   .. method:: render( target[, realmHalfWidth=0])
 
       
 
@@ -2878,7 +2850,7 @@ Animation
 
    
 
-   .. method:: __init__( [start='']])
+   .. method:: __init__( [start=''])
 
       
 
@@ -2894,7 +2866,7 @@ Animation
 
       :type base: str
 
-   .. method:: bind( key, animation[, base='']])
+   .. method:: bind( key, animation[, base=''])
 
       
 
@@ -2936,7 +2908,7 @@ Bag
 
    
 
-   .. method:: __init__( [capacity=1[, canCarry=False]]]])
+   .. method:: __init__( [capacity=1[, canCarry=False]])
 
       
 
@@ -2962,7 +2934,7 @@ Combat
 
    
 
-   .. method:: __init__( [team=siege.component.CombatTeam.ALPHA, numberOffset, >]]])
+   .. method:: __init__( [team=siege.component.CombatTeam.ALPHA, numberOffset, >]])
 
       
 
@@ -3020,7 +2992,7 @@ Craft
 
    
 
-   .. method:: __init__( [category=''[, subcategory=''[, level=1[, experience=0[, serviceRequired='']]]]]]]]]])
+   .. method:: __init__( [category=''[, subcategory=''[, level=1[, experience=0[, serviceRequired='']]]]])
 
       
 
@@ -3228,7 +3200,7 @@ Hull
 
    
 
-   .. method:: __init__( [opacity=0]])
+   .. method:: __init__( [opacity=0])
 
       
 
@@ -3272,7 +3244,7 @@ Item
 
       
 
-   .. method:: __init__( [stack=1[, useTime=100[, usable=True[, unique=False[, use=<siege.graphic.Substitution[, hold=<siege.graphic.Substitution]]]]]])
+   .. method:: __init__( [stack=1[, useTime=100[, usable=True[, unique=False[, use=<siege.graphic.Substitution[, hold=<siege.graphic.Substitution)
 
       
 
@@ -3300,7 +3272,7 @@ Item
 
       :type hold: :class:`Substitution`
 
-   .. method:: setUseAnimation( animation[, group='']])
+   .. method:: setUseAnimation( animation[, group=''])
 
       
 
@@ -3442,7 +3414,7 @@ Monster
 
    
 
-   .. method:: __init__( [onCreate=None, spawnOffset, >]]])
+   .. method:: __init__( [onCreate=None, spawnOffset, >]])
 
       
 
@@ -3594,7 +3566,7 @@ Placement
 
    
 
-   .. method:: __init__( [axis=<siege.component.PlacementAxis[, allowCollection=True[, allowSupportRemoval=False]]]]]])
+   .. method:: __init__( [axis=<siege.component.PlacementAxis[, allowCollection=True[, allowSupportRemoval=False]]])
 
       
 
@@ -3774,7 +3746,7 @@ Body
 
    
 
-   .. method:: __init__( [identifier='']])
+   .. method:: __init__( [identifier=''])
 
       
 
@@ -3846,7 +3818,7 @@ Equipment
 
    
 
-   .. method:: __init__( [slot=''[, levelRequired=0]]]])
+   .. method:: __init__( [slot=''[, levelRequired=0]])
 
       
 
@@ -3896,7 +3868,7 @@ Surface
 
    
 
-   .. method:: __init__( [services=[]]])
+   .. method:: __init__( [services=[]])
 
       
 
@@ -3928,7 +3900,7 @@ Tile
 
    
 
-   .. method:: __init__( [layer=siege.world.realm.Layer.WallAndGround[, level=1[, durability=1[, priority=500[, variants=3]]]]]]]]]])
+   .. method:: __init__( [layer=siege.world.realm.Layer.WallAndGround[, level=1[, durability=1[, priority=500[, variants=3]]]]])
 
       
 
@@ -4050,7 +4022,7 @@ Tool
 
    
 
-   .. method:: __init__( [power=0[, reach=0[, compatible=[]]]]]]])
+   .. method:: __init__( [power=0[, reach=0[, compatible=[]]]])
 
       
 
@@ -4136,7 +4108,7 @@ Weapon
 
    
 
-   .. method:: __init__( [category=''[, power=0[, attackType=0[, damageType=0[, onUse=None]]]]]]]]]])
+   .. method:: __init__( [category=''[, power=0[, attackType=0[, damageType=0[, onUse=None]]]]])
 
       
 
@@ -5220,7 +5192,7 @@ PlacementAxis
 
    
 
-   .. method:: __init__( axis, area, >[, layer=siege.world.realm.Layer.None]]])
+   .. method:: __init__( axis, area, >[, layer=siege.world.realm.Layer.None]])
 
       
 

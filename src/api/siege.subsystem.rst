@@ -993,7 +993,7 @@ RenderSystem
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getShader( path[, setCurrentTextureParam=True]])
+   .. method:: getShader( path[, setCurrentTextureParam=True])
 
       
 

@@ -115,7 +115,7 @@ Color
 
       
 
-   .. method:: __init__( [red=0[, green=0[, blue=0[, alpha=255]]]]]]]])
+   .. method:: __init__( [red=0[, green=0[, blue=0[, alpha=255]]]])
 
       
 
@@ -959,7 +959,7 @@ VideoMode
 
       
 
-   .. method:: __init__( width, height[, bitsPerPixel=32]])
+   .. method:: __init__( width, height[, bitsPerPixel=32])
 
       
 
@@ -1119,7 +1119,7 @@ sfRenderTarget
 
    
 
-   .. method:: draw( drawable[, states=<siege.sfml.RenderStates])
+   .. method:: draw( drawable[, states=<siege.sfml.RenderStates)
 
       
 

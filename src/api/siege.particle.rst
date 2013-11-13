@@ -139,7 +139,7 @@ ParticleEmitter
 
       :type arg2: :class:`Vector`
 
-   .. method:: setTexture( texture[, coords=[]]])
+   .. method:: setTexture( texture[, coords=[]])
 
       
 

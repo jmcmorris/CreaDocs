@@ -23,10 +23,6 @@ AwesomiumError
 
    .. data:: kError_WebViewGone = siege.graphic.ui.AwesomiumError.kError_WebViewGon...
 
-   .. data:: names = {'kError_BadParameters': siege.graphic.ui.AwesomiumError.kErro...
-
-   .. data:: values = {0: siege.graphic.ui.AwesomiumError.kError_None, 1: siege.gra...
-
 JSObjectType
 -----------------------------------
 .. class:: JSObjectType
@@ -38,10 +34,6 @@ JSObjectType
    .. data:: kJSObjectType_Remote = siege.graphic.ui.JSObjectType.kJSObjectType_Rem...
 
    .. data:: kJSObjectType_RemoteGlobal = siege.graphic.ui.JSObjectType.kJSObjectTy...
-
-   .. data:: names = {'kJSObjectType_Local': siege.graphic.ui.JSObjectType.kJSObjec...
-
-   .. data:: values = {0: siege.graphic.ui.JSObjectType.kJSObjectType_Local, 1: sie...
 
 GuiManager
 -----------------------------------
@@ -549,7 +541,7 @@ View
 
       :rtype: bool
 
-   .. method:: execute( script[, xpathFrame='']])
+   .. method:: execute( script[, xpathFrame=''])
 
       
 
@@ -561,7 +553,7 @@ View
 
       :type xpathFrame: str
 
-   .. method:: execute( commands[, xpathFrame='']])
+   .. method:: execute( commands[, xpathFrame=''])
 
       
 
@@ -573,7 +565,7 @@ View
 
       :type xpathFrame: str
 
-   .. method:: executeResult( script[, xpathFrame='']])
+   .. method:: executeResult( script[, xpathFrame=''])
 
       
 

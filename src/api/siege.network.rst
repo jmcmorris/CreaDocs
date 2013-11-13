@@ -93,10 +93,6 @@ Message
 
    .. data:: WORLD_INFO = siege.network.Message.WORLD_INFO
 
-   .. data:: names = {'AUDIO_SYSTEM': siege.network.Message.AUDIO_SYSTEM, 'CHARACTE...
-
-   .. data:: values = {134: siege.network.Message.WORLD_INFO, 135: siege.network.Me...
-
 PacketPriority
 -----------------------------------
 .. class:: PacketPriority
@@ -110,10 +106,6 @@ PacketPriority
    .. data:: Low = siege.network.PacketPriority.Low
 
    .. data:: Medium = siege.network.PacketPriority.Medium
-
-   .. data:: names = {'High': siege.network.PacketPriority.High, 'Immediate': siege...
-
-   .. data:: values = {0: siege.network.PacketPriority.Immediate, 1: siege.network....
 
 PacketReliability
 -----------------------------------
@@ -136,10 +128,6 @@ PacketReliability
    .. data:: Unreliable_receipt = siege.network.PacketReliability.Unreliable_receip...
 
    .. data:: Unreliable_sequenced = siege.network.PacketReliability.Unreliable_sequ...
-
-   .. data:: names = {'Reliable': siege.network.PacketReliability.Reliable, 'Reliab...
-
-   .. data:: values = {0: siege.network.PacketReliability.Unreliable, 1: siege.netw...
 
 MessageHandler
 -----------------------------------
@@ -187,7 +175,7 @@ NetworkConnection
 
       :type arg3: object
 
-   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]]]]])
+   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       
 
@@ -225,7 +213,7 @@ NetworkConnection
 
       :type callback: :class:`MessageHandler`
 
-   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]]]]])
+   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       
 
@@ -265,7 +253,7 @@ Client
 
    
 
-   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]]]]])
+   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       
 

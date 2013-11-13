@@ -17,10 +17,6 @@ BlendMode
 
    .. data:: BlendNone = siege.sfml.BlendMode.BlendNone
 
-   .. data:: names = {'BlendAdd': siege.sfml.BlendMode.BlendAdd, 'BlendAlpha': sieg...
-
-   .. data:: values = {0: siege.sfml.BlendMode.BlendAlpha, 1: siege.sfml.BlendMode....
-
 PrimitiveType
 -----------------------------------
 .. class:: PrimitiveType
@@ -41,10 +37,6 @@ PrimitiveType
 
    .. data:: TrianglesStrip = siege.sfml.PrimitiveType.TrianglesStrip
 
-   .. data:: names = {'Lines': siege.sfml.PrimitiveType.Lines, 'LinesStrip': siege....
-
-   .. data:: values = {0: siege.sfml.PrimitiveType.Points, 1: siege.sfml.PrimitiveT...
-
 SoundStatus
 -----------------------------------
 .. class:: SoundStatus
@@ -56,10 +48,6 @@ SoundStatus
    .. data:: Playing = siege.sfml.SoundStatus.Playing
 
    .. data:: Stopped = siege.sfml.SoundStatus.Stopped
-
-   .. data:: names = {'Paused': siege.sfml.SoundStatus.Paused, 'Playing': siege.sfm...
-
-   .. data:: values = {0: siege.sfml.SoundStatus.Stopped, 1: siege.sfml.SoundStatus...
 
 Drawable
 -----------------------------------
@@ -101,7 +89,7 @@ VertexArray
 
       
 
-   .. method:: __init__( type[, vertexCount=0]])
+   .. method:: __init__( type[, vertexCount=0])
 
       
 

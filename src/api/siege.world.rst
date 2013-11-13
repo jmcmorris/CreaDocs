@@ -103,7 +103,7 @@ RealmLoader
 
       :rtype: :class:`SegmentList`
 
-   .. method:: saveRegion( region[, shouldUnload=False, asynchronous])
+   .. method:: saveRegion( region[, shouldUnload=False, asynchronous)
 
       
 
@@ -391,7 +391,7 @@ World
 
       :type callback: object
 
-   .. method:: save( [asynchronous=True]])
+   .. method:: save( [asynchronous=True])
 
       
 

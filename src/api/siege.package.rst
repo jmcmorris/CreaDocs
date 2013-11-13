@@ -15,10 +15,6 @@ CorePackageLoading
 
    .. data:: None = siege.package.CorePackageLoading.None
 
-   .. data:: names = {'First': siege.package.CorePackageLoading.First, 'Last': sieg...
-
-   .. data:: values = {0: siege.package.CorePackageLoading.None, 1: siege.package.C...
-
 Content
 -----------------------------------
 .. class:: Content
@@ -258,6 +254,10 @@ ContentStash
       :param packagePath: 
 
       :type packagePath: object
+
+   .. method:: discoverContent( )
+
+      
 
    .. method:: get( content)
 
@@ -523,7 +523,7 @@ PackageList
 
       :type arg2: object
 
-   .. method:: getOrdered( [coreLoading=siege.package.CorePackageLoading.First]])
+   .. method:: getOrdered( [coreLoading=siege.package.CorePackageLoading.First])
 
       
 

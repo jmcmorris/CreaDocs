@@ -247,7 +247,7 @@ ChunkRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -265,7 +265,7 @@ ChunkRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -279,7 +279,7 @@ ChunkRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -293,7 +293,7 @@ ChunkRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -569,6 +569,16 @@ ChunkVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`ChunkVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -637,7 +647,7 @@ ChunkVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -647,7 +657,7 @@ ChunkVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -665,7 +675,7 @@ ChunkVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -679,7 +689,7 @@ ChunkVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -693,7 +703,7 @@ ChunkVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -707,7 +717,7 @@ ChunkVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -1275,7 +1285,7 @@ PixelRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -1293,7 +1303,7 @@ PixelRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -1307,7 +1317,7 @@ PixelRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -1321,7 +1331,7 @@ PixelRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -1597,6 +1607,16 @@ PixelVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`PixelVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -1665,7 +1685,7 @@ PixelVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -1675,7 +1695,7 @@ PixelVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -1693,7 +1713,7 @@ PixelVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -1707,7 +1727,7 @@ PixelVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -1721,7 +1741,7 @@ PixelVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -1735,7 +1755,7 @@ PixelVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -1825,7 +1845,7 @@ Property
 
       :rtype: object
 
-   .. method:: read( stream[, args=[]]])
+   .. method:: read( stream[, args=[]])
 
       
 
@@ -1893,7 +1913,7 @@ PropertyBool
 
       :rtype: bool
 
-   .. method:: read( stream[, args=[]]])
+   .. method:: read( stream[, args=[]])
 
       
 
@@ -1961,7 +1981,7 @@ PropertyInt
 
       :rtype: int
 
-   .. method:: read( stream[, args=[]]])
+   .. method:: read( stream[, args=[]])
 
       
 
@@ -2029,7 +2049,7 @@ PropertyStr
 
       :rtype: str
 
-   .. method:: read( stream[, args=[]]])
+   .. method:: read( stream[, args=[]])
 
       
 
@@ -2093,7 +2113,7 @@ Random
 
       :rtype: float
 
-   .. staticmethod:: get( [max=2147483647]])
+   .. staticmethod:: get( [max=2147483647])
 
       
 
@@ -2735,7 +2755,7 @@ Rect
 
       :rtype: object
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -2753,7 +2773,7 @@ Rect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -2767,7 +2787,7 @@ Rect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -2781,7 +2801,7 @@ Rect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -3087,7 +3107,7 @@ RegionRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -3105,7 +3125,7 @@ RegionRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -3119,7 +3139,7 @@ RegionRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -3133,7 +3153,7 @@ RegionRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -3409,6 +3429,16 @@ RegionVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`RegionVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -3477,7 +3507,7 @@ RegionVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -3487,7 +3517,7 @@ RegionVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -3505,7 +3535,7 @@ RegionVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -3519,7 +3549,7 @@ RegionVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -3533,7 +3563,7 @@ RegionVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -3547,7 +3577,7 @@ RegionVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -3807,7 +3837,7 @@ SegmentRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -3825,7 +3855,7 @@ SegmentRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -3839,7 +3869,7 @@ SegmentRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -3853,7 +3883,7 @@ SegmentRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -4129,6 +4159,16 @@ SegmentVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`SegmentVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -4197,7 +4237,7 @@ SegmentVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -4207,7 +4247,7 @@ SegmentVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -4225,7 +4265,7 @@ SegmentVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -4239,7 +4279,7 @@ SegmentVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -4253,7 +4293,7 @@ SegmentVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -4267,7 +4307,7 @@ SegmentVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -4793,7 +4833,7 @@ SubtileRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -4811,7 +4851,7 @@ SubtileRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -4825,7 +4865,7 @@ SubtileRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -4839,7 +4879,7 @@ SubtileRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -5115,6 +5155,16 @@ SubtileVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`SubtileVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -5183,7 +5233,7 @@ SubtileVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -5193,7 +5243,7 @@ SubtileVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -5211,7 +5261,7 @@ SubtileVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -5225,7 +5275,7 @@ SubtileVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -5239,7 +5289,7 @@ SubtileVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -5253,7 +5303,7 @@ SubtileVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -5513,7 +5563,7 @@ TileRect
 
       :rtype: :class:`TileRect`
 
-   .. method:: contains( x, y[, loopWidth=0]])
+   .. method:: contains( x, y[, loopWidth=0])
 
       
 
@@ -5531,7 +5581,7 @@ TileRect
 
       :rtype: bool
 
-   .. method:: contains( position[, loopWidth=0]])
+   .. method:: contains( position[, loopWidth=0])
 
       
 
@@ -5545,7 +5595,7 @@ TileRect
 
       :rtype: bool
 
-   .. method:: intersects( rect[, loopWidth=0]])
+   .. method:: intersects( rect[, loopWidth=0])
 
       
 
@@ -5559,7 +5609,7 @@ TileRect
 
       :rtype: bool
 
-   .. method:: intersects( rect, intersection[, loopWidth=0]])
+   .. method:: intersects( rect, intersection[, loopWidth=0])
 
       
 
@@ -5835,6 +5885,16 @@ TileVector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`TileVector`
+
    .. method:: __ne__( arg2)
 
       
@@ -5903,7 +5963,7 @@ TileVector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -5913,7 +5973,7 @@ TileVector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -5931,7 +5991,7 @@ TileVector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -5945,7 +6005,7 @@ TileVector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -5959,7 +6019,7 @@ TileVector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -5973,7 +6033,7 @@ TileVector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -6095,7 +6155,7 @@ Timer
 
       :rtype: int
 
-   .. method:: reset( [time=0]])
+   .. method:: reset( [time=0])
 
       
 
@@ -6461,6 +6521,16 @@ Vector
 
       :rtype: object
 
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`Vector`
+
    .. method:: __ne__( arg2)
 
       
@@ -6529,7 +6599,7 @@ Vector
 
       :rtype: :class:`Vector`
 
-   .. method:: getAngle( [asDegrees=True]])
+   .. method:: getAngle( [asDegrees=True])
 
       
 
@@ -6539,7 +6609,7 @@ Vector
 
       :rtype: float
 
-   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]]]])
+   .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
       
 
@@ -6557,7 +6627,7 @@ Vector
 
       :rtype: float
 
-   .. method:: getDirection( position[, loopWidth=0]])
+   .. method:: getDirection( position[, loopWidth=0])
 
       
 
@@ -6571,7 +6641,7 @@ Vector
 
       :rtype: :class:`PixelVector`
 
-   .. method:: getDirectionX( x[, loopWidth=0]])
+   .. method:: getDirectionX( x[, loopWidth=0])
 
       
 
@@ -6585,7 +6655,7 @@ Vector
 
       :rtype: int
 
-   .. method:: getDirectionY( y[, loopWidth=0]])
+   .. method:: getDirectionY( y[, loopWidth=0])
 
       
 
@@ -6599,7 +6669,7 @@ Vector
 
       :rtype: int
 
-   .. method:: getDistance( position[, loopWidth=0]])
+   .. method:: getDistance( position[, loopWidth=0])
 
       
 
@@ -6875,7 +6945,7 @@ WeightedRandomGenerator
 
    
 
-   .. method:: __call__( [useWorldRandom=False]])
+   .. method:: __call__( [useWorldRandom=False])
 
       
 
@@ -6885,7 +6955,7 @@ WeightedRandomGenerator
 
       :rtype: int
 
-   .. method:: __call__( start, end[, useWorldRandom=False]])
+   .. method:: __call__( start, end[, useWorldRandom=False])
 
       
 
@@ -6975,7 +7045,7 @@ WorldRandom
 
       :rtype: float
 
-   .. staticmethod:: get( [max=2147483647]])
+   .. staticmethod:: get( [max=2147483647])
 
       
 

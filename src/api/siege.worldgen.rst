@@ -15,10 +15,6 @@ FillMode
 
    .. data:: SOLID_ONLY = siege.worldgen.FillMode.SOLID_ONLY
 
-   .. data:: names = {'ALL': siege.worldgen.FillMode.ALL, 'OPEN_ONLY': siege.worldg...
-
-   .. data:: values = {0: siege.worldgen.FillMode.ALL, 1: siege.worldgen.FillMode.S...
-
 Biome
 -----------------------------------
 .. class:: Biome
