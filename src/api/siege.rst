@@ -13,6 +13,8 @@ GrabbedItemLocation
 
    .. data:: BAGSLOT = siege.GrabbedItemLocation.BAGSLOT
 
+   .. data:: CUSTOM = siege.GrabbedItemLocation.CUSTOM
+
    .. data:: GEAR = siege.GrabbedItemLocation.GEAR
 
    .. data:: HAND = siege.GrabbedItemLocation.HAND
@@ -137,6 +139,68 @@ ActiveTalent
 
       
 
+Camera
+-----------------------------------
+.. class:: Camera
+
+   
+
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`RenderSystem`
+
+   .. method:: attachTo( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :param arg3: 
+
+      :type arg3: :class:`sfView`
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
+
+      :param arg5: 
+
+      :type arg5: :class:`RealmSize`
+
+   .. method:: reset( )
+
+      
+
+   .. method:: setPosition( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+   .. attribute:: entity
+
+      
+
+   .. attribute:: movement
+
+      
+
+   .. attribute:: position
+
+      
+
+   .. attribute:: windowSize
+
+      
+
 CharacterInfo
 -----------------------------------
 .. class:: CharacterInfo
@@ -155,9 +219,18 @@ CharacterInfo
 
       
 
+   .. attribute:: level
+
+      
+
    .. attribute:: name
 
       
+
+   .. attribute:: playtime
+
+       |      Tracks playtime in seconds
+
 
 ContentData
 -----------------------------------
@@ -174,6 +247,10 @@ ContentData
       
 
    .. attribute:: name
+
+      
+
+   .. attribute:: persistent
 
       
 
@@ -307,7 +384,7 @@ CustomizationInfo
 
       
 
-   .. attribute:: hsv
+   .. attribute:: hsl
 
       
 
@@ -595,6 +672,84 @@ EngineSkill
 
       
 
+Entities
+-----------------------------------
+.. class:: Entities
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 Entity
 -----------------------------------
 .. class:: Entity
@@ -621,7 +776,7 @@ Entity
 
       :rtype: object
 
-   .. method:: __init__( name, id, content)
+   .. method:: __init__( name, id, content, persistent)
 
       
 
@@ -636,6 +791,10 @@ Entity
       :param content: 
 
       :type content: :class:`Content`
+
+      :param persistent: 
+
+      :type persistent: bool
 
    .. method:: __neq__( entity)
 
@@ -757,6 +916,12 @@ Entity
 
       :rtype: bool
 
+   .. method:: isPlayer( )
+
+      
+
+      :rtype: bool
+
    .. method:: remove( component)
 
       
@@ -822,6 +987,10 @@ Entity
       
 
    .. attribute:: onDestroyed
+
+      
+
+   .. attribute:: persistent
 
       
 
@@ -1263,6 +1432,22 @@ Game
 
       :type arg3: str
 
+   .. method:: setMousePosition( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`PixelVector`
+
+   .. method:: sleep( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
    .. method:: unregisterSubsystem( subsystemName)
 
       
@@ -1284,6 +1469,10 @@ Game
       
 
       :rtype: :class:`Game`
+
+   .. attribute:: args
+
+      
 
    .. attribute:: audio
 
@@ -1333,6 +1522,10 @@ Game
 
       
 
+   .. attribute:: profiler
+
+      
+
    .. attribute:: scene
 
       
@@ -1360,6 +1553,14 @@ GrabbedItem
    .. method:: __init__( )
 
       
+
+   .. method:: __init__( item)
+
+      
+
+      :param item: 
+
+      :type item: :class:`GrabbedItem`
 
    .. method:: __nonzero__( )
 
@@ -1400,6 +1601,10 @@ GrabbedItem
       :type arg3: :class:`ContentStash`
 
    .. attribute:: bagIndex
+
+      
+
+   .. attribute:: customLocation
 
       
 
@@ -1447,7 +1652,7 @@ InventoryItem
 
       :rtype: object
 
-   .. method:: __init__( content, quantity)
+   .. method:: __init__( content[, quantity=1])
 
       
 
@@ -1463,7 +1668,7 @@ InventoryItem
 
       
 
-   .. method:: __init__( contentName, quantity)
+   .. method:: __init__( contentName[, quantity=1])
 
       
 
@@ -1475,13 +1680,29 @@ InventoryItem
 
       :type quantity: int
 
-   .. method:: __init__( entity, quantity)
+   .. method:: __init__( entity[, quantity=1])
 
       
 
       :param entity: 
 
       :type entity: :class:`Entity`
+
+      :param quantity: 
+
+      :type quantity: int
+
+   .. method:: __init__( entity, contentName[, quantity=1])
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :param contentName: 
+
+      :type contentName: :class:`Content`
 
       :param quantity: 
 
@@ -1563,6 +1784,14 @@ InventoryItem
 
       :type entityManager: :class:`EntityManager`
 
+   .. method:: swap( item)
+
+      
+
+      :param item: 
+
+      :type item: :class:`InventoryItem`
+
    .. method:: unpack( stream, contentStash, entityManager)
 
       
@@ -1590,6 +1819,24 @@ InventoryItem
       :param contentStash: 
 
       :type contentStash: :class:`ContentStash`
+
+   .. staticmethod:: stackItems( base, held, entityManager)
+
+      
+
+      :param base: 
+
+      :type base: :class:`InventoryItem`
+
+      :param held: 
+
+      :type held: :class:`InventoryItem`
+
+      :param entityManager: 
+
+      :type entityManager: :class:`EntityManager`
+
+      :rtype: bool
 
    .. attribute:: content
 
@@ -1822,6 +2069,10 @@ ItemBag
 
       :type quantity: int
 
+   .. method:: fullDirty( )
+
+      
+
    .. method:: get( index)
 
       
@@ -1900,6 +2151,14 @@ ItemBag
 
       :rtype: int
 
+   .. method:: resize( size)
+
+      
+
+      :param size: 
+
+      :type size: int
+
    .. method:: set( index, item)
 
       
@@ -1973,6 +2232,10 @@ ItemBag
       
 
    .. attribute:: onChange
+
+      
+
+   .. attribute:: openSlots
 
       
 
@@ -2086,11 +2349,15 @@ Locale
 
       :rtype: str
 
-   .. staticmethod:: getLocales( )
+   .. staticmethod:: getLocales( arg1)
 
       
 
-      :rtype: :class:`StringList`
+      :param arg1: 
+
+      :type arg1: :class:`Packages`
+
+      :rtype: dict
 
    .. staticmethod:: has( text)
 
@@ -2142,7 +2409,7 @@ Player
 
       
 
-   .. method:: applySubstitutions( substitutions, hsv, paths)
+   .. method:: applySubstitutions( substitutions, hsl, paths)
 
       
 
@@ -2150,13 +2417,34 @@ Player
 
       :type substitutions: :class:`SubstitutionMap`
 
-      :param hsv: 
+      :param hsl: 
 
-      :type hsv: :class:`Vector3`
+      :type hsl: :class:`Vector3`
 
       :param paths: 
 
       :type paths: :class:`StringList`
+
+   .. method:: attemptEquip( slot, item)
+
+      Attempts to equip the item to the player.
+
+
+      :param slot:  Name of the equipment slot.
+
+
+      :type slot: str
+
+      :param item:  The item to equip. If successful this item contents is swapped with the item currently equipped in the specified slot.
+
+
+      :type item: :class:`InventoryItem`
+
+      :returns: Whether the item was successfully equipped or not.
+
+
+      :rtype: bool
+
 
    .. method:: canEquip( slot, item)
 
@@ -2178,6 +2466,22 @@ Player
 
       :rtype: bool
 
+
+   .. method:: canSplitItem( item)
+
+      
+
+      :param item: 
+
+      :type item: :class:`InventoryItem`
+
+      :rtype: bool
+
+   .. method:: getPath( )
+
+      
+
+      :rtype: str
 
    .. method:: loadInfo( contentStash, entityManager, playerPath)
 
@@ -2235,6 +2539,11 @@ Player
 
       :type entityId: int
 
+   .. attribute:: data
+
+       |      (dict) Container for miscellaneous player data.
+
+
    .. attribute:: entity
 
        |      (:class:`Entity`) The :class:`Entity` instance for the :class:`Player`.
@@ -2254,6 +2563,11 @@ Player
 
       
 
+   .. attribute:: mode
+
+       |      (:class:`PlayMode`) The mode the :class:`Player` is in.
+
+
    .. attribute:: networkId
 
        |      (:class:`NetworkId`) The :class:`NetworkId` associated with this player.
@@ -2264,9 +2578,9 @@ Player
        |      (:class:`GameEvent`) Invoked with ``(player, previousGrabbed, grabbed)`` when :attr:`grabbed` changes.
 
 
-   .. attribute:: playMode
+   .. attribute:: temp
 
-       |      (:class:`PlayMode`) The mode the :class:`Player` is in.
+       |      (dict) Container for temporary miscellaneous player data.
 
 
    .. attribute:: uid
@@ -2289,6 +2603,66 @@ Player
        |      (:class:`PixelVector`) Size of the player's viewport.
 
 
+Profiler
+-----------------------------------
+.. class:: Profiler
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: disable( )
+
+      
+
+   .. method:: enable( )
+
+      
+
+   .. method:: finish( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: start( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. attribute:: data
+
+      
+
+   .. attribute:: enabled
+
+      
+
+   .. attribute:: size
+
+      
+
+ProfilerData
+-----------------------------------
+.. class:: ProfilerData
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: time
+
+      
+
 SceneManager
 -----------------------------------
 .. class:: SceneManager
@@ -2308,6 +2682,22 @@ SceneManager
       :param arg2: 
 
       :type arg2: str
+
+   .. attribute:: active
+
+      
+
+Scenes
+-----------------------------------
+.. class:: Scenes
+
+   
+
+   .. data:: GAMEPLAY = 'Gameplay'
+
+   .. data:: LOGO = 'Logo'
+
+   .. data:: MENU = 'Menu'
 
 Skill
 -----------------------------------
@@ -2483,7 +2873,7 @@ StateManager
 
       :type arg2: :class:`Game`
 
-   .. method:: setInputState( arg2, arg3, arg4)
+   .. method:: setInput( arg2, arg3)
 
       
 
@@ -2493,25 +2883,9 @@ StateManager
 
       :param arg3: 
 
-      :type arg3: int
-
-      :param arg4: 
-
-      :type arg4: object
+      :type arg3: object
 
    .. data:: TIMESTEP_TIME = 15
-
-States
------------------------------------
-.. class:: States
-
-   
-
-   .. data:: GAMEPLAY = 'Gameplay'
-
-   .. data:: LOGO = 'Logo'
-
-   .. data:: MENU = 'Menu'
 
 Talent
 -----------------------------------
@@ -2636,104 +3010,4 @@ TimerSystem
       :param arg2: 
 
       :type arg2: int
-
-AudioManager
------------------------------------
-.. class:: AudioManager
-
-   
-
-   .. method:: createSound( name)
-
-      
-
-      :param name: 
-
-      :type name: str
-
-      :rtype: :class:`Sound`
-
-   .. method:: getTrackDuration( )
-
-      
-
-      :rtype: int
-
-   .. method:: isPlayingTrack( )
-
-      
-
-      :rtype: bool
-
-   .. method:: pauseTrack( )
-
-      
-
-   .. method:: play( name[, volume=100[, broadcast=False]])
-
-      
-
-      :param name: 
-
-      :type name: str
-
-      :param volume: 
-
-      :type volume: int
-
-      :param broadcast: 
-
-      :type broadcast: bool
-
-      :rtype: :class:`Sound`
-
-   .. method:: playAt( name, position[, volume=100[, broadcast=False]])
-
-      
-
-      :param name: 
-
-      :type name: str
-
-      :param position: 
-
-      :type position: :class:`Vector`
-
-      :param volume: 
-
-      :type volume: int
-
-      :param broadcast: 
-
-      :type broadcast: bool
-
-      :rtype: :class:`Sound`
-
-   .. method:: playTrack( trackPath)
-
-      
-
-      :param trackPath: 
-
-      :type trackPath: str
-
-   .. method:: resumeTrack( )
-
-      
-
-   .. method:: stopTrack( )
-
-      
-
-   .. attribute:: masterVolume
-
-      
-
-   .. attribute:: musicVolume
-
-      
-
-   .. attribute:: sfxVolume
-
-      
 

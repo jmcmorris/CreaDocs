@@ -77,6 +77,70 @@ Direction
 
    .. data:: VERTICAL = siege.component.Direction.VERTICAL
 
+FoliagePriority
+-----------------------------------
+.. class:: FoliagePriority
+
+   
+
+   .. data:: High = siege.component.FoliagePriority.High
+
+   .. data:: Low = siege.component.FoliagePriority.Low
+
+   .. data:: Medium = siege.component.FoliagePriority.Medium
+
+   .. data:: VeryHigh = siege.component.FoliagePriority.VeryHigh
+
+   .. data:: VeryLow = siege.component.FoliagePriority.VeryLow
+
+FoliageType
+-----------------------------------
+.. class:: FoliageType
+
+   
+
+   .. data:: Overlay = siege.component.FoliageType.Overlay
+
+   .. data:: Tile = siege.component.FoliageType.Tile
+
+GrowDepth
+-----------------------------------
+.. class:: GrowDepth
+
+   
+
+   .. data:: Any = siege.component.GrowDepth.Any
+
+   .. data:: Surface = siege.component.GrowDepth.Surface
+
+   .. data:: Underground = siege.component.GrowDepth.Underground
+
+GrowthType
+-----------------------------------
+.. class:: GrowthType
+
+   
+
+   .. data:: Grass = siege.component.GrowthType.Grass
+
+   .. data:: Plant = siege.component.GrowthType.Plant
+
+   .. data:: Vine = siege.component.GrowthType.Vine
+
+MonsterPlacementType
+-----------------------------------
+.. class:: MonsterPlacementType
+
+   
+
+   .. data:: Custom = siege.component.MonsterPlacementType.Custom
+
+   .. data:: InAir = siege.component.MonsterPlacementType.InAir
+
+   .. data:: InGround = siege.component.MonsterPlacementType.InGround
+
+   .. data:: OnGround = siege.component.MonsterPlacementType.OnGround
+
 Slope
 -----------------------------------
 .. class:: Slope
@@ -232,6 +296,10 @@ BodyCustomization
 
       :type isOptional: bool
 
+   .. attribute:: colors
+
+      
+
    .. attribute:: group
 
       
@@ -273,6 +341,14 @@ Component
    .. method:: clean( )
 
       
+
+   .. method:: create( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
 
    .. method:: destroy( )
 
@@ -614,6 +690,10 @@ BodyComponent
 
    
 
+   .. attribute:: colors
+
+      
+
    .. attribute:: components
 
       
@@ -932,6 +1012,10 @@ DroppedComponent
 
    
 
+   .. attribute:: expired
+
+      
+
    .. attribute:: quantity
 
       
@@ -994,6 +1078,10 @@ EffectsComponent
 
       
 
+   .. attribute:: onUpdateEffect
+
+      
+
 EquipmentComponent
 -----------------------------------
 .. class:: EquipmentComponent
@@ -1029,6 +1117,12 @@ EquipmentComponent
       
 
       :rtype: str
+
+   .. method:: getSubstitutions( )
+
+      
+
+      :rtype: :class:`SubstitutionMap`
 
    .. method:: hasAttribute( type)
 
@@ -1097,6 +1191,40 @@ EventComponent
       :rtype: bool
 
    .. method:: reset( )
+
+      
+
+FoliageComponent
+-----------------------------------
+.. class:: FoliageComponent
+
+   
+
+   .. method:: getCompatableTiles( )
+
+      
+
+      :rtype: list
+
+   .. method:: getTimeToUpdate( )
+
+      
+
+      :rtype: int
+
+   .. attribute:: foliageType
+
+      
+
+   .. attribute:: growthType
+
+      
+
+   .. attribute:: particlePath
+
+      
+
+   .. attribute:: priority
 
       
 
@@ -1238,7 +1366,7 @@ InventoryComponent
 
    
 
-   .. method:: add( entity, quantity)
+   .. method:: add( entity[, quantity=1])
 
       
 
@@ -1434,7 +1562,7 @@ InventoryComponent
 
       :rtype: bool
 
-   .. method:: remove( content, quantity)
+   .. method:: remove( content[, quantity=1])
 
       
 
@@ -1494,6 +1622,10 @@ ItemComponent
 
    
 
+   .. attribute:: buyPrice
+
+      
+
    .. attribute:: cooldown
 
       
@@ -1514,6 +1646,10 @@ ItemComponent
 
       
 
+   .. attribute:: isDiscovered
+
+      
+
    .. attribute:: isUnique
 
       
@@ -1522,7 +1658,19 @@ ItemComponent
 
       
 
+   .. attribute:: quality
+
+      
+
+   .. attribute:: sellPrice
+
+      
+
    .. attribute:: stack
+
+      
+
+   .. attribute:: tags
 
       
 
@@ -1538,17 +1686,145 @@ ItemComponent
 
       
 
+LegendComponent
+-----------------------------------
+.. class:: LegendComponent
+
+   
+
+   .. method:: disableMarker( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: enableMarker( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: getMarkerCount( )
+
+      
+
+      :rtype: int
+
+   .. method:: hasMarker( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
+   .. method:: isMarkerEnabled( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
+   .. method:: loseMarker( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: obtainMarker( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. attribute:: onMarkerChange
+
+      
+
 LightComponent
 -----------------------------------
 .. class:: LightComponent
 
    
 
-   .. attribute:: center
+   .. method:: addSource( arg2)
 
       
 
-   .. attribute:: source
+      :param arg2: 
+
+      :type arg2: :class:`LightSourceData`
+
+      :rtype: :class:`LightSource`
+
+   .. method:: getSource( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: :class:`LightSource`
+
+   .. method:: hasSource( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
+   .. method:: removeSource( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`LightSource`
+
+   .. method:: removeSource( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. attribute:: sources
+
+      
+
+MapMarkerComponent
+-----------------------------------
+.. class:: MapMarkerComponent
+
+   
+
+   .. attribute:: icon
+
+      
+
+   .. attribute:: markerType
+
+      
+
+   .. attribute:: updatePosition
 
       
 
@@ -1558,23 +1834,13 @@ MonsterComponent
 
    
 
-   .. method:: create( )
+   .. method:: create( arg2)
 
       
 
-   .. method:: getSpawner( )
+      :param arg2: 
 
-      
-
-      :rtype: :class:`Entity`
-
-   .. method:: setSpawner( spawner)
-
-      
-
-      :param spawner: 
-
-      :type spawner: :class:`Entity`
+      :type arg2: :class:`Entity`
 
    .. attribute:: biomes
 
@@ -1584,21 +1850,31 @@ MonsterComponent
 
       
 
+   .. attribute:: hostile
+
+      
+
+   .. attribute:: layer
+
+      
+
+   .. attribute:: placementCallback
+
+      
+
+   .. attribute:: placementType
+
+      
+
    .. attribute:: spawnOffset
 
       
 
-   .. attribute:: weight
+   .. attribute:: spawner
 
       
 
-NpcComponent
------------------------------------
-.. class:: NpcComponent
-
-   
-
-   .. attribute:: core
+   .. attribute:: weight
 
       
 
@@ -1828,6 +2104,10 @@ PhysicsComponent
 
       
 
+   .. attribute:: applyGravityOnGround
+
+      
+
    .. attribute:: hasGroundCollision
 
       
@@ -1926,7 +2206,11 @@ PlayerStateComponent
 
       
 
-   .. attribute:: currency
+   .. attribute:: perseveranceTime
+
+      
+
+   .. attribute:: perseveranceTimerJob
 
       
 
@@ -2052,7 +2336,7 @@ RenderComponent
 
       :rtype: bool
 
-   .. method:: render( target[, realmHalfWidth=0])
+   .. method:: render( target[, loopWidth=0])
 
       
 
@@ -2060,9 +2344,9 @@ RenderComponent
 
       :type target: :class:`sfRenderTarget`
 
-      :param realmHalfWidth: 
+      :param loopWidth: 
 
-      :type realmHalfWidth: int
+      :type loopWidth: int
 
    .. method:: setColor( arg2)
 
@@ -2210,6 +2494,12 @@ ModularRenderComponent
 
       :rtype: :class:`Rect`
 
+   .. method:: getScale( )
+
+      
+
+      :rtype: :class:`Vector`
+
    .. method:: getSprites( )
 
       
@@ -2286,6 +2576,14 @@ ModularRenderComponent
 
       :type arg3: int
 
+   .. method:: setScale( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
    .. method:: showSprite( arg2)
 
       
@@ -2307,6 +2605,10 @@ ModularRenderComponent
       
 
    .. attribute:: modularSprites
+
+      
+
+   .. attribute:: onUpdate
 
       
 
@@ -2344,6 +2646,14 @@ ReservesComponent
 
       :rtype: :class:`ItemBag`
 
+   .. method:: clear( reserveName)
+
+      
+
+      :param reserveName: 
+
+      :type reserveName: str
+
    .. method:: observe( reserveName, droppedHandler)
 
       
@@ -2368,7 +2678,7 @@ ReservesComponent
 
       :type size: int
 
-   .. method:: restore( reserveName, droppedHandler)
+   .. method:: restore( reserveName, droppedHandler[, remove=True])
 
       
 
@@ -2380,13 +2690,21 @@ ReservesComponent
 
       :type droppedHandler: :class:`DroppedHandler`
 
-   .. method:: restoreAll( droppedHandler)
+      :param remove: 
+
+      :type remove: bool
+
+   .. method:: restoreAll( droppedHandler, blacklist)
 
       
 
       :param droppedHandler: 
 
       :type droppedHandler: :class:`DroppedHandler`
+
+      :param blacklist: 
+
+      :type blacklist: :class:`StringSet`
 
 StatsComponent
 -----------------------------------
@@ -2694,12 +3012,6 @@ ToolbarComponent
 
       :type arg4: :class:`ToolItem`
 
-   .. method:: size( )
-
-      
-
-      :rtype: int
-
    .. attribute:: onChange
 
       
@@ -2709,6 +3021,10 @@ ToolbarComponent
       
 
    .. attribute:: selected
+
+      
+
+   .. attribute:: size
 
       
 
@@ -3180,6 +3496,97 @@ Event
 
       
 
+Foliage
+-----------------------------------
+.. class:: Foliage
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: compatibleTiles
+
+      
+
+   .. attribute:: drops
+
+      
+
+   .. attribute:: foliageNeighbors
+
+      
+
+   .. attribute:: foliageType
+
+      
+
+   .. attribute:: growChance
+
+      
+
+   .. attribute:: growDepth
+
+      
+
+   .. attribute:: growthDirections
+
+      
+
+   .. attribute:: growthType
+
+      
+
+   .. attribute:: particlePath
+
+      
+
+   .. attribute:: priority
+
+      
+
+   .. attribute:: reactivateOnNeighborChange
+
+      
+
+   .. attribute:: requiresEmptyNeighbor
+
+      
+
+   .. attribute:: simple
+
+      
+
+   .. attribute:: spreadRange
+
+      
+
+   .. attribute:: spreadRate
+
+       |      The frequency this foliage is considered a spreader. 0 being very rarely and 100 is all of the time.
+
+
+   .. attribute:: spreadTimeRange
+
+      
+
+   .. attribute:: standard
+
+      
+
+   .. attribute:: supportDirection
+
+      
+
+   .. attribute:: updateTimeRange
+
+      
+
+   .. attribute:: variants
+
+      
+
 Gear
 -----------------------------------
 .. class:: Gear
@@ -3284,7 +3691,15 @@ Item
 
       :type group: str
 
+   .. attribute:: buyPrice
+
+      
+
    .. attribute:: cooldown
+
+      
+
+   .. attribute:: discovered
 
       
 
@@ -3296,7 +3711,19 @@ Item
 
       
 
+   .. attribute:: quality
+
+      
+
+   .. attribute:: sellPrice
+
+      
+
    .. attribute:: stack
+
+      
+
+   .. attribute:: tags
 
       
 
@@ -3324,6 +3751,16 @@ Item
 
       
 
+Legend
+-----------------------------------
+.. class:: Legend
+
+   
+
+   .. method:: __init__( )
+
+      
+
 Light
 -----------------------------------
 .. class:: Light
@@ -3334,31 +3771,41 @@ Light
 
       
 
-   .. attribute:: brightness
+   .. attribute:: sources
 
       
 
-   .. attribute:: center
+MapMarker
+-----------------------------------
+.. class:: MapMarker
+
+   
+
+   .. method:: __init__( arg2, arg3, arg4)
 
       
 
-   .. attribute:: color
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: str
+
+      :param arg4: 
+
+      :type arg4: bool
+
+   .. attribute:: icon
 
       
 
-   .. attribute:: enabled
+   .. attribute:: markerType
 
       
 
-   .. attribute:: falloff
-
-      
-
-   .. attribute:: intensity
-
-      
-
-   .. attribute:: size
+   .. attribute:: updatePosition
 
       
 
@@ -3368,13 +3815,21 @@ ModularRender
 
    
 
-   .. method:: __init__( arg2])
+   .. method:: __init__( [dataFile=''[, icon=''[, contentPath='']]])
 
       
 
-      :param arg2]: 
+      :param dataFile: 
 
-      :type arg2]: str
+      :type dataFile: str
+
+      :param icon: 
+
+      :type icon: str
+
+      :param contentPath: 
+
+      :type contentPath: object
 
    .. method:: addMapping( arg2, arg3)
 
@@ -3396,7 +3851,11 @@ ModularRender
 
       :type arg2: list
 
-   .. attribute:: characterFile
+   .. attribute:: dataFile
+
+      
+
+   .. attribute:: icon
 
       
 
@@ -3405,6 +3864,10 @@ ModularRender
       
 
    .. attribute:: sheets
+
+      
+
+   .. attribute:: wicon
 
       
 
@@ -3434,7 +3897,23 @@ Monster
 
       
 
+   .. attribute:: hostile
+
+      
+
+   .. attribute:: layer
+
+      
+
    .. attribute:: onCreate
+
+      
+
+   .. attribute:: placementCallback
+
+      
+
+   .. attribute:: placementType
 
       
 
@@ -3443,24 +3922,6 @@ Monster
       
 
    .. attribute:: weight
-
-      
-
-Npc
------------------------------------
-.. class:: Npc
-
-   
-
-   .. method:: __init__( onCreate)
-
-      
-
-      :param onCreate: 
-
-      :type onCreate: object
-
-   .. attribute:: onCreate
 
       
 
@@ -3516,6 +3977,10 @@ Physics
 
       
 
+   .. attribute:: applyGravityOnGround
+
+      
+
    .. attribute:: body
 
       
@@ -3553,6 +4018,10 @@ Physics
       
 
    .. attribute:: restitution
+
+      
+
+   .. attribute:: simulated
 
       
 
@@ -3774,6 +4243,10 @@ Body
 
       
 
+   .. attribute:: colors
+
+      
+
    .. attribute:: customizations
 
       
@@ -3964,11 +4437,23 @@ Tile
 
       
 
+   .. attribute:: mapGroundColor
+
+      
+
+   .. attribute:: mapWallColor
+
+      
+
    .. attribute:: onBreakSound
 
       
 
    .. attribute:: onHitSound
+
+      
+
+   .. attribute:: onlyAutotileWithSelf
 
       
 
@@ -4562,6 +5047,126 @@ EventMap
 
       :type arg3: object
 
+FoliageNeighbor
+-----------------------------------
+.. class:: FoliageNeighbor
+
+   
+
+   .. method:: __init__( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: :class:`TileVector`
+
+      :param arg4: 
+
+      :type arg4: :class:`RangeUint`
+
+      :param arg5: 
+
+      :type arg5: int
+
+   .. attribute:: chance
+
+      
+
+   .. attribute:: delay
+
+      
+
+   .. attribute:: direction
+
+      
+
+   .. attribute:: foliage
+
+      
+
+FoliageNeighborList
+-----------------------------------
+.. class:: FoliageNeighborList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 GearSlot
 -----------------------------------
 .. class:: GearSlot
@@ -4940,7 +5545,7 @@ ModularSprite
 
       
 
-   .. attribute:: hsv
+   .. attribute:: hsl
 
       
 

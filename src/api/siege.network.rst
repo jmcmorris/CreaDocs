@@ -9,7 +9,13 @@ Message
 
    
 
+   .. data:: AUDIO_MUSIC = siege.network.Message.AUDIO_MUSIC
+
    .. data:: AUDIO_SYSTEM = siege.network.Message.AUDIO_SYSTEM
+
+   .. data:: CARTOGRAPHY = siege.network.Message.CARTOGRAPHY
+
+   .. data:: CHANGE_INPUT_STATE = siege.network.Message.CHANGE_INPUT_STATE
 
    .. data:: CHARACTER_CREATE = siege.network.Message.CHARACTER_CREATE
 
@@ -28,6 +34,8 @@ Message
    .. data:: CHAT_SYSTEM = siege.network.Message.CHAT_SYSTEM
 
    .. data:: COMBAT_ATTACK = siege.network.Message.COMBAT_ATTACK
+
+   .. data:: CONFLICT = siege.network.Message.CONFLICT
 
    .. data:: INVENTORY_CLOSE = siege.network.Message.INVENTORY_CLOSE
 
@@ -59,13 +67,15 @@ Message
 
    .. data:: LOAD_COMPLETE = siege.network.Message.LOAD_COMPLETE
 
+   .. data:: MERCHANT_CHANGE = siege.network.Message.MERCHANT_CHANGE
+
    .. data:: NPC_DISMISS = siege.network.Message.NPC_DISMISS
 
    .. data:: NPC_INTERACT = siege.network.Message.NPC_INTERACT
 
-   .. data:: NPC_SHOW_HOME_UI = siege.network.Message.NPC_SHOW_HOME_UI
-
    .. data:: PARTICLE_SYSTEM = siege.network.Message.PARTICLE_SYSTEM
+
+   .. data:: PLAYER_ANIMATION = siege.network.Message.PLAYER_ANIMATION
 
    .. data:: PLAYER_INPUT = siege.network.Message.PLAYER_INPUT
 
@@ -73,13 +83,21 @@ Message
 
    .. data:: PLAYER_RESERVE = siege.network.Message.PLAYER_RESERVE
 
+   .. data:: REALM_INFO = siege.network.Message.REALM_INFO
+
    .. data:: RESEARCH_DATA = siege.network.Message.RESEARCH_DATA
 
    .. data:: RESEARCH_INTERACT = siege.network.Message.RESEARCH_INTERACT
 
    .. data:: RESOLUTION_CHANGED = siege.network.Message.RESOLUTION_CHANGED
 
+   .. data:: SCAVENGER_CHANGE = siege.network.Message.SCAVENGER_CHANGE
+
+   .. data:: SELL_ITEMS = siege.network.Message.SELL_ITEMS
+
    .. data:: SHOW_COMBAT_NUMBER = siege.network.Message.SHOW_COMBAT_NUMBER
+
+   .. data:: SHOW_UI = siege.network.Message.SHOW_UI
 
    .. data:: TALENT_PURCHASE_SKILL = siege.network.Message.TALENT_PURCHASE_SKILL
 
@@ -105,7 +123,7 @@ PacketPriority
 
    .. data:: Low = siege.network.PacketPriority.Low
 
-   .. data:: Medium = siege.network.PacketPriority.Medium
+   .. data:: MeDdium = siege.network.PacketPriority.MeDdium
 
 PacketReliability
 -----------------------------------
@@ -175,77 +193,101 @@ NetworkConnection
 
       :type arg3: object
 
-   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
+   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
 
-      
+      Broadcast a message to all available recipients.
 
-      :param packet: 
+
+      :param packet:  Data to be sent,
+
 
       :type packet: :class:`DataStream`
 
-      :param channel: 
+      :param channel:  What channel to send this packet on.
+
 
       :type channel: int
 
-      :param reliability: 
+      :param reliability:  How reliably to send this data. 
+
 
       :type reliability: :class:`PacketReliability`
 
-      :param priority: 
+      :param priority:  What priority level to send with.
+
 
       :type priority: :class:`PacketPriority`
 
+      :returns: 0 on bad input. Otherwise a number that identifies this message.
+
+
       :rtype: int
+
 
    .. method:: receive( )
 
-      
+      Handle all queued incoming packets.
+
 
    .. method:: register( messageId, callback)
 
-      
+      Register a handler for a specific message.
 
-      :param messageId: 
+
+      :param messageId:  :class:`Message` type to listen for.
+
 
       :type messageId: int
 
-      :param callback: 
+      :param callback:  (:class:`MessageHandler`) Handler to be used for processing the message.
+
 
       :type callback: :class:`MessageHandler`
 
-   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
+   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
 
-      
+      Sends a packet to the recipient.
+
 
       :param recipient: 
 
       :type recipient: :class:`NetworkId`
 
-      :param packet: 
+      :param packet:  Data to be sent,
+
 
       :type packet: :class:`DataStream`
 
-      :param channel: 
+      :param channel:  What channel to send this packet on.
+
 
       :type channel: int
 
-      :param reliability: 
+      :param reliability:  How reliably to send this data. 
+
 
       :type reliability: :class:`PacketReliability`
 
-      :param priority: 
+      :param priority:  What priority level to send with.
+
 
       :type priority: :class:`PacketPriority`
 
+      :returns: 0 on bad input. Otherwise a number that identifies this message.
+
+
       :rtype: int
+
 
    .. method:: unregister( messageId)
 
-      
+      Unregister the handler for a message, if present.
+
 
       :param messageId: 
 
-      :type messageId: int
+      :type messageId:  Message
+
 
 Client
 -----------------------------------
@@ -253,37 +295,50 @@ Client
 
    
 
-   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
+   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
 
-      
+      Sends a packet to the server.
 
-      :param packet: 
+
+      :param packet:  Data to be sent,
+
 
       :type packet: :class:`DataStream`
 
-      :param channel: 
+      :param channel:  What channel to send this packet on.
+
 
       :type channel: int
 
-      :param reliability: 
+      :param reliability:  How reliably to send this data. 
+
 
       :type reliability: :class:`PacketReliability`
 
-      :param priority: 
+      :param priority:  What priority level to send with.
+
 
       :type priority: :class:`PacketPriority`
 
+      :returns: 0 on bad input. Otherwise a number that identifies this message.
+
+
       :rtype: int
+
 
 Server
 -----------------------------------
 .. class:: Server
 
-   
+     Provides methods for kicking and banning clients.
+  __Banlists are currently only valid for the current instance of the server__
+  
+
 
    .. method:: ban( arg2)
 
-      
+      Bans a client from the server.
+
 
       :param arg2: 
 
@@ -293,7 +348,8 @@ Server
 
    .. method:: ban( arg2)
 
-      
+      Bans a client from the server by ip.
+
 
       :param arg2: 
 
@@ -303,7 +359,8 @@ Server
 
    .. method:: kick( arg2)
 
-      
+      Kicks a client from the server.
+
 
       :param arg2: 
 
@@ -311,7 +368,8 @@ Server
 
    .. method:: unban( arg2)
 
-      
+      Unbans a client from the server.
+
 
       :param arg2: 
 

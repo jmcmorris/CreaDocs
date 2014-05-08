@@ -13,33 +13,45 @@ ActionState
 
       
 
+   .. method:: clear( )
+
+      Clears all added inputs.
+
+
    .. attribute:: elapsed
 
-      
+       |      Total time for current state
+
 
    .. attribute:: inputs
 
-      
+       |      List of GameInputs for this :class:`ActionState`
+
 
    .. attribute:: isDisabled
 
-      
+       |      Set to True to disable this :class:`ActionState` from checking input
+
 
    .. attribute:: isPressed
 
-      
+       |      Is True when input has been recieved
+
 
    .. attribute:: justPressed
 
-      
+       |      Is True on initial input. False when input is held down.
+
 
    .. attribute:: justReleased
 
-      
+       |      Is True on intial input release, False otherwise
+
 
    .. attribute:: onChange
 
-      
+       |      :class:`Event` to call on state change
+
 
 DataStream
 -----------------------------------
@@ -61,331 +73,437 @@ DataStream
 
    .. method:: append( data)
 
-      
+      Adds data to the end of the buffer
 
-      :param data: 
+
+      :param data:  :class:`DataStream` to add on to current buffer
+
 
       :type data: :class:`DataStream`
 
    .. method:: append( data, size)
 
-      
+      Adds size amount of data to the end of current buffer
 
-      :param data: 
+
+      :param data:  data to add on to current buffer
+
 
       :type data: object
 
-      :param size: 
+      :param size:  size of the data to add
+
 
       :type size: int
 
    .. method:: begin( )
 
-      
+      Reads a partition header and pushes it onto the stack
+
 
    .. method:: clear( )
 
-      
+      Removes all data from the buffer
+
 
    .. method:: compress( )
 
-      
+      Compresses the data in the buffer
+
 
    .. method:: converge( )
 
-      
+      Exits a partition scope and moves to the outer partition
+
 
    .. method:: decompress( )
 
-      
+      Decompresses the data in the buffer
+
 
    .. method:: diverge( )
 
-      
+      Creates a partition in the datastream that is prefixed with a size header
+
 
    .. method:: end( )
 
-      
+      Used to signal the stream that the current position should be at the end of a partition
+
 
    .. method:: partitionLength( )
 
-      
+      Returns length of the top of the partition stack
+
 
       :rtype: int
 
    .. method:: readBool( )
 
-      
+      Ret a boolean from the buffer and returns it
+
 
       :rtype: bool
 
    .. method:: readColor( )
 
-      
+      Read a :class:`Color` from the buffer and returns it
+
 
       :rtype: :class:`Color`
 
+   .. method:: readDict( )
+
+      Reads a Python dictionary from the buffer and returns it
+
+
+      :rtype: dict
+
    .. method:: readDouble( )
 
-      
+      Read an double from the buffer and returns it
+
 
       :rtype: float
 
    .. method:: readFloat( )
 
-      
+      Read an float from the buffer and returns it
+
 
       :rtype: float
 
    .. method:: readInt16( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
    .. method:: readInt32( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
    .. method:: readInt8( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
+   .. method:: readObject( )
+
+      Reads a Python obejct from the buffer and returns it
+
+
+      :rtype: object
+
    .. method:: readPixelRect( )
 
-      
+      Read a :class:`PixelRect` from the buffer and returns it
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: readPixelVector( )
 
-      
+      Read a :class:`PixelVector` from the buffer and returns it
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: readRect( )
 
-      
+      Read a :class:`Rect` from the buffer and returns it
+
 
       :rtype: :class:`Rect`
 
    .. method:: readString( )
 
-      
+      Read a string from the buffer and returns it
+
 
       :rtype: str
 
    .. method:: readTileRect( )
 
-      
+      Read a :class:`TileRect` from the buffer and returns it
+
 
       :rtype: :class:`TileRect`
 
    .. method:: readTileVector( )
 
-      
+      Read a :class:`TileVector` from the buffer and returns it
+
 
       :rtype: :class:`TileVector`
 
    .. method:: readUint16( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
    .. method:: readUint32( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
    .. method:: readUint8( )
 
-      
+      Read an integer from the buffer and returns it
+
 
       :rtype: int
 
    .. method:: readVector( )
 
-      
+      Read a :class:`Vector` from the buffer and returns it
+
 
       :rtype: :class:`Vector`
 
    .. method:: readVector3( )
 
-      
+      Read a :class:`Vector3` from the buffer and returns it
+
 
       :rtype: :class:`Vector3`
 
    .. method:: readWString( )
 
-      
+      Read an wide character string from the buffer and returns it
+
 
       :rtype: unicode
 
    .. method:: size( )
 
-      
+      Returns the size of the data in the buffer
+
 
       :rtype: int
 
    .. method:: skip( )
 
-      
+      Skips over the remainder of the current partition
+
 
    .. method:: writeBool( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Boolean to write to buffer
+
 
       :type data: bool
 
    .. method:: writeColor( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`Color` to write to buffer
+
 
       :type data: :class:`Color`
 
+   .. method:: writeDict( data)
+
+      Appends data to the end of the current buffer data
+
+
+      :param data:  Python dictionary to write to buffer
+
+
+      :type data: dict
+
    .. method:: writeDouble( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Double to write to buffer
+
 
       :type data: float
 
    .. method:: writeFloat( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Float to write to buffer
+
 
       :type data: float
 
    .. method:: writeInt16( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Int16 to write to buffer
+
 
       :type data: int
 
    .. method:: writeInt32( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Int32 to write to buffer
+
 
       :type data: int
 
    .. method:: writeInt8( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Int8 to write to buffer
+
 
       :type data: int
 
+   .. method:: writeObject( data)
+
+      Appends data to the end of the current buffer data
+
+
+      :param data:  Python Object to write to buffer
+
+
+      :type data: object
+
    .. method:: writePixelRect( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`PixelRect` to write to buffer
+
 
       :type data: :class:`PixelRect`
 
    .. method:: writePixelVector( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`PixelVector` to write to buffer
+
 
       :type data: :class:`PixelVector`
 
    .. method:: writeRect( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`Rect` to write to buffer
+
 
       :type data: :class:`Rect`
 
    .. method:: writeString( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  String to write to buffer
+
 
       :type data: str
 
    .. method:: writeTileRect( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`TileRect` to write to buffer
+
 
       :type data: :class:`TileRect`
 
    .. method:: writeTileVector( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`TileVector` to write to buffer
+
 
       :type data: :class:`TileVector`
 
    .. method:: writeUint16( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Uint16 to write to buffer
+
 
       :type data: int
 
    .. method:: writeUint32( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Uint32 to write to buffer
+
 
       :type data: int
 
    .. method:: writeUint8( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Uint8 to write to buffer
+
 
       :type data: int
 
    .. method:: writeVector( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`Vector` to write to buffer
+
 
       :type data: :class:`Vector`
 
    .. method:: writeVector3( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  :class:`Vector3` to write to buffer
+
 
       :type data: :class:`Vector3`
 
    .. method:: writeWString( data)
 
-      
+      Appends data to the end of the current buffer data
 
-      :param data: 
+
+      :param data:  Wide String to write to buffer
+
 
       :type data: unicode
 
@@ -395,37 +513,68 @@ File
 
    
 
+   .. staticmethod:: getValidPath( filePath)
+
+      Formats a string to remove invalid characters from a string ([\?\\/:\*<>\|"])
+
+
+      :param filePath:  Path to the file
+
+
+      :type filePath: str
+
+      :returns: A formated string
+
+
+      :rtype: str
+
    .. staticmethod:: load( filePath, data)
 
-      
+      Appends the file data to the :class:`DataStream`
 
-      :param filePath: 
+
+      :param filePath:  Path to the file
+
 
       :type filePath: object
 
-      :param data: 
+      :param data:  :class:`DataStream` to write to
+
 
       :type data: :class:`DataStream`
 
+      :returns: Returns the file version number
+
+
+      :rtype: int
+
    .. staticmethod:: open( filePath)
 
-      
+      Opens file at the path and reads into a buffer
 
-      :param filePath: 
+
+      :param filePath:  Path to target file
+
 
       :type filePath: object
+
+      :returns: If the file is valid it is returned
+
 
       :rtype: :class:`File`
 
    .. staticmethod:: save( filePath, data)
 
-      
+      Writes contents of data to the file at path
 
-      :param filePath: 
+
+      :param filePath:  Path to file for writing
+
 
       :type filePath: object
 
-      :param data: 
+      :param data:  Data to write to the file
+
 
       :type data: :class:`DataStream`
 
@@ -437,29 +586,36 @@ FileManager
 
    .. method:: asyncRead( filePath, onComplete, isCreaFile)
 
-      
+      Reads from a file using a new thread
 
-      :param filePath: 
+
+      :param filePath:  Path to the file
+
 
       :type filePath: object
 
-      :param onComplete: 
+      :param onComplete:  Filer handler for a complete read
+
 
       :type onComplete: object
 
-      :param isCreaFile: 
+      :param isCreaFile:  Set to true to mark file as a Crea file, false otherwise
+
 
       :type isCreaFile: bool
 
    .. method:: asyncWrite( filePath, stream)
 
-      
+      Writes to a file using a new thread
 
-      :param filePath: 
+
+      :param filePath:  Path to the file
+
 
       :type filePath: object
 
-      :param stream: 
+      :param stream:  :class:`DataStream` to write to
+
 
       :type stream: :class:`DataStream`
 
@@ -475,11 +631,13 @@ GameInput
 
    .. method:: update( )
 
-      
+      Updates each :class:`ActionState` in game
+
 
    .. attribute:: isPressed
 
-      
+       |      True if any input was recieved from the user
+
 
 JoyInput
 -----------------------------------
@@ -499,29 +657,51 @@ JoyInput
 
       :type joyButton: int
 
-   .. attribute:: axis
+   .. method:: __init__( joyId, joyAxis, axisDelta)
 
       
+
+      :param joyId: 
+
+      :type joyId: int
+
+      :param joyAxis: 
+
+      :type joyAxis: Axis
+
+      :param axisDelta: 
+
+      :type axisDelta: float
+
+   .. attribute:: axis
+
+       |      The joystick axis.  See sf::Joystick::Axis
+
 
    .. attribute:: button
 
-      
+       |      Which joystick button to use
+
 
    .. attribute:: delta
 
-      
+       |      Dead zone for axis input
+
 
    .. attribute:: id
 
-      
+       |      Index for this :class:`Joystick`
+
 
    .. attribute:: useAxis
 
-      
+       |      Set to True for a joystick axis
+
 
    .. attribute:: useButton
 
-      
+       |      Set to True for a joystick button
+
 
 KeyInput
 -----------------------------------
@@ -539,7 +719,8 @@ KeyInput
 
    .. attribute:: key
 
-      
+       |      Which keyboard key to use
+
 
 MouseInput
 -----------------------------------
@@ -557,7 +738,8 @@ MouseInput
 
    .. attribute:: button
 
-      
+       |      Which mouse button to use
+
 
 GameInputList
 -----------------------------------
@@ -649,29 +831,35 @@ Input
 
    .. method:: createAction( )
 
-      
+      Returns a new :class:`ActionState`
+
 
       :rtype: :class:`ActionState`
 
    .. method:: removeAction( actionState)
 
-      
+      Removes target :class:`ActionState` from this :class:`Input`
 
-      :param actionState: 
+
+      :param actionState:  The :class:`ActionState` to be removed
+
 
       :type actionState: :class:`ActionState`
 
    .. method:: update( frameTime)
 
-      
+      Updates all ActionStates that this has created
 
-      :param frameTime: 
+
+      :param frameTime:  elapsed time for the frame
+
 
       :type frameTime: int
 
    .. attribute:: actions
 
-      
+       |      List of ActionStates
+
 
 Joystick
 -----------------------------------
@@ -685,69 +873,98 @@ Joystick
 
    .. staticmethod:: getAxisPosition( joystick, axis)
 
-      
+      Get the current position of a joystick axis
 
-      :param joystick: 
+
+      :param joystick:  Index of the joystick
+
 
       :type joystick: int
 
-      :param axis: 
+      :param axis:  Axis to check
+
 
       :type axis: Axis
+
+      :returns: Current position of the axis, in range [-100, 100]
+
 
       :rtype: float
 
    .. staticmethod:: getButtonCount( joystick)
 
-      
+      Return the number of buttons supported by a joystick.
 
-      :param joystick: 
+
+      :param joystick:  Index of the joystick
+
 
       :type joystick: int
+
+      :returns: Number of buttons supported by the joystick, or 0 if joystick is not connected
+
 
       :rtype: int
 
    .. staticmethod:: hasAxis( joystick, axis)
 
-      
+      Check if a joystick supports a given axis.
 
-      :param joystick: 
+
+      :param joystick:  Indexof the joystick
+
 
       :type joystick: int
 
-      :param axis: 
+      :param axis:  Axis to check
+
 
       :type axis: Axis
+
+      :returns: True if the joystick supports the axis, false otherwise
+
 
       :rtype: bool
 
    .. staticmethod:: isButtonPressed( joystick, button)
 
-      
+      Check if a joystick button is pressed. 
 
-      :param joystick: 
+
+      :param joystick:  Index of joystick
+
 
       :type joystick: int
 
-      :param button: 
+      :param button:  Button to check
+
 
       :type button: int
+
+      :returns: True if the button is pressed, false otherwise
+
 
       :rtype: bool
 
    .. staticmethod:: isConnected( joystick)
 
-      
+      Check if a joystick is connected. 
 
-      :param joystick: 
+
+      :param joystick:  Index of joystick to check
+
 
       :type joystick: int
+
+      :returns: True if the joystick is connected, false otherwise
+
 
       :rtype: bool
 
    .. staticmethod:: update( )
 
-      
+      Update the states of all joysticks.
+
 
    .. data:: Axis = <class 'siege.io.Axis'>
 
@@ -785,11 +1002,16 @@ Keyboard
 
    .. staticmethod:: isKeyPressed( key)
 
-      
+      Check if a key is pressed
 
-      :param key: 
+
+      :param key:  The key to check
+
 
       :type key: Key
+
+      :returns: True if key pressed, false otherwise
+
 
       :rtype: bool
 
@@ -1011,47 +1233,63 @@ Mouse
 
    .. staticmethod:: getPosition( )
 
-      
+      Returns the current position of the mouse in desktop coordinates
+
 
       :rtype: :class:`sfTileVector`
 
    .. staticmethod:: getPosition( relativeTo)
 
-      
+      Get the current position of the mouse in window coordinate
 
-      :param relativeTo: 
+
+      :param relativeTo:  Reference window
+
 
       :type relativeTo: object
+
+      :returns: Current position of the mouse
+
 
       :rtype: :class:`sfTileVector`
 
    .. staticmethod:: isButtonPressed( button)
 
-      
+      Check if a mouse button is pressed
 
-      :param button: 
+
+      :param button:  Button to check
+
 
       :type button: Button
+
+      :returns: True if the button if pressed, false otherwise
+
 
       :rtype: bool
 
    .. staticmethod:: setPosition( position)
 
-      
+      Set the current position of the mouse in desktop coordinates. 
 
-      :param position: 
+
+      :param position:  New position of the mouse
+
 
       :type position: :class:`sfTileVector`
 
    .. staticmethod:: setPosition( position, relativeTo)
 
-      
+      This function sets the current position of the mouse cursor, relative to the given window.
 
-      :param position: 
+
+      :param position:  New position of the mouse
+
 
       :type position: :class:`sfTileVector`
 
-      :param relativeTo: 
+      :param relativeTo:  Reference window
+
 
       :type relativeTo: object
 

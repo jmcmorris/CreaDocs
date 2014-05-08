@@ -37,18 +37,6 @@ PrimitiveType
 
    .. data:: TrianglesStrip = siege.sfml.PrimitiveType.TrianglesStrip
 
-SoundStatus
------------------------------------
-.. class:: SoundStatus
-
-   
-
-   .. data:: Paused = siege.sfml.SoundStatus.Paused
-
-   .. data:: Playing = siege.sfml.SoundStatus.Playing
-
-   .. data:: Stopped = siege.sfml.SoundStatus.Stopped
-
 Drawable
 -----------------------------------
 .. class:: Drawable
@@ -659,34 +647,6 @@ Sound
 
       
 
-Time
------------------------------------
-.. class:: Time
-
-   
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: asMicroseconds( )
-
-      
-
-      :rtype: long
-
-   .. method:: asMilliseconds( )
-
-      
-
-      :rtype: int
-
-   .. method:: asSeconds( )
-
-      
-
-      :rtype: float
-
 Transform
 -----------------------------------
 .. class:: Transform
@@ -1028,6 +988,40 @@ Transformable
       :type arg3: float
 
    .. method:: setScale( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`sfVector`
+
+Shape(Transformable, Drawable)
+-----------------------------------
+.. class:: Shape(Transformable, Drawable)
+
+   
+
+RectangleShape
+-----------------------------------
+.. class:: RectangleShape
+
+   
+
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`sfVector`
+
+   .. method:: getSize( )
+
+      
+
+      :rtype: :class:`sfVector`
+
+   .. method:: setSize( arg2)
 
       
 

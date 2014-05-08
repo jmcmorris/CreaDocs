@@ -523,6 +523,10 @@ View
 
       :type writeFiles: bool
 
+   .. method:: clearCallbacks( )
+
+      
+
    .. method:: contains( x, y, ignoreTransparent])
 
       
@@ -590,6 +594,16 @@ View
       
 
       :rtype: :class:`PixelVector`
+
+   .. method:: handleEvent( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`sfEvent`
+
+      :rtype: bool
 
    .. method:: hasFocus( )
 
@@ -691,6 +705,10 @@ View
 
       
 
+   .. attribute:: consumeMouseWheel
+
+      
+
    .. attribute:: debugging
 
       
@@ -704,6 +722,10 @@ View
       
 
    .. attribute:: onHide
+
+      
+
+   .. attribute:: onRender
 
       
 

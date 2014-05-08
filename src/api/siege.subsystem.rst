@@ -369,84 +369,6 @@ InventorySet
 
       :type arg2: :class:`InventoryComponent`
 
-NpcList
------------------------------------
-.. class:: NpcList
-
-   
-
-   .. method:: __contains__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: bool
-
-   .. method:: __delitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: __getitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: object
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: __iter__( )
-
-      
-
-      :rtype: object
-
-   .. method:: __len__( )
-
-      
-
-      :rtype: int
-
-   .. method:: __setitem__( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :param arg3: 
-
-      :type arg3: object
-
-   .. method:: append( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: extend( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
 Subsystem
 -----------------------------------
 .. class:: Subsystem
@@ -707,6 +629,32 @@ EquipmentSystem
 
       :type attribute: object
 
+FoliageSystem
+-----------------------------------
+.. class:: FoliageSystem
+
+   
+
+   .. method:: getFoliage( foliageId)
+
+      
+
+      :param foliageId: 
+
+      :type foliageId: int
+
+      :rtype: :class:`FoliageComponent`
+
+   .. method:: getFoliageEntity( foliageId)
+
+      
+
+      :param foliageId: 
+
+      :type foliageId: int
+
+      :rtype: :class:`Entity`
+
 LightSystem
 -----------------------------------
 .. class:: LightSystem
@@ -734,104 +682,6 @@ MonsterSystem
       :type biomeName: str
 
       :rtype: :class:`EntitySet`
-
-NpcSystem
------------------------------------
-.. class:: NpcSystem
-
-   
-
-   .. method:: dismiss( player)
-
-      
-
-      :param player: 
-
-      :type player: :class:`Player`
-
-   .. method:: get( npcContentId)
-
-      
-
-      :param npcContentId: 
-
-      :type npcContentId: int
-
-      :rtype: :class:`NpcList`
-
-   .. method:: getInteraction( player)
-
-      
-
-      :param player: 
-
-      :type player: :class:`Player`
-
-      :rtype: :class:`Entity`
-
-   .. method:: getPrice( name)
-
-      
-
-      :param name: 
-
-      :type name: str
-
-      :rtype: int
-
-   .. method:: handleNetworkReset( server, client)
-
-      
-
-      :param server: 
-
-      :type server: :class:`Server`
-
-      :param client: 
-
-      :type client: :class:`Client`
-
-   .. method:: interact( player, npc)
-
-      
-
-      :param player: 
-
-      :type player: :class:`Player`
-
-      :param npc: 
-
-      :type npc: :class:`Entity`
-
-      :rtype: bool
-
-   .. method:: setPrice( name, price)
-
-      
-
-      :param name: 
-
-      :type name: str
-
-      :param price: 
-
-      :type price: int
-
-   .. staticmethod:: handleHomeCrystalInteraction( player, entity, position)
-
-      
-
-      :param player: 
-
-      :type player: :class:`Player`
-
-      :param entity: 
-
-      :type entity: :class:`Entity`
-
-      :param position: 
-
-      :type position: :class:`Vector`
 
 OrganicSystem
 -----------------------------------
@@ -861,7 +711,7 @@ OrganicSystem
 
       :param arg4: 
 
-      :type arg4: :class:`Realm`
+      :type arg4: object
 
       :param arg5: 
 
@@ -1007,9 +857,13 @@ RenderSystem
 
       :rtype: :class:`Shader`
 
-   .. method:: getWindowSize( )
+   .. method:: getWindowSize( [ignoreScale=False])
 
       
+
+      :param ignoreScale: 
+
+      :type ignoreScale: bool
 
       :rtype: :class:`PixelVector`
 
@@ -1021,19 +875,27 @@ RenderSystem
 
       :type arg2: :class:`Renderable`
 
-   .. method:: setMode( arg2, arg3)
+   .. method:: setMode( mode, fullscreen[, scale=1])
 
       
 
-      :param arg2: 
+      :param mode: 
 
-      :type arg2: :class:`VideoMode`
+      :type mode: :class:`VideoMode`
 
-      :param arg3: 
+      :param fullscreen: 
 
-      :type arg3: bool
+      :type fullscreen: bool
+
+      :param scale: 
+
+      :type scale: float
 
    .. attribute:: onResize
+
+      
+
+   .. attribute:: scale
 
       
 

@@ -257,6 +257,18 @@ DrawableText
 
       :rtype: :class:`Color`
 
+   .. method:: getGlobalBounds( )
+
+      
+
+      :rtype: :class:`Rect`
+
+   .. method:: getLocalBounds( )
+
+      
+
+      :rtype: :class:`Rect`
+
    .. method:: getPosition( )
 
       
@@ -515,7 +527,7 @@ PixelCheck
 
       :rtype: bool
 
-   .. staticmethod:: collision( arg1, arg2, arg3, arg4, arg5)
+   .. staticmethod:: collision( arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 
       
 
@@ -538,6 +550,14 @@ PixelCheck
       :param arg5: 
 
       :type arg5: int
+
+      :param arg6: 
+
+      :type arg6: :class:`Transform`
+
+      :param arg7: 
+
+      :type arg7: :class:`Transform`
 
       :rtype: bool
 
@@ -577,7 +597,7 @@ PixelCheck
 
       :rtype: bool
 
-   .. staticmethod:: contains( arg1, arg2, arg3, arg4)
+   .. staticmethod:: contains( arg1, arg2, arg3, arg4, arg5)
 
       
 
@@ -596,6 +616,10 @@ PixelCheck
       :param arg4: 
 
       :type arg4: int
+
+      :param arg5: 
+
+      :type arg5: :class:`Transform`
 
       :rtype: bool
 
@@ -656,6 +680,10 @@ Renderable
       :param arg3: 
 
       :type arg3: float
+
+   .. attribute:: attached
+
+      
 
    .. attribute:: priority
 

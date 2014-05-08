@@ -85,7 +85,8 @@ Content
 
    .. staticmethod:: nameFromPath( path)
 
-      
+      :return: filename without extension.
+
 
       :param path: 
 
@@ -249,7 +250,8 @@ ContentStash
 
    .. method:: discover( packagePath)
 
-      
+      Uses this ContentStash's :class:`PackageList` instance to discover all packages in the given path.
+
 
       :param packagePath: 
 
@@ -257,13 +259,16 @@ ContentStash
 
    .. method:: discoverContent( )
 
-      
+      Discovers all contents in this stash and adds it to the internal list.
+
 
    .. method:: get( content)
 
-      
+      Searches for :class:`Content` by name and optional package name.
 
-      :param content: 
+
+      :param content:  either content path or "<package>:<path>".
+
 
       :type content: str
 
@@ -271,7 +276,8 @@ ContentStash
 
    .. method:: get( contentId)
 
-      
+      Searches for :class:`Content` by id.
+
 
       :param contentId: 
 
@@ -293,7 +299,8 @@ ContentStash
 
    .. method:: loadContent( stream)
 
-      
+      Currently, calls unpackContent.
+
 
       :param stream: 
 
@@ -303,7 +310,8 @@ ContentStash
 
    .. method:: pack( stream)
 
-      
+      see `siege.package.PackageList.write`
+
 
       :param stream: 
 
@@ -311,7 +319,8 @@ ContentStash
 
    .. method:: packContent( content, stream)
 
-      
+      Writes content id to :class:`DataStream`.
+
 
       :param content: 
 
@@ -323,7 +332,8 @@ ContentStash
 
    .. method:: populateContentEntities( entityManager)
 
-      
+      Creates :class:`Content` entities using the passed :class:`EntityManager`.
+
 
       :param entityManager: 
 
@@ -331,7 +341,8 @@ ContentStash
 
    .. method:: read( stream)
 
-      
+      (Re)Initialises this :class:`ContentStash` via `siege.package.PackageList.read` and also discovers all packages in "mods"
+
 
       :param stream: 
 
@@ -339,7 +350,8 @@ ContentStash
 
    .. method:: unpack( stream)
 
-      
+      (Re)Initialises this :class:`ContentStash` via `siege.package.PackageList.read`
+
 
       :param stream: 
 
@@ -347,7 +359,8 @@ ContentStash
 
    .. method:: unpackContent( stream)
 
-      
+      Reads content id from :class:`DataStream`.
+
 
       :param stream: 
 
@@ -357,13 +370,15 @@ ContentStash
 
    .. method:: validate( )
 
-      
+      see `siege.package.PackageList.validate`
+
 
       :rtype: bool
 
    .. method:: write( stream)
 
-      
+      Writes max content id to :class:`DataStream` and calls see `siege.package.PackageList.write`
+
 
       :param stream: 
 
@@ -371,7 +386,8 @@ ContentStash
 
    .. method:: writeContent( content, stream)
 
-      
+      Currently, calls packContent.
+
 
       :param content: 
 
@@ -415,13 +431,15 @@ Package
 
    .. method:: getContents( )
 
-      
+      (map) The contents this module contains.
+
 
       :rtype: :class:`ContentMap`
 
    .. method:: has( arg2)
 
-      
+      :return: true if this package contains the specified content.
+
 
       :param arg2: 
 
@@ -437,7 +455,8 @@ Package
 
    .. method:: read( arg2)
 
-      
+      Reads the package attributes, content ids and content paths from the passed :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -445,13 +464,15 @@ Package
 
    .. method:: validate( )
 
-      
+      Validates whether package path & referenced content files exist.
+
 
       :rtype: bool
 
    .. method:: write( arg2)
 
-      
+      Writes this package's attributes, content ids and content paths to the passed :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -459,11 +480,13 @@ Package
 
    .. attribute:: getAuthor
 
-      
+       |      The python module's "author" attribute.
+
 
    .. attribute:: getDescription
 
-      
+       |      The python module's "description" attribute.
+
 
    .. attribute:: getName
 
@@ -471,19 +494,23 @@ Package
 
    .. attribute:: path
 
-      
+       |      Path to the python module.
+
 
    .. attribute:: priority
 
-      
+       |      If set, the priority at which this module should be loaded.
+
 
    .. attribute:: title
 
-      
+       |      The python module's "title" attribute.
+
 
    .. attribute:: version
 
-      
+       |      The python module's "version" attribute.
+
 
 PackageList
 -----------------------------------
@@ -517,7 +544,8 @@ PackageList
 
    .. method:: discover( arg2)
 
-      
+      Discovers all packages in the passed Path.
+
 
       :param arg2: 
 
@@ -525,9 +553,11 @@ PackageList
 
    .. method:: getOrdered( [coreLoading=siege.package.CorePackageLoading.First])
 
-      
+      Returns an ordered list of packages.
 
-      :param coreLoading: 
+
+      :param coreLoading:  (optional), order in which to list the core package.
+
 
       :type coreLoading: :class:`CorePackageLoading`
 
@@ -555,7 +585,8 @@ PackageList
 
    .. method:: read( arg2)
 
-      
+      see `siege.package.Package.read`
+
 
       :param arg2: 
 
@@ -563,7 +594,8 @@ PackageList
 
    .. method:: setPriority( arg2, arg3)
 
-      
+      Sets order priority for a package.
+
 
       :param arg2: 
 
@@ -575,13 +607,15 @@ PackageList
 
    .. method:: validate( )
 
-      
+      see `siege.package.Package.validate`
+
 
       :rtype: bool
 
    .. method:: write( arg2)
 
-      
+      see `siege.package.Package.write`
+
 
       :param arg2: 
 

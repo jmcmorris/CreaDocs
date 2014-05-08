@@ -15,7 +15,8 @@ AssetCache
 
    .. method:: clean( )
 
-      
+      Clean up all redirections.
+
 
    .. method:: redirect( path)
 
@@ -25,11 +26,15 @@ AssetCache
 
       :type path: object
 
+      :returns: Returns the redirected path, if set. Otherwise returns the unchanged argument.
+
+
       :rtype: str
 
    .. method:: redirection( from, to)
 
-      
+      Set up a path redirection.
+
 
       :param from: 
 
@@ -41,7 +46,8 @@ AssetCache
 
    .. staticmethod:: getFullPath( relative, contentPath)
 
-      
+      Returns full path to asset.
+
 
       :param relative: 
 
@@ -50,6 +56,9 @@ AssetCache
       :param contentPath: 
 
       :type contentPath: object
+
+      :returns: :param relative: if already prefixed with mods/, else returns full path.
+
 
       :rtype: str
 
@@ -181,85 +190,102 @@ ChunkRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -267,27 +293,44 @@ ChunkRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`ChunkVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`ChunkVector`
+
+      :rtype: :class:`ChunkRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`ChunkRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -295,17 +338,21 @@ ChunkRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`ChunkRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`ChunkRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -313,97 +360,125 @@ ChunkRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`ChunkVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 ChunkVector
 -----------------------------------
@@ -423,13 +498,28 @@ ChunkVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`ChunkVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`ChunkVector`
 
    .. method:: __eq__( arg2)
 
@@ -487,6 +577,22 @@ ChunkVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -494,6 +600,18 @@ ChunkVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -591,7 +709,8 @@ ChunkVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -607,51 +726,60 @@ ChunkVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -659,17 +787,21 @@ ChunkVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`ChunkVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -677,13 +809,16 @@ ChunkVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`ChunkVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -691,13 +826,16 @@ ChunkVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -705,13 +843,16 @@ ChunkVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -719,69 +860,113 @@ ChunkVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`ChunkVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
+       |      y coordinate
+
+
+Clock
+-----------------------------------
+.. class:: Clock
+
+   
+
+   .. method:: __init__( )
+
       
+
+   .. method:: getElapsedTime( )
+
+      
+
+      :rtype: :class:`Time`
+
+   .. method:: restart( )
+
+      
+
+      :rtype: :class:`Time`
 
 EventArg
 -----------------------------------
@@ -817,215 +1002,271 @@ GameEvent
 
    .. method:: clear( )
 
-      
+      Removes all listeners
+
 
    .. method:: invoke( )
 
-      
+      Calls all listener functions
 
-   .. method:: invoke( arg2)
 
-      
+   .. method:: invoke( arg)
 
-      :param arg2: 
+      Calls all listener functions using 1 argument
+
+
+      :param arg:  The argument for the listeners
+
+
+      :type arg: object
+
+   .. method:: invoke( arg1, arg2)
+
+      Calls all listener functions using 2 argument
+
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-   .. method:: invoke( arg2, arg3)
+   .. method:: invoke( arg1, arg2, arg3)
 
-      
+      Calls all listener functions using 3 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-   .. method:: invoke( arg2, arg3, arg4)
+   .. method:: invoke( arg1, arg2, arg3, arg4)
 
-      
+      Calls all listener functions using 4 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-      :param arg4: 
+      :param arg4:  The fourth argument for the listeners
+
 
       :type arg4: object
 
-   .. method:: invoke( arg2, arg3, arg4, arg5)
+   .. method:: invoke( arg1, arg2, arg3, arg4, arg5)
 
-      
+      Calls all listener functions using 5 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-      :param arg4: 
+      :param arg4:  The fourth argument for the listeners
+
 
       :type arg4: object
 
-      :param arg5: 
+      :param arg5:  The fifth argument for the listeners
+
 
       :type arg5: object
 
-   .. method:: invoke( arg2, arg3, arg4, arg5, arg6)
+   .. method:: invoke( arg1, arg2, arg3, arg4, arg5, arg6)
 
-      
+      Calls all listener functions using 6 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-      :param arg4: 
+      :param arg4:  The fourth argument for the listeners
+
 
       :type arg4: object
 
-      :param arg5: 
+      :param arg5:  The fifth argument for the listeners
+
 
       :type arg5: object
 
-      :param arg6: 
+      :param arg6:  The sixth argument for the listeners
+
 
       :type arg6: object
 
-   .. method:: invoke( arg2, arg3, arg4, arg5, arg6, arg7)
+   .. method:: invoke( arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 
-      
+      Calls all listener functions using 7 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-      :param arg4: 
+      :param arg4:  The fourth argument for the listeners
+
 
       :type arg4: object
 
-      :param arg5: 
+      :param arg5:  The fifth argument for the listeners
+
 
       :type arg5: object
 
-      :param arg6: 
+      :param arg6:  The sixth argument for the listeners
+
 
       :type arg6: object
 
-      :param arg7: 
+      :param arg7:  The seventh argument for the listeners
+
 
       :type arg7: object
 
-   .. method:: invoke( arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+   .. method:: invoke( arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 
-      
+      Calls all listener functions using 8 argument
 
-      :param arg2: 
+
+      :param arg1:  The first argument for the listeners
+
+
+      :type arg1: object
+
+      :param arg2:  The second argument for the listeners
+
 
       :type arg2: object
 
-      :param arg3: 
+      :param arg3:  The third argument for the listeners
+
 
       :type arg3: object
 
-      :param arg4: 
+      :param arg4:  The fourth argument for the listeners
+
 
       :type arg4: object
 
-      :param arg5: 
+      :param arg5:  The fifth argument for the listeners
+
 
       :type arg5: object
 
-      :param arg6: 
+      :param arg6:  The sixth argument for the listeners
+
 
       :type arg6: object
 
-      :param arg7: 
+      :param arg7:  The seventh argument for the listeners
+
 
       :type arg7: object
 
-      :param arg8: 
+      :param arg8:  The eighth argument for the listeners
+
 
       :type arg8: object
-
-   .. method:: invoke( arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :param arg3: 
-
-      :type arg3: object
-
-      :param arg4: 
-
-      :type arg4: object
-
-      :param arg5: 
-
-      :type arg5: object
-
-      :param arg6: 
-
-      :type arg6: object
-
-      :param arg7: 
-
-      :type arg7: object
-
-      :param arg8: 
-
-      :type arg8: object
-
-      :param arg9: 
-
-      :type arg9: object
 
    .. method:: invokeExpand( args, kargs)
 
-      
+      Calls all listener functions using arguments
 
-      :param args: 
+
+      :param args:  List of arguments
+
 
       :type args: list
 
-      :param kargs: 
+      :param kargs:  Dictionary of arguments
+
 
       :type kargs: dict
 
    .. method:: listen( listener)
 
-      
+      Adds a listener function to this event
 
-      :param listener: 
+
+      :param listener:  The function to add
+
 
       :type listener: object
 
    .. method:: remove( listener)
 
-      
+      Removes the listener from the :class:`GameEvent`
 
-      :param listener: 
+
+      :param listener:  The function to remove
+
 
       :type listener: object
+
+      :returns: True if successfully removed, false otherwise
+
 
       :rtype: bool
 
@@ -1219,85 +1460,102 @@ PixelRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -1305,27 +1563,44 @@ PixelRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`PixelVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`PixelVector`
+
+      :rtype: :class:`PixelRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`PixelRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -1333,17 +1608,21 @@ PixelRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`PixelRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`PixelRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -1351,97 +1630,125 @@ PixelRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`PixelVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 PixelVector
 -----------------------------------
@@ -1461,13 +1768,28 @@ PixelVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`PixelVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`PixelVector`
 
    .. method:: __eq__( arg2)
 
@@ -1525,6 +1847,22 @@ PixelVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -1532,6 +1870,18 @@ PixelVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -1629,7 +1979,8 @@ PixelVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -1645,51 +1996,60 @@ PixelVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -1697,17 +2057,21 @@ PixelVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`PixelVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -1715,13 +2079,16 @@ PixelVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`PixelVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -1729,13 +2096,16 @@ PixelVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -1743,13 +2113,16 @@ PixelVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -1757,69 +2130,91 @@ PixelVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`PixelVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 Property
 -----------------------------------
@@ -1841,25 +2236,40 @@ Property
 
    .. method:: get( )
 
-      
+      Returns data
+
 
       :rtype: object
 
-   .. method:: read( stream[, args=[]])
+   .. method:: read( stream)
 
-      
+      Read this :class:`Property` from a stream and invokes its onChange event.
 
-      :param stream: 
+
+      :param stream:  :class:`DataStream` to read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param args: 
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
 
       :type args: list
 
    .. method:: set( arg2)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -1867,7 +2277,8 @@ Property
 
    .. method:: set( arg2, arg3)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -1879,7 +2290,8 @@ Property
 
    .. method:: write( arg2)
 
-      
+      Write this :class:`Property` to a :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -1909,25 +2321,40 @@ PropertyBool
 
    .. method:: get( )
 
-      
+      Returns data
+
 
       :rtype: bool
 
-   .. method:: read( stream[, args=[]])
+   .. method:: read( stream)
 
-      
+      Read this :class:`Property` from a stream and invokes its onChange event.
 
-      :param stream: 
+
+      :param stream:  :class:`DataStream` to read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param args: 
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
 
       :type args: list
 
    .. method:: set( arg2)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -1935,7 +2362,8 @@ PropertyBool
 
    .. method:: set( arg2, arg3)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -1947,7 +2375,8 @@ PropertyBool
 
    .. method:: write( arg2)
 
-      
+      Write this :class:`Property` to a :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -1977,25 +2406,40 @@ PropertyInt
 
    .. method:: get( )
 
-      
+      Returns data
+
 
       :rtype: int
 
-   .. method:: read( stream[, args=[]])
+   .. method:: read( stream)
 
-      
+      Read this :class:`Property` from a stream and invokes its onChange event.
 
-      :param stream: 
+
+      :param stream:  :class:`DataStream` to read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param args: 
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
 
       :type args: list
 
    .. method:: set( arg2)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -2003,7 +2447,8 @@ PropertyInt
 
    .. method:: set( arg2, arg3)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -2015,7 +2460,8 @@ PropertyInt
 
    .. method:: write( arg2)
 
-      
+      Write this :class:`Property` to a :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -2045,25 +2491,40 @@ PropertyStr
 
    .. method:: get( )
 
-      
+      Returns data
+
 
       :rtype: str
 
-   .. method:: read( stream[, args=[]])
+   .. method:: read( stream)
 
-      
+      Read this :class:`Property` from a stream and invokes its onChange event.
 
-      :param stream: 
+
+      :param stream:  :class:`DataStream` to read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param args: 
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
 
       :type args: list
 
    .. method:: set( arg2)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -2071,7 +2532,8 @@ PropertyStr
 
    .. method:: set( arg2, arg3)
 
-      
+      Changes data to parameter
+
 
       :param arg2: 
 
@@ -2083,7 +2545,8 @@ PropertyStr
 
    .. method:: write( arg2)
 
-      
+      Write this :class:`Property` to a :class:`DataStream`.
+
 
       :param arg2: 
 
@@ -2099,89 +2562,107 @@ Random
 
    
 
-   .. staticmethod:: get( arg1, arg2)
+   .. staticmethod:: get( min, max)
 
-      
+      Return random float within min and max
 
-      :param arg1: 
 
-      :type arg1: float
+      :param min:  minimum value in range
 
-      :param arg2: 
 
-      :type arg2: float
+      :type min: float
+
+      :param max:  maximum value in range
+
+
+      :type max: float
 
       :rtype: float
 
    .. staticmethod:: get( [max=2147483647])
 
-      
+      Returns an integer from 0 to max
 
-      :param max: 
+
+      :param max:  maximum value for range
+
 
       :type max: int
 
       :rtype: int
 
-   .. staticmethod:: get( arg1, arg2)
+   .. staticmethod:: get( min, max)
 
-      
+      Return random integer within min and max
 
-      :param arg1: 
 
-      :type arg1: int
+      :param min:  minimum value in range
 
-      :param arg2: 
 
-      :type arg2: int
+      :type min: int
+
+      :param max:  maximum value in range
+
+
+      :type max: int
 
       :rtype: int
 
-   .. staticmethod:: get( arg1)
+   .. staticmethod:: get( list)
 
-      
+      Returns a random element from passed in list
 
-      :param arg1: 
 
-      :type arg1: list
+      :param list:  an element will be chosed at random from this
+
+
+      :type list: list
 
       :rtype: object
 
    .. staticmethod:: getBool( )
 
-      
+      Returns true or false randomly
+
 
       :rtype: bool
 
    .. staticmethod:: getFloat( )
 
-      
+      Returns a random float from 0.0 to 1.0
+
 
       :rtype: float
 
-   .. staticmethod:: read( arg1)
+   .. staticmethod:: read( stream)
 
-      
+      read current seed from stream
 
-      :param arg1: 
 
-      :type arg1: :class:`DataStream`
+      :param stream:  where to read from
 
-   .. staticmethod:: seed( arg1)
 
-      
+      :type stream: :class:`DataStream`
 
-      :param arg1: 
+   .. staticmethod:: seed( seed)
 
-      :type arg1: int
+      Sets the seed for generating numbers
 
-   .. staticmethod:: write( arg1)
 
-      
+      :param seed:  set seed to this value
 
-      :param arg1: 
 
-      :type arg1: :class:`DataStream`
+      :type seed: int
+
+   .. staticmethod:: write( stream)
+
+      Write current seed to stream
+
+
+      :param stream:  where to write to
+
+
+      :type stream: :class:`DataStream`
 
 Range
 -----------------------------------
@@ -2205,9 +2686,21 @@ Range
 
       :type arg3: object
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2217,25 +2710,30 @@ Range
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: object
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeColor
 -----------------------------------
@@ -2259,9 +2757,21 @@ RangeColor
 
       :type arg3: :class:`Color`
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Color`
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2271,25 +2781,30 @@ RangeColor
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: :class:`Color`
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeFloat
 -----------------------------------
@@ -2313,9 +2828,21 @@ RangeFloat
 
       :type arg3: float
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2325,25 +2852,30 @@ RangeFloat
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: float
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeInt
 -----------------------------------
@@ -2367,9 +2899,21 @@ RangeInt
 
       :type arg3: int
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2379,25 +2923,30 @@ RangeInt
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: int
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeTileVector
 -----------------------------------
@@ -2421,9 +2970,21 @@ RangeTileVector
 
       :type arg3: :class:`TileVector`
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2433,25 +2994,30 @@ RangeTileVector
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: :class:`TileVector`
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeUint
 -----------------------------------
@@ -2475,9 +3041,21 @@ RangeUint
 
       :type arg3: int
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2487,25 +3065,30 @@ RangeUint
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: int
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 RangeVector
 -----------------------------------
@@ -2529,9 +3112,21 @@ RangeVector
 
       :type arg3: :class:`Vector`
 
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
-      
+      Retruns a value from within range based on percentage passed in
+
 
       :param arg2: 
 
@@ -2541,25 +3136,30 @@ RangeVector
 
    .. method:: getRandom( )
 
-      
+      Returns a random value within range
+
 
       :rtype: :class:`Vector`
 
    .. attribute:: end
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: max
 
-      
+       |      Returns maximum value in range
+
 
    .. attribute:: min
 
-      
+       |      Returns minimum value in range
+
 
    .. attribute:: start
 
-      
+       |      Returns minimum value in range
+
 
 Rect
 -----------------------------------
@@ -2689,85 +3289,102 @@ Rect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: float
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: float
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: float
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: float
+
+      :type height: float
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: object
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: object
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: object
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: object
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: object
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: float
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: float
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: float
 
@@ -2775,27 +3392,44 @@ Rect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`Vector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: float
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`Vector`
+
+      :rtype: :class:`Rect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`Rect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: float
 
@@ -2803,17 +3437,21 @@ Rect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`Rect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`Rect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: float
 
@@ -2821,97 +3459,125 @@ Rect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: float
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: float
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`Vector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: float
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: float
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 RegionRect
 -----------------------------------
@@ -3041,85 +3707,102 @@ RegionRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -3127,27 +3810,44 @@ RegionRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`RegionVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`RegionVector`
+
+      :rtype: :class:`RegionRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`RegionRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -3155,17 +3855,21 @@ RegionRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`RegionRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`RegionRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -3173,97 +3877,125 @@ RegionRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`RegionVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 RegionVector
 -----------------------------------
@@ -3283,13 +4015,28 @@ RegionVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`RegionVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`RegionVector`
 
    .. method:: __eq__( arg2)
 
@@ -3347,6 +4094,22 @@ RegionVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -3354,6 +4117,18 @@ RegionVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -3451,7 +4226,8 @@ RegionVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -3467,51 +4243,60 @@ RegionVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -3519,17 +4304,21 @@ RegionVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`RegionVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -3537,13 +4326,16 @@ RegionVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`RegionVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -3551,13 +4343,16 @@ RegionVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -3565,13 +4360,16 @@ RegionVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -3579,69 +4377,91 @@ RegionVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`RegionVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 SegmentRect
 -----------------------------------
@@ -3771,85 +4591,102 @@ SegmentRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -3857,27 +4694,44 @@ SegmentRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`SegmentVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`SegmentVector`
+
+      :rtype: :class:`SegmentRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`SegmentRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -3885,17 +4739,21 @@ SegmentRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`SegmentRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`SegmentRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -3903,97 +4761,125 @@ SegmentRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`SegmentVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 SegmentVector
 -----------------------------------
@@ -4013,13 +4899,28 @@ SegmentVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`SegmentVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`SegmentVector`
 
    .. method:: __eq__( arg2)
 
@@ -4077,6 +4978,22 @@ SegmentVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -4084,6 +5001,18 @@ SegmentVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -4181,7 +5110,8 @@ SegmentVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -4197,51 +5127,60 @@ SegmentVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -4249,17 +5188,21 @@ SegmentVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`SegmentVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -4267,13 +5210,16 @@ SegmentVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`SegmentVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -4281,13 +5227,16 @@ SegmentVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -4295,13 +5244,16 @@ SegmentVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -4309,69 +5261,91 @@ SegmentVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`SegmentVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 Sizes
 -----------------------------------
@@ -4455,29 +5429,36 @@ SpatialHash
 
    .. method:: add( obj)
 
-      
+      Adds object to spatial hash
 
-      :param obj: 
+
+      :param obj:  object to store
+
 
       :type obj: object
 
    .. method:: clear( )
 
-      
+      Removes all objects and sections from spatial hash
+
 
    .. method:: clearSections( sections)
 
-      
+      Removes specified sections from spatial hash
 
-      :param sections: 
+
+      :param sections:  List of sections to be removed
+
 
       :type sections: :class:`SegmentList`
 
    .. method:: get( sections)
 
-      
+      Returns a set of objects that are within sections
 
-      :param sections: 
+
+      :param sections:  List of sections to search
+
 
       :type sections: :class:`SegmentList`
 
@@ -4485,15 +5466,18 @@ SpatialHash
 
    .. method:: getAll( )
 
-      
+      Returns all objects in this spatial hash
+
 
       :rtype: object
 
    .. method:: getNearby( area)
 
-      
+      Returns a set of objects that are within area
 
-      :param area: 
+
+      :param area:  The size of the area to search
+
 
       :type area: :class:`Rect`
 
@@ -4501,9 +5485,11 @@ SpatialHash
 
    .. method:: getSection( point)
 
-      
+      Returns a section that contains point
 
-      :param point: 
+
+      :param point:  The x,y coordinates to search for
+
 
       :type point: :class:`Vector`
 
@@ -4511,9 +5497,11 @@ SpatialHash
 
    .. method:: getSections( rect)
 
-      
+      Returns a list of sections that contain rect
 
-      :param rect: 
+
+      :param rect:  Search for this area
+
 
       :type rect: :class:`Rect`
 
@@ -4521,9 +5509,11 @@ SpatialHash
 
    .. method:: has( obj)
 
-      
+      Returns true if obj is present in this space, false otherwise
 
-      :param obj: 
+
+      :param obj:  The object to search for
+
 
       :type obj: object
 
@@ -4531,11 +5521,75 @@ SpatialHash
 
    .. method:: remove( obj)
 
-      
+      Removes object from spatial hash
 
-      :param obj: 
+
+      :param obj:  this will be removed from spatial hash
+
 
       :type obj: object
+
+StringMap
+-----------------------------------
+.. class:: StringMap
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
 
 StringSet
 -----------------------------------
@@ -4767,85 +5821,102 @@ SubtileRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -4853,27 +5924,44 @@ SubtileRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`SubtileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`SubtileVector`
+
+      :rtype: :class:`SubtileRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`SubtileRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -4881,17 +5969,21 @@ SubtileRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`SubtileRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`SubtileRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -4899,97 +5991,125 @@ SubtileRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`SubtileVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 SubtileVector
 -----------------------------------
@@ -5009,13 +6129,28 @@ SubtileVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`SubtileVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`SubtileVector`
 
    .. method:: __eq__( arg2)
 
@@ -5073,6 +6208,22 @@ SubtileVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -5080,6 +6231,18 @@ SubtileVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -5177,7 +6340,8 @@ SubtileVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -5193,51 +6357,60 @@ SubtileVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -5245,17 +6418,21 @@ SubtileVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`SubtileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -5263,13 +6440,16 @@ SubtileVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`SubtileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -5277,13 +6457,16 @@ SubtileVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -5291,13 +6474,16 @@ SubtileVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -5305,69 +6491,91 @@ SubtileVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`SubtileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 TileRect
 -----------------------------------
@@ -5497,85 +6705,102 @@ TileRect
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
-   .. method:: adjust( x, y, width, heigth)
+   .. method:: adjust( x, y, width, height)
 
-      
+      Move by x,y then resize to width and height
 
-      :param x: 
+
+      :param x:  Value to be added x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-      :param width: 
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param heigth: 
+      :param height:  Value to be added to height
 
-      :type heigth: int
+
+      :type height: int
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkRect`
+
 
       :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelRect`
+
 
       :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
-      
+      Create a copy of this as a :class:`Rect`
+
 
       :rtype: :class:`Rect`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionRect`
+
 
       :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentRect`
+
 
       :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileRect`
+
 
       :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileRect`
+
 
       :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
-      
+      Return true if x,y are within this rectangle false otherwise
 
-      :param x: 
+
+      :param x:  x position to check
+
 
       :type x: int
 
-      :param y: 
+      :param y:  y position to check
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
@@ -5583,27 +6808,44 @@ TileRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      
+      Return true if positiion is within this rectangle false otherwise
 
-      :param position: 
+
+      :param position:  x,y coordinates to check
+
 
       :type position: :class:`TileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from param x
+
 
       :type loopWidth: int
 
       :rtype: bool
 
+   .. method:: fromCenter( size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param size: 
+
+      :type size: :class:`TileVector`
+
+      :rtype: :class:`TileRect`
+
    .. method:: intersects( rect[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`TileRect`
 
-      :param loopWidth: 
+      :param loopWidth:   How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -5611,17 +6853,21 @@ TileRect
 
    .. method:: intersects( rect, intersection[, loopWidth=0])
 
-      
+      Returns true if rect is overlapping this rectangle, false otherwise.  Saves overlapping coordinates to parameter intersection 
 
-      :param rect: 
+
+      :param rect:  Rectangle to check against
+
 
       :type rect: :class:`TileRect`
 
-      :param intersection: 
+      :param intersection:  overlapping coordinates are stored here
+
 
       :type intersection: :class:`TileRect`
 
-      :param loopWidth: 
+      :param loopWidth:  How far to check on the x axis from rect.x
+
 
       :type loopWidth: int
 
@@ -5629,97 +6875,125 @@ TileRect
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
    .. method:: move( position)
 
-      
+      Adds position to x,y coordinates
 
-      :param position: 
+
+      :param position:  Value to be added to x,y coordinates
+
 
       :type position: :class:`TileVector`
 
    .. method:: resize( width, height)
 
-      
+      Expands width and height
 
-      :param width: 
+
+      :param width:  Value to be added to width
+
 
       :type width: int
 
-      :param height: 
+      :param height:  Value to be added to height
+
 
       :type height: int
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfRect`
+
 
       :rtype: :class:`sfIntRect`
 
    .. attribute:: bottom
 
-      
+       |      y + height
+
 
    .. attribute:: bottomLeft
 
-      
+       |      (:class:`Vector`) Bottom Left x,y coordinates.
+
 
    .. attribute:: bottomRight
 
-      
+       |      (:class:`Vector`) Bottom Right x,y coordinates.
+
+
+   .. attribute:: center
+
+       |      (:class:`Vector`) Center coordinates of Rectangle.
+
 
    .. attribute:: height
 
-      
+       |      Size from y to bottom.
+
 
    .. attribute:: left
 
-      
+       |      x coordinate
+
 
    .. attribute:: position
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: right
 
-      
+       |      x + width
+
 
    .. attribute:: size
 
-      
+       |      width * height
+
 
    .. attribute:: top
 
-      
+       |      y coordinate
+
 
    .. attribute:: topLeft
 
-      
+       |      (:class:`Vector`) Top Left x,y coordinates.
+
 
    .. attribute:: topRight
 
-      
+       |      (:class:`Vector`) Top Right x,y coordinates.
+
 
    .. attribute:: width
 
-      
+       |      Size from x to right.
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 TileVector
 -----------------------------------
@@ -5739,13 +7013,28 @@ TileVector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`TileVector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`TileVector`
 
    .. method:: __eq__( arg2)
 
@@ -5803,6 +7092,22 @@ TileVector
 
       :type y: int
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: int
+
+      :param y: 
+
+      :type y: int
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
    .. method:: __init__( position)
 
       
@@ -5810,6 +7115,18 @@ TileVector
       :param position: 
 
       :type position: :class:`sfTileVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfTileVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: __init__( position)
 
@@ -5907,7 +7224,8 @@ TileVector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -5923,51 +7241,60 @@ TileVector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
+
 
       :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
+
 
       :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
+
 
       :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
+
 
       :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
+
 
       :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
+
 
       :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -5975,17 +7302,21 @@ TileVector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`TileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -5993,13 +7324,16 @@ TileVector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`TileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -6007,13 +7341,16 @@ TileVector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: int
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
@@ -6021,13 +7358,16 @@ TileVector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: int
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: int
 
@@ -6035,69 +7375,197 @@ TileVector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`TileVector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: int
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: int
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: int
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: int
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: int
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: int
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfTileVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
+       |      y coordinate
+
+
+TileVectorList
+-----------------------------------
+.. class:: TileVectorList
+
+   
+
+   .. method:: __contains__( arg2)
+
       
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+Time
+-----------------------------------
+.. class:: Time
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: asMicroseconds( )
+
+      
+
+      :rtype: long
+
+   .. method:: asMilliseconds( )
+
+      
+
+      :rtype: int
+
+   .. method:: asSeconds( )
+
+      
+
+      :rtype: float
 
 Timer
 -----------------------------------
@@ -6139,41 +7607,49 @@ Timer
 
    .. method:: expired( )
 
-      
+      Returns true if timer has no remaining time left, false otherwise
+
 
       :rtype: bool
 
    .. method:: percentage( )
 
-      
+      Return percentage of remaining time
+
 
       :rtype: float
 
    .. method:: remaining( )
 
-      
+      Returns the remaining time before timer expries
+
 
       :rtype: int
 
    .. method:: reset( [time=0])
 
-      
+      Resets timer to a new amount
 
-      :param time: 
+
+      :param time:  :class:`Time` in milliseconds until timer expires
+
 
       :type time: int
 
    .. method:: total( )
 
-      
+      Return original total from last reset
+
 
       :rtype: int
 
    .. method:: update( frameTime)
 
-      
+      Subtracts frameTime from remaining time
 
-      :param frameTime: 
+
+      :param frameTime:  The amount of milliseconds to subtract from remaining time
+
 
       :type frameTime: int
 
@@ -6375,13 +7851,28 @@ Vector
 
    .. method:: __cmp__( vector)
 
-      
+      Compares this to another vector
 
-      :param vector: 
+
+      :param vector:  The vector to compare against
+
 
       :type vector: :class:`Vector`
 
+      :returns: 0 if vectors are the same, -1 if arg is greater, 1 if arg is less than
+
+
       :rtype: int
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`Vector`
 
    .. method:: __eq__( arg2)
 
@@ -6439,6 +7930,22 @@ Vector
 
       :type y: float
 
+   .. method:: __init__( x, y, loopWidth)
+
+      
+
+      :param x: 
+
+      :type x: float
+
+      :param y: 
+
+      :type y: float
+
+      :param loopWidth: 
+
+      :type loopWidth: float
+
    .. method:: __init__( position)
 
       
@@ -6446,6 +7953,18 @@ Vector
       :param position: 
 
       :type position: :class:`sfVector`
+
+   .. method:: __init__( position, loopWidth)
+
+      
+
+      :param position: 
+
+      :type position: :class:`sfVector`
+
+      :param loopWidth: 
+
+      :type loopWidth: float
 
    .. method:: __init__( position)
 
@@ -6543,7 +8062,8 @@ Vector
 
    .. method:: __repr__( )
 
-      
+      A printable representation of this object.
+
 
       :rtype: str
 
@@ -6559,51 +8079,60 @@ Vector
 
    .. method:: asChunk( )
 
-      
+      Create a copy of this as a :class:`ChunkVector`
 
-      :rtype: object
+
+      :rtype: :class:`ChunkVector`
 
    .. method:: asPixel( )
 
-      
+      Create a copy of this as a :class:`PixelVector`
 
-      :rtype: :class:`Vector`
+
+      :rtype: :class:`PixelVector`
 
    .. method:: asRegion( )
 
-      
+      Create a copy of this as a :class:`RegionVector`
 
-      :rtype: object
+
+      :rtype: :class:`RegionVector`
 
    .. method:: asSegment( )
 
-      
+      Create a copy of this as a :class:`SegmentVector`
 
-      :rtype: object
+
+      :rtype: :class:`SegmentVector`
 
    .. method:: asSubtile( )
 
-      
+      Create a copy of this as a :class:`SubtileVector`
 
-      :rtype: object
+
+      :rtype: :class:`SubtileVector`
 
    .. method:: asTile( )
 
-      
+      Create a copy of this as a :class:`TileVector`
 
-      :rtype: object
+
+      :rtype: :class:`TileVector`
 
    .. method:: asVector( )
 
-      
+      Create a copy of this as a vector
+
 
       :rtype: :class:`Vector`
 
    .. method:: getAngle( [asDegrees=True])
 
-      
+      Return the angle or direction of this vector
 
-      :param asDegrees: 
+
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -6611,17 +8140,21 @@ Vector
 
    .. method:: getAngle( position[, loopWidth=0[, asDegrees=True]])
 
-      
+      Return the angle or direction of position
 
-      :param position: 
+
+      :param position:  The vector to convert
+
 
       :type position: :class:`Vector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: float
 
-      :param asDegrees: 
+      :param asDegrees:  If this is true return angle in degrees, else return angle in radians
+
 
       :type asDegrees: bool
 
@@ -6629,13 +8162,16 @@ Vector
 
    .. method:: getDirection( position[, loopWidth=0])
 
-      
+      Returns a unit vector in the direction of position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate direction from
+
 
       :type position: :class:`Vector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: float
 
@@ -6643,13 +8179,16 @@ Vector
 
    .. method:: getDirectionX( x[, loopWidth=0])
 
-      
+      Returns direction towards x
 
-      :param x: 
+
+      :param x:  X coordinate for direction calculation
+
 
       :type x: float
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: float
 
@@ -6657,13 +8196,16 @@ Vector
 
    .. method:: getDirectionY( y[, loopWidth=0])
 
-      
+      Returns direction towards y
 
-      :param y: 
+
+      :param y:  Y coordinate for direction calculation
+
 
       :type y: float
 
-      :param loopWidth: 
+      :param loopWidth:  Currently has no effect
+
 
       :type loopWidth: float
 
@@ -6671,69 +8213,91 @@ Vector
 
    .. method:: getDistance( position[, loopWidth=0])
 
-      
+      Returns the distance from position
 
-      :param position: 
+
+      :param position:  The :class:`Vector` to calculate distance from
+
 
       :type position: :class:`Vector`
 
-      :param loopWidth: 
+      :param loopWidth:  X coordinate for wrap around
+
 
       :type loopWidth: float
 
       :rtype: float
 
+   .. method:: isDefault( )
+
+      Returns true if x==0 and y==0, false otherwise
+
+
+      :rtype: bool
+
    .. method:: loop( loopWidth)
 
-      
+      Adds loopWidth to x if x < 0.  Subtracts loopWidth from x if x >= loopWidth
 
-      :param loopWidth: 
+
+      :param loopWidth:  Amount to adjust x coordinate
+
 
       :type loopWidth: float
 
    .. method:: move( x, y)
 
-      
+      Adds arguments to current x,y values
 
-      :param x: 
+
+      :param x:  Change in x coordinate
+
 
       :type x: float
 
-      :param y: 
+      :param y:  Change in y coordinate
+
 
       :type y: float
 
-   .. method:: shouldLoop( arg2)
+   .. method:: shouldLoop( loopWidth)
 
-      
+      Returns True if x < 0 or x >= loopWidth
 
-      :param arg2: 
 
-      :type arg2: float
+      :param loopWidth:  X coordinate for wrap around
+
+
+      :type loopWidth: float
 
       :rtype: bool
 
    .. method:: toSfml( )
 
-      
+      Create a copy of this as a :class:`sfTileVector`
+
 
       :rtype: :class:`sfVector`
 
    .. attribute:: height
 
-      
+       |      y coordinate
+
 
    .. attribute:: width
 
-      
+       |      x coordinate
+
 
    .. attribute:: x
 
-      
+       |      x coordinate
+
 
    .. attribute:: y
 
-      
+       |      y coordinate
+
 
 Vector3
 -----------------------------------
@@ -6939,6 +8503,84 @@ Vector3
 
       
 
+Vector3List
+-----------------------------------
+.. class:: Vector3List
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 WeightedRandomGenerator
 -----------------------------------
 .. class:: WeightedRandomGenerator
@@ -6947,9 +8589,11 @@ WeightedRandomGenerator
 
    .. method:: __call__( [useWorldRandom=False])
 
-      
+      Returns and index to one of the values randomly based on individual weight
 
-      :param useWorldRandom: 
+
+      :param useWorldRandom:  if True then use :class:`World:class:`Random``() else use :class:`Random`()
+
 
       :type useWorldRandom: bool
 
@@ -6957,22 +8601,30 @@ WeightedRandomGenerator
 
    .. method:: __call__( start, end[, useWorldRandom=False])
 
-      
+      Restricts value to range of min, max weight. Returns and index to one of the values randomly based on individual weight
 
-      :param start: 
+
+      :param start:  minimum value in range
+
 
       :type start: int
 
-      :param end: 
+      :param end:  maximum value in range
+
 
       :type end: int
 
-      :param useWorldRandom: 
+      :param useWorldRandom:  if True then use :class:`World:class:`Random``() else use :class:`Random`()
+
 
       :type useWorldRandom: bool
 
       :rtype: int
 
+   .. method:: __init__( )
+
+      
+
    .. method:: __init__( arg2)
 
       
@@ -6989,41 +8641,49 @@ WeightedRandomGenerator
 
       :type arg2: :class:`Uint32List`
 
-   .. method:: findIndex( arg2)
+   .. method:: findIndex( target)
 
-      
+      Returns the index of the first weight that is greater than target
 
-      :param arg2: 
 
-      :type arg2: int
+      :param target:  minimum weight of desired index
+
+
+      :type target: int
 
       :rtype: int
 
    .. method:: hasWeights( )
 
-      
+      Returns true if initialization has occured
+
 
       :rtype: bool
 
-   .. method:: setWeights( arg2)
+   .. method:: setWeights( list)
 
-      
+      Intialize with a list of weights. Then adjust them to account for individual weight based off of total.
 
-      :param arg2: 
 
-      :type arg2: list
+      :param list:  individual values to be totalled
 
-   .. method:: setWeights( arg2)
 
-      
+      :type list: list
 
-      :param arg2: 
+   .. method:: setWeights( list)
 
-      :type arg2: :class:`Uint32List`
+      Intialize with a list of weights. Then adjust them to account for individual weight based off of total.
+
+
+      :param list:  individual values to be totalled
+
+
+      :type list: :class:`Uint32List`
 
    .. attribute:: totals
 
-      
+       |      List of individual weights
+
 
 WorldRandom
 -----------------------------------
@@ -7031,41 +8691,49 @@ WorldRandom
 
    
 
-   .. staticmethod:: get( arg1, arg2)
+   .. staticmethod:: get( min, max)
 
-      
+      Return random float within min and max
 
-      :param arg1: 
 
-      :type arg1: float
+      :param min:  minimum value in range
 
-      :param arg2: 
 
-      :type arg2: float
+      :type min: float
+
+      :param max:  maximum value in range
+
+
+      :type max: float
 
       :rtype: float
 
    .. staticmethod:: get( [max=2147483647])
 
-      
+      Returns an integer from 0 to max
 
-      :param max: 
+
+      :param max:  maximum value for range
+
 
       :type max: int
 
       :rtype: int
 
-   .. staticmethod:: get( arg1, arg2)
+   .. staticmethod:: get( min, max)
 
-      
+      Return random integer within min and max
 
-      :param arg1: 
 
-      :type arg1: int
+      :param min:  minimum value in range
 
-      :param arg2: 
 
-      :type arg2: int
+      :type min: int
+
+      :param max:  maximum value in range
+
+
+      :type max: int
 
       :rtype: int
 
@@ -7081,37 +8749,45 @@ WorldRandom
 
    .. staticmethod:: getBool( )
 
-      
+      Returns true or false randomly
+
 
       :rtype: bool
 
    .. staticmethod:: getFloat( )
 
-      
+      Returns a random float from 0.0 to 1.0
+
 
       :rtype: float
 
-   .. staticmethod:: read( arg1)
+   .. staticmethod:: read( stream)
 
-      
+      read current seed from stream
 
-      :param arg1: 
 
-      :type arg1: :class:`DataStream`
+      :param stream:  where to read from
 
-   .. staticmethod:: seed( arg1)
 
-      
+      :type stream: :class:`DataStream`
 
-      :param arg1: 
+   .. staticmethod:: seed( seed)
 
-      :type arg1: int
+      Sets the seed for generating numbers
 
-   .. staticmethod:: write( arg1)
 
-      
+      :param seed:  set seed to this value
 
-      :param arg1: 
 
-      :type arg1: :class:`DataStream`
+      :type seed: int
+
+   .. staticmethod:: write( stream)
+
+      Write current seed to stream
+
+
+      :param stream:  where to write to
+
+
+      :type stream: :class:`DataStream`
 
