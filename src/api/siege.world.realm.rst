@@ -83,31 +83,34 @@ ActiveTile
 
       
 
-   .. method:: __init__( arg2, arg3)
+   .. method:: __init__( arg2)
 
       
 
       :param arg2: 
 
-      :type arg2: int
+      :type arg2: :class:`TileComponent`
 
-      :param arg3: 
+   .. method:: getId( )
 
-      :type arg3: :class:`TileComponent`
+      Returns the tile id for this tile's component. If tile is empty then 0 is returned.
+
+
+      :rtype: int
 
    .. attribute:: component
 
        |      The component for this tile
 
 
+   .. attribute:: foliage
+
+       |      The foliage component for this tile
+
+
    .. attribute:: frame
 
        |      The current frame of animation
-
-
-   .. attribute:: id
-
-       |      The tiles id
 
 
 AutomataCell

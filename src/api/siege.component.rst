@@ -1042,6 +1042,16 @@ EffectsComponent
 
       :type duration: int
 
+   .. method:: get( effect)
+
+      
+
+      :param effect: 
+
+      :type effect: str
+
+      :rtype: :class:`ActiveEffect`
+
    .. method:: getEffects( )
 
       

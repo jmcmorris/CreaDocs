@@ -308,17 +308,6 @@ ChunkRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`ChunkVector`
-
-      :rtype: :class:`ChunkRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -404,6 +393,21 @@ ChunkRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`ChunkVector`
+
+      :param size: 
+
+      :type size: :class:`ChunkVector`
+
+      :rtype: :class:`ChunkRect`
 
    .. attribute:: bottom
 
@@ -1578,17 +1582,6 @@ PixelRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`PixelVector`
-
-      :rtype: :class:`PixelRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -1674,6 +1667,21 @@ PixelRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`PixelVector`
+
+      :param size: 
+
+      :type size: :class:`PixelVector`
+
+      :rtype: :class:`PixelRect`
 
    .. attribute:: bottom
 
@@ -3407,17 +3415,6 @@ Rect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`Vector`
-
-      :rtype: :class:`Rect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -3503,6 +3500,21 @@ Rect
 
 
       :rtype: :class:`sfRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`Vector`
+
+      :param size: 
+
+      :type size: :class:`Vector`
+
+      :rtype: :class:`Rect`
 
    .. attribute:: bottom
 
@@ -3825,17 +3837,6 @@ RegionRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`RegionVector`
-
-      :rtype: :class:`RegionRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -3921,6 +3922,21 @@ RegionRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`RegionVector`
+
+      :param size: 
+
+      :type size: :class:`RegionVector`
+
+      :rtype: :class:`RegionRect`
 
    .. attribute:: bottom
 
@@ -4709,17 +4725,6 @@ SegmentRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`SegmentVector`
-
-      :rtype: :class:`SegmentRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -4805,6 +4810,21 @@ SegmentRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`SegmentVector`
+
+      :param size: 
+
+      :type size: :class:`SegmentVector`
+
+      :rtype: :class:`SegmentRect`
 
    .. attribute:: bottom
 
@@ -5939,17 +5959,6 @@ SubtileRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`SubtileVector`
-
-      :rtype: :class:`SubtileRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -6035,6 +6044,21 @@ SubtileRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`SubtileVector`
+
+      :param size: 
+
+      :type size: :class:`SubtileVector`
+
+      :rtype: :class:`SubtileRect`
 
    .. attribute:: bottom
 
@@ -6823,17 +6847,6 @@ TileRect
 
       :rtype: bool
 
-   .. method:: fromCenter( size)
-
-      Create a new Rectangle from the center point.
-
-
-      :param size: 
-
-      :type size: :class:`TileVector`
-
-      :rtype: :class:`TileRect`
-
    .. method:: intersects( rect[, loopWidth=0])
 
       Returns true if rect is overlapping this rectangle, false otherwise
@@ -6919,6 +6932,21 @@ TileRect
 
 
       :rtype: :class:`sfIntRect`
+
+   .. staticmethod:: fromCenter( center, size)
+
+      Create a new Rectangle from the center point.
+
+
+      :param center: 
+
+      :type center: :class:`TileVector`
+
+      :param size: 
+
+      :type size: :class:`TileVector`
+
+      :rtype: :class:`TileRect`
 
    .. attribute:: bottom
 

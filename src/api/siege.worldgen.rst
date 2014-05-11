@@ -522,7 +522,7 @@ Terraform
 
    .. staticmethod:: populateAreaEmptyThreshold( layer, area, tolerance, threshold)
 
-      After callling Threshold stores a dictionary of x values mapped to their y values added to the threshold
+      After calling Threshold stores a dictionary of x values mapped to their y values added to the threshold
 
 
       :param layer:  What layer area is inside
