@@ -1,29 +1,15 @@
 
-Welcome to Crea's documentation!
-================================
+Modding in Crea
+===============
 
-Contents:
+Modding in Crea has been a focus since the beginning. All of the game's content and the majority of the gameplay logic is written in `Python <https://www.python.org/>`_ and is completely exposed. This means that it is possible to create any content that you see in Crea and modify any of the game systems. Beyond that you can create new content types and new systems. This even extends to the UI (User Interface).
 
-.. toctree::
-   :maxdepth: 1
 
-   api/siege
-   api/siege.component
-   api/siege.graphic
-   api/siege.graphic.ui
-   api/siege.io
-   api/siege.log
-   api/siege.network
-   api/siege.package
-   api/siege.particle
-   api/siege.sfml
-   api/siege.subsystem
-   api/siege.util
-   api/siege.world
-   api/siege.world.realm
-   api/siege.worldgen
+Guides
+------
 
-Welcome to the world of Crea!
+:doc:`Getting Started <gettingstarted>`
+
 
 Indices and tables
 ==================
