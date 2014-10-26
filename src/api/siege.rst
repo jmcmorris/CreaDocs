@@ -27,6 +27,22 @@ GrabbedItemLocation
 
    .. data:: TOOLBAR = siege.GrabbedItemLocation.TOOLBAR
 
+PauseLocation
+-----------------------------------
+.. class:: PauseLocation
+
+   
+
+   .. data:: Custom = siege.PauseLocation.Custom
+
+   .. data:: Focus = siege.PauseLocation.Focus
+
+   .. data:: None = siege.PauseLocation.None
+
+   .. data:: Option = siege.PauseLocation.Option
+
+   .. data:: Steam = siege.PauseLocation.Steam
+
 PlayMode
 -----------------------------------
 .. class:: PlayMode
@@ -484,7 +500,7 @@ DynamicStat
 
       :type arg3: object
 
-   .. method:: addMod( modifier)
+   .. method:: addModifier( modifier)
 
       
 
@@ -492,13 +508,17 @@ DynamicStat
 
       :type modifier: float
 
-   .. method:: adjust( value)
+   .. method:: adjust( value[, cap=0])
 
       
 
       :param value: 
 
       :type value: float
+
+      :param cap: 
+
+      :type cap: float
 
       :rtype: float
 
@@ -542,7 +562,7 @@ DynamicStat
 
       :rtype: bool
 
-   .. method:: removeMod( modifier)
+   .. method:: removeModifier( modifier)
 
       
 
@@ -550,13 +570,17 @@ DynamicStat
 
       :type modifier: float
 
-   .. method:: set( value)
+   .. method:: set( value[, cap=0])
 
       
 
       :param value: 
 
       :type value: float
+
+      :param cap: 
+
+      :type cap: float
 
    .. method:: setMax( value)
 
@@ -620,6 +644,10 @@ EngineSkill
 
       :rtype: bool
 
+   .. attribute:: canRepeatUse
+
+      
+
    .. attribute:: cooldown
 
       
@@ -629,6 +657,10 @@ EngineSkill
       
 
    .. attribute:: description
+
+      
+
+   .. attribute:: getIcon
 
       
 
@@ -1056,6 +1088,14 @@ EntityManager
 
       :type entity: :class:`Entity`
 
+   .. method:: destroyCreatedCharacter( entity)
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
    .. method:: get( arg2)
 
       
@@ -1356,6 +1396,28 @@ Game
 
       :rtype: bool
 
+   .. method:: isPaused( )
+
+      
+
+      :rtype: bool
+
+   .. method:: openUrl( url)
+
+      
+
+      :param url: 
+
+      :type url: str
+
+   .. method:: pause( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`PauseLocation`
+
    .. method:: registerComponent( name, factory)
 
       
@@ -1419,6 +1481,14 @@ Game
    .. method:: reset( )
 
       
+
+   .. method:: resume( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`PauseLocation`
 
    .. method:: sendMessage( arg2, arg3)
 
@@ -1510,7 +1580,15 @@ Game
 
       
 
+   .. attribute:: netProfiler
+
+      
+
    .. attribute:: network
+
+      
+
+   .. attribute:: onUnregistration
 
       
 
@@ -1531,6 +1609,10 @@ Game
       
 
    .. attribute:: state
+
+      
+
+   .. attribute:: version
 
       
 
@@ -1588,7 +1670,7 @@ GrabbedItem
 
       :type arg5: :class:`Player`
 
-   .. method:: write( arg2, arg3)
+   .. method:: write( arg2, arg3, arg4)
 
       
 
@@ -1599,6 +1681,10 @@ GrabbedItem
       :param arg3: 
 
       :type arg3: :class:`ContentStash`
+
+      :param arg4: 
+
+      :type arg4: :class:`EntityManager`
 
    .. attribute:: bagIndex
 
@@ -1808,17 +1894,21 @@ InventoryItem
 
       :type entityManager: :class:`EntityManager`
 
-   .. method:: write( stream, contentStash)
+   .. method:: write( arg2, stream, contentStash)
 
       
 
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
       :param stream: 
 
-      :type stream: :class:`DataStream`
+      :type stream: :class:`ContentStash`
 
       :param contentStash: 
 
-      :type contentStash: :class:`ContentStash`
+      :type contentStash: :class:`EntityManager`
 
    .. staticmethod:: stackItems( base, held, entityManager)
 
@@ -1927,37 +2017,45 @@ ToolItem
 
       :rtype: bool
 
-   .. method:: read( stream, contentStash, entityManager, player)
+   .. method:: read( arg2, stream, contentStash, entityManager, player)
 
       
 
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
       :param stream: 
 
-      :type stream: :class:`DataStream`
+      :type stream: :class:`ContentStash`
 
       :param contentStash: 
 
-      :type contentStash: :class:`ContentStash`
+      :type contentStash: :class:`EntityManager`
 
       :param entityManager: 
 
-      :type entityManager: :class:`EntityManager`
+      :type entityManager: :class:`Player`
 
       :param player: 
 
-      :type player: :class:`Player`
+      :type player: int
 
-   .. method:: write( stream, contentStash)
+   .. method:: write( arg2, stream, contentStash)
 
       
 
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
       :param stream: 
 
-      :type stream: :class:`DataStream`
+      :type stream: :class:`ContentStash`
 
       :param contentStash: 
 
-      :type contentStash: :class:`ContentStash`
+      :type contentStash: :class:`EntityManager`
 
    .. attribute:: skill
 
@@ -2093,6 +2191,16 @@ ItemBag
 
       :rtype: int
 
+   .. method:: hasUniqueItem( entity)
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :rtype: bool
+
    .. method:: isEmpty( )
 
       
@@ -2144,6 +2252,20 @@ ItemBag
       :param entity: 
 
       :type entity: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: int
+
+   .. method:: remove( entity, quantity)
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
 
       :param quantity: 
 
@@ -2207,17 +2329,21 @@ ItemBag
 
       :type entityManager: :class:`EntityManager`
 
-   .. method:: write( stream, contentStash)
+   .. method:: write( arg2, stream, contentStash)
 
       
 
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
       :param stream: 
 
-      :type stream: :class:`DataStream`
+      :type stream: :class:`ContentStash`
 
       :param contentStash: 
 
-      :type contentStash: :class:`ContentStash`
+      :type contentStash: :class:`EntityManager`
 
    .. attribute:: entity
 
@@ -2425,6 +2551,10 @@ Player
 
       :type paths: :class:`StringList`
 
+   .. method:: attachHeldItems( )
+
+      
+
    .. method:: attemptEquip( slot, item)
 
       Attempts to equip the item to the player.
@@ -2477,11 +2607,41 @@ Player
 
       :rtype: bool
 
+   .. method:: getHarvestPower( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`ToolComponent`
+
+      :rtype: int
+
    .. method:: getPath( )
 
       
 
       :rtype: str
+
+   .. method:: getToolPower( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`ToolComponent`
+
+      :rtype: int
+
+   .. method:: getToolReach( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`ToolComponent`
+
+      :rtype: int
 
    .. method:: loadInfo( contentStash, entityManager, playerPath)
 
@@ -2504,24 +2664,34 @@ Player
       :type playerPath:  str or unicode
 
 
-   .. method:: save( uid, contentStash, writers)
+   .. method:: save( arg2, fileManager, contentStash, writers, asynchronous)
 
       Saves the character to file.
 
 
-      :param uid: 
+      :param arg2: 
 
-      :type uid: int
+      :type arg2: :class:`FileManager`
+
+      :param fileManager:  (:class:`FileManager`) The file manager (game.file).
+
+
+      :type fileManager: :class:`ContentStash`
 
       :param contentStash:  The :class:`ContentStash` provided by :class:`Game`.
 
 
-      :type contentStash: :class:`ContentStash`
+      :type contentStash: :class:`EntityManager`
 
       :param writers:  A dictionary of {str: callable}. The callable should have the following signature ``(player, stream)``.
 
 
       :type writers: :class:`ObjectMap`
+
+      :param asynchronous:  Set to true to force asynchronous file writing, false otherwise
+
+
+      :type asynchronous: bool
 
    .. method:: setup( contentStash, entityManager, entityId)
 
@@ -2539,9 +2709,46 @@ Player
 
       :type entityId: int
 
+   .. method:: showUseItem( itemEntity, position, index, slot, toolItem[, swapBackOnAnimationFinish=True])
+
+      
+
+      :param itemEntity: 
+
+      :type itemEntity: :class:`Entity`
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :param index: 
+
+      :type index: int
+
+      :param slot: 
+
+      :type slot: :class:`ToolbarSlot`
+
+      :param toolItem: 
+
+      :type toolItem: :class:`ToolItem`
+
+      :param swapBackOnAnimationFinish: 
+
+      :type swapBackOnAnimationFinish: bool
+
+   .. method:: swapHeldItems( )
+
+      
+
    .. attribute:: data
 
        |      (dict) Container for miscellaneous player data.
+
+
+   .. attribute:: directory
+
+       |      Directory the character is saved into.
 
 
    .. attribute:: entity
@@ -2568,6 +2775,15 @@ Player
        |      (:class:`PlayMode`) The mode the :class:`Player` is in.
 
 
+   .. attribute:: movement
+
+       |      (:class:`Vector`) The distance moved over the last few seconds.
+
+
+   .. attribute:: needsItemRestoration
+
+      
+
    .. attribute:: networkId
 
        |      (:class:`NetworkId`) The :class:`NetworkId` associated with this player.
@@ -2581,6 +2797,11 @@ Player
    .. attribute:: temp
 
        |      (dict) Container for temporary miscellaneous player data.
+
+
+   .. attribute:: timeSinceLastUsedItem
+
+       |      (int) Amount of time elapsed (ms) between the use of the previous and currently used item.
 
 
    .. attribute:: uid
@@ -2649,6 +2870,28 @@ Profiler
 
       
 
+NetProfiler
+-----------------------------------
+.. class:: NetProfiler
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: pushData( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: int
+
 ProfilerData
 -----------------------------------
 .. class:: ProfilerData
@@ -2660,6 +2903,54 @@ ProfilerData
       
 
    .. attribute:: time
+
+      
+
+PythonImporter
+-----------------------------------
+.. class:: PythonImporter
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: clearModuleDependencies( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: deepCopyModuleDict( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: getModuleDependencies( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: :class:`StringSet`
+
+   .. staticmethod:: get( )
+
+      
+
+      :rtype: :class:`PythonImporter`
+
+   .. attribute:: blacklist
 
       
 
@@ -2705,7 +2996,7 @@ Skill
 
    
 
-   .. method:: __init__( name, type, icon, costs)
+   .. method:: __init__( name, type, icon, costs, unlockLevels)
 
       
 
@@ -2725,17 +3016,29 @@ Skill
 
       :type costs: list
 
+      :param unlockLevels: 
+
+      :type unlockLevels: list
+
    .. method:: __repr__( )
 
       
 
       :rtype: str
 
+   .. attribute:: canRepeatUse
+
+      
+
    .. attribute:: cooldown
 
       
 
    .. attribute:: description
+
+      
+
+   .. attribute:: getIcon
 
       
 
@@ -2768,10 +3071,6 @@ Skill
       
 
    .. attribute:: type
-
-      
-
-   .. attribute:: unlockLevel
 
       
 
@@ -2884,6 +3183,10 @@ StateManager
       :param arg3: 
 
       :type arg3: object
+
+   .. attribute:: onStep
+
+      
 
    .. data:: TIMESTEP_TIME = 15
 

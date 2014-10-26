@@ -35,7 +35,12 @@ ActionState
 
    .. attribute:: isPressed
 
-       |      Is True when input has been recieved
+       |      Is True when input has been received
+
+
+   .. attribute:: isPressedThisFrame
+
+       |      Tracks if this input was being pressed this frame
 
 
    .. attribute:: justPressed
@@ -43,9 +48,19 @@ ActionState
        |      Is True on initial input. False when input is held down.
 
 
+   .. attribute:: justPressedThisFrame
+
+       |      Tracks if this input was just pressed this frame
+
+
    .. attribute:: justReleased
 
-       |      Is True on intial input release, False otherwise
+       |      Is True on initial input release, False otherwise
+
+
+   .. attribute:: justReleasedThisFrame
+
+       |      Tracks if this input was just released this frame
 
 
    .. attribute:: onChange
@@ -257,6 +272,13 @@ DataStream
 
       :rtype: int
 
+   .. method:: readUint64( )
+
+      Read an integer from the buffer and returns it
+
+
+      :rtype: int
+
    .. method:: readUint8( )
 
       Read an integer from the buffer and returns it
@@ -284,6 +306,24 @@ DataStream
 
 
       :rtype: unicode
+
+   .. method:: reserve( arg2)
+
+      :class:`Reserves` space in the buffer to improve performance
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: resize( arg2)
+
+      Resizes the buffer to the specified size
+
+
+      :param arg2: 
+
+      :type arg2: int
 
    .. method:: size( )
 
@@ -467,6 +507,16 @@ DataStream
 
       :type data: int
 
+   .. method:: writeUint64( data)
+
+      Appends data to the end of the current buffer data
+
+
+      :param data:  Uint64 to write to buffer
+
+
+      :type data: int
+
    .. method:: writeUint8( data)
 
       Appends data to the end of the current buffer data
@@ -513,6 +563,38 @@ File
 
    
 
+   .. staticmethod:: backupCloudFiles( arg1, arg2)
+
+      
+
+      :param arg1: 
+
+      :type arg1: str
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. staticmethod:: exists( filePath[, isCloudSave=True])
+
+      
+
+      :param filePath: 
+
+      :type filePath: object
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
+
+      :rtype: bool
+
+   .. staticmethod:: getCharacters( )
+
+      
+
+      :rtype: :class:`StringList`
+
    .. staticmethod:: getValidPath( filePath)
 
       Formats a string to remove invalid characters from a string ([\?\\/:\*<>\|"])
@@ -528,7 +610,13 @@ File
 
       :rtype: str
 
-   .. staticmethod:: load( filePath, data)
+   .. staticmethod:: getWorlds( )
+
+      
+
+      :rtype: :class:`StringList`
+
+   .. staticmethod:: load( filePath, data[, isCloudSave=True])
 
       Appends the file data to the :class:`DataStream`
 
@@ -542,6 +630,10 @@ File
 
 
       :type data: :class:`DataStream`
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
 
       :returns: Returns the file version number
 
@@ -563,7 +655,31 @@ File
 
       :rtype: :class:`File`
 
-   .. staticmethod:: save( filePath, data)
+   .. staticmethod:: remove( filePath[, isCloudSave=True])
+
+      
+
+      :param filePath: 
+
+      :type filePath: object
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
+
+   .. staticmethod:: removeDirectory( directoryPath[, isCloudSave=True])
+
+      
+
+      :param directoryPath: 
+
+      :type directoryPath: object
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
+
+   .. staticmethod:: save( filePath, data[, isCloudSave=True])
 
       Writes contents of data to the file at path
 
@@ -578,13 +694,42 @@ File
 
       :type data: :class:`DataStream`
 
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
+
+   .. staticmethod:: saveSimple( filePath, data[, isCloudSave=True])
+
+      Writes contents of data to the file at path
+
+
+      :param filePath:  Path to file for writing
+
+
+      :type filePath: object
+
+      :param data:  Data to write to the file
+
+
+      :type data: str
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
+
+   .. staticmethod:: usingSteamCloud( )
+
+      
+
+      :rtype: bool
+
 FileManager
 -----------------------------------
 .. class:: FileManager
 
    
 
-   .. method:: asyncRead( filePath, onComplete, isCreaFile)
+   .. method:: asyncRead( filePath, onComplete, isCreaFile[, useCompression=True[, isCloudSave=True]])
 
       Reads from a file using a new thread
 
@@ -604,7 +749,17 @@ FileManager
 
       :type isCreaFile: bool
 
-   .. method:: asyncWrite( filePath, stream)
+      :param useCompression:  Decompress the data read from file.
+
+
+      :type useCompression: bool
+
+      :param isCloudSave:  Saved to Steam Cloud (if enabled)
+
+
+      :type isCloudSave: bool
+
+   .. method:: asyncWrite( filePath, stream[, useCompression=True[, isCloudSave=True]])
 
       Writes to a file using a new thread
 
@@ -618,6 +773,14 @@ FileManager
 
 
       :type stream: :class:`DataStream`
+
+      :param useCompression: 
+
+      :type useCompression: bool
+
+      :param isCloudSave: 
+
+      :type isCloudSave: bool
 
 GameInput
 -----------------------------------
@@ -636,7 +799,7 @@ GameInput
 
    .. attribute:: isPressed
 
-       |      True if any input was recieved from the user
+       |      True if any input was received from the user
 
 
 JoyInput

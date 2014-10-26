@@ -667,6 +667,32 @@ MonsterSystem
 
    
 
+   .. method:: getConnectedSpawnPosition( arg2, arg3, arg4, arg5, arg6)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Realm`
+
+      :param arg3: 
+
+      :type arg3: :class:`Entity`
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
+
+      :param arg5: 
+
+      :type arg5: :class:`Rect`
+
+      :param arg6: 
+
+      :type arg6: :class:`Rect`
+
+      :rtype: :class:`Vector`
+
    .. method:: getCount( )
 
       
@@ -681,7 +707,23 @@ MonsterSystem
 
       :type biomeName: str
 
-      :rtype: :class:`EntitySet`
+      :rtype: :class:`Entities`
+
+   .. method:: registerAffix( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. attribute:: affixes
+
+      
 
 OrganicSystem
 -----------------------------------
@@ -875,7 +917,7 @@ RenderSystem
 
       :type arg2: :class:`Renderable`
 
-   .. method:: setMode( mode, fullscreen[, scale=1])
+   .. method:: setMode( mode, displayMode[, scale=1])
 
       
 
@@ -883,9 +925,9 @@ RenderSystem
 
       :type mode: :class:`VideoMode`
 
-      :param fullscreen: 
+      :param displayMode: 
 
-      :type fullscreen: bool
+      :type displayMode: :class:`DisplayMode`
 
       :param scale: 
 

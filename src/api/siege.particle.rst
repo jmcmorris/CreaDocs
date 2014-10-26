@@ -324,61 +324,15 @@ PhysicsParticleEmitter
        |      Sets the restitution :class:`Vector` for Particles in this emitter
 
 
-ParticleSystem
+Renderable)
 -----------------------------------
-.. class:: ParticleSystem
+.. class:: Renderable)
 
    
 
-   .. method:: add( emitter[, priority=0])
+Renderable)
+-----------------------------------
+.. class:: Renderable)
 
-      Adds a :class:`ParticleEmitter` to this :class:`ParticleSystem`
-
-
-      :param emitter:  The :class:`ParticleEmitter` to add to this :class:`ParticleSystem`
-
-
-      :type emitter: :class:`ParticleEmitter`
-
-      :param priority:  Network priority for this :class:`ParticleEmitter`
-
-
-      :type priority: int
-
-   .. method:: clear( )
-
-      Removes all ParticleEmitters from this :class:`ParticleSystem`
-
-
-   .. method:: getCount( )
-
-      Returns total number of Particles in all ParticleSystems
-
-
-      :rtype: int
-
-   .. method:: handleNetworkReset( server, client)
-
-      If client is not the server then register the handler for this :class:`ParticleSystem`
-
-
-      :param server:  A :class:`Server` connection
-
-
-      :type server: :class:`Server`
-
-      :param client:  A :class:`Client` connection
-
-
-      :type client: :class:`Client`
-
-   .. method:: remove( emitter)
-
-      Removes target emitter from this :class:`ParticleSystem`
-
-
-      :param emitter:  The :class:`ParticleEmitter` to remove from this :class:`ParticleSystem`
-
-
-      :type emitter: :class:`ParticleEmitter`
+   
 

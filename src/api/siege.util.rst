@@ -112,6 +112,18 @@ ChunkRect
 
       :param size: 
 
+      :type size: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`ChunkVector`
+
+      :param size: 
+
       :type size: :class:`ChunkVector`
 
    .. method:: __init__( rect)
@@ -521,6 +533,16 @@ ChunkVector
 
       :param arg2: 
 
+      :type arg2: :class:`ChunkVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`ChunkVector`
@@ -682,6 +704,16 @@ ChunkVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`ChunkVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -1386,6 +1418,18 @@ PixelRect
 
       :param size: 
 
+      :type size: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`PixelVector`
+
+      :param size: 
+
       :type size: :class:`PixelVector`
 
    .. method:: __init__( rect)
@@ -1795,6 +1839,16 @@ PixelVector
 
       :param arg2: 
 
+      :type arg2: :class:`PixelVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`PixelVector`
@@ -1956,6 +2010,16 @@ PixelVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`PixelVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -2694,6 +2758,17 @@ Range
 
       :type arg3: object
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -2707,7 +2782,7 @@ Range
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -2765,6 +2840,17 @@ RangeColor
 
       :type arg3: :class:`Color`
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Color`
+
+      :rtype: :class:`Color`
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -2778,7 +2864,7 @@ RangeColor
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -2836,6 +2922,17 @@ RangeFloat
 
       :type arg3: float
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: float
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -2849,7 +2946,7 @@ RangeFloat
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -2907,6 +3004,17 @@ RangeInt
 
       :type arg3: int
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: int
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -2920,7 +3028,7 @@ RangeInt
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -2978,6 +3086,17 @@ RangeTileVector
 
       :type arg3: :class:`TileVector`
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: :class:`TileVector`
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -2991,7 +3110,7 @@ RangeTileVector
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -3049,6 +3168,17 @@ RangeUint
 
       :type arg3: int
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: int
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -3062,7 +3192,89 @@ RangeUint
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
+
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: int
+
+   .. method:: getRandom( )
+
+      Returns a random value within range
+
+
+      :rtype: int
+
+   .. attribute:: end
+
+       |      Returns maximum value in range
+
+
+   .. attribute:: max
+
+       |      Returns maximum value in range
+
+
+   .. attribute:: min
+
+       |      Returns minimum value in range
+
+
+   .. attribute:: start
+
+       |      Returns minimum value in range
+
+
+RangeUint8
+-----------------------------------
+.. class:: RangeUint8
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: int
+
+   .. method:: contains( arg2)
+
+      Returns true if value is within range, false otherwise
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
+
+   .. method:: get( arg2)
+
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -3120,6 +3332,17 @@ RangeVector
 
       :type arg3: :class:`Vector`
 
+   .. method:: clamp( arg2)
+
+      Returns the value clamped within the range.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: :class:`Vector`
+
    .. method:: contains( arg2)
 
       Returns true if value is within range, false otherwise
@@ -3133,7 +3356,7 @@ RangeVector
 
    .. method:: get( arg2)
 
-      Retruns a value from within range based on percentage passed in
+      Returns a value from within range based on percentage passed in
 
 
       :param arg2: 
@@ -3208,6 +3431,18 @@ Rect
       :param height: 
 
       :type height: float
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :param size: 
+
+      :type size: float
 
    .. method:: __init__( position, size)
 
@@ -3332,14 +3567,14 @@ Rect
       Create a copy of this as a :class:`ChunkRect`
 
 
-      :rtype: object
+      :rtype: :class:`ChunkRect`
 
    .. method:: asPixel( )
 
       Create a copy of this as a :class:`PixelRect`
 
 
-      :rtype: :class:`Rect`
+      :rtype: :class:`PixelRect`
 
    .. method:: asRect( )
 
@@ -3353,28 +3588,28 @@ Rect
       Create a copy of this as a :class:`RegionRect`
 
 
-      :rtype: object
+      :rtype: :class:`RegionRect`
 
    .. method:: asSegment( )
 
       Create a copy of this as a :class:`SegmentRect`
 
 
-      :rtype: object
+      :rtype: :class:`SegmentRect`
 
    .. method:: asSubtile( )
 
       Create a copy of this as a :class:`SubtileRect`
 
 
-      :rtype: object
+      :rtype: :class:`SubtileRect`
 
    .. method:: asTile( )
 
       Create a copy of this as a :class:`TileRect`
 
 
-      :rtype: object
+      :rtype: :class:`TileRect`
 
    .. method:: contains( x, y[, loopWidth=0])
 
@@ -3630,6 +3865,18 @@ RegionRect
       :param height: 
 
       :type height: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`RegionVector`
+
+      :param size: 
+
+      :type size: int
 
    .. method:: __init__( position, size)
 
@@ -4050,6 +4297,16 @@ RegionVector
 
       :param arg2: 
 
+      :type arg2: :class:`RegionVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`RegionVector`
@@ -4211,6 +4468,16 @@ RegionVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`RegionVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -4518,6 +4785,18 @@ SegmentRect
       :param height: 
 
       :type height: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`SegmentVector`
+
+      :param size: 
+
+      :type size: int
 
    .. method:: __init__( position, size)
 
@@ -4938,6 +5217,16 @@ SegmentVector
 
       :param arg2: 
 
+      :type arg2: :class:`SegmentVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`SegmentVector`
@@ -5099,6 +5388,16 @@ SegmentVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`SegmentVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -5713,6 +6012,68 @@ StringSet
 
       :type arg2: str
 
+StringSetMap
+-----------------------------------
+.. class:: StringSetMap
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
 SubtileRect
 -----------------------------------
 .. class:: SubtileRect
@@ -5752,6 +6113,18 @@ SubtileRect
       :param height: 
 
       :type height: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`SubtileVector`
+
+      :param size: 
+
+      :type size: int
 
    .. method:: __init__( position, size)
 
@@ -6172,6 +6545,16 @@ SubtileVector
 
       :param arg2: 
 
+      :type arg2: :class:`SubtileVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`SubtileVector`
@@ -6333,6 +6716,16 @@ SubtileVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`SubtileVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -6640,6 +7033,18 @@ TileRect
       :param height: 
 
       :type height: int
+
+   .. method:: __init__( position, size)
+
+      
+
+      :param position: 
+
+      :type position: :class:`TileVector`
+
+      :param size: 
+
+      :type size: int
 
    .. method:: __init__( position, size)
 
@@ -7060,6 +7465,16 @@ TileVector
 
       :param arg2: 
 
+      :type arg2: :class:`TileVector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`TileVector`
@@ -7221,6 +7636,16 @@ TileVector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -7898,6 +8323,16 @@ Vector
 
       :param arg2: 
 
+      :type arg2: :class:`Vector`
+
+      :rtype: object
+
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
       :type arg2: float
 
       :rtype: :class:`Vector`
@@ -8059,6 +8494,16 @@ Vector
       :type position: :class:`Vector`
 
    .. method:: __isub__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
 
       
 
@@ -8343,6 +8788,16 @@ Vector3
 
       :rtype: object
 
+   .. method:: __div__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`Vector3`
+
    .. method:: __eq__( arg2)
 
       
@@ -8428,6 +8883,26 @@ Vector3
       :type arg2: :class:`Vector3`
 
       :rtype: object
+
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector3`
+
+      :rtype: object
+
+   .. method:: __mul__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
+      :rtype: :class:`Vector3`
 
    .. method:: __ne__( arg2)
 

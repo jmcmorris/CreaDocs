@@ -15,6 +15,38 @@ CorePackageLoading
 
    .. data:: None = siege.package.CorePackageLoading.None
 
+PackageValidationResult
+-----------------------------------
+.. class:: PackageValidationResult
+
+   
+
+   .. data:: ContentMissing = siege.package.PackageValidationResult.ContentMissing
+
+   .. data:: NotInstalled = siege.package.PackageValidationResult.NotInstalled
+
+   .. data:: Success = siege.package.PackageValidationResult.Success
+
+   .. data:: VersionMismatch = siege.package.PackageValidationResult.VersionMismatc...
+
+WorkshopUpdateStatus
+-----------------------------------
+.. class:: WorkshopUpdateStatus
+
+   
+
+   .. data:: CommittingChanges = siege.package.WorkshopUpdateStatus.CommittingChang...
+
+   .. data:: Invalid = siege.package.WorkshopUpdateStatus.Invalid
+
+   .. data:: PreparingConfig = siege.package.WorkshopUpdateStatus.PreparingConfig
+
+   .. data:: PreparingContent = siege.package.WorkshopUpdateStatus.PreparingContent
+
+   .. data:: UploadingContent = siege.package.WorkshopUpdateStatus.UploadingContent
+
+   .. data:: UploadingPreviewFile = siege.package.WorkshopUpdateStatus.UploadingPre...
+
 Content
 -----------------------------------
 .. class:: Content
@@ -232,10 +264,6 @@ ContentStash
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( arg2, arg3)
 
       
@@ -330,6 +358,11 @@ ContentStash
 
       :type stream: :class:`DataStream`
 
+   .. method:: populateContent( )
+
+      Populates content from all enabled packages.
+
+
    .. method:: populateContentEntities( entityManager)
 
       Creates :class:`Content` entities using the passed :class:`EntityManager`.
@@ -339,18 +372,22 @@ ContentStash
 
       :type entityManager: :class:`EntityManager`
 
-   .. method:: read( stream)
+   .. method:: read( stream, version)
 
-      (Re)Initialises this :class:`ContentStash` via `siege.package.PackageList.read` and also discovers all packages in "mods"
+      (Re)Initializes this :class:`ContentStash` via `siege.package.PackageList.read` and also discovers all packages in "mods"
 
 
       :param stream: 
 
       :type stream: :class:`DataStream`
 
+      :param version: 
+
+      :type version: int
+
    .. method:: unpack( stream)
 
-      (Re)Initialises this :class:`ContentStash` via `siege.package.PackageList.read`
+      (Re)Initializes this :class:`ContentStash` via `siege.package.PackageList.read`
 
 
       :param stream: 
@@ -397,6 +434,10 @@ ContentStash
 
       :type stream: :class:`DataStream`
 
+   .. attribute:: workshop
+
+      
+
 Package
 -----------------------------------
 .. class:: Package
@@ -419,6 +460,12 @@ Package
 
       :type arg3: object
 
+   .. method:: canPublishOrUpdate( )
+
+      
+
+      :rtype: bool
+
    .. method:: get( arg2)
 
       
@@ -436,6 +483,18 @@ Package
 
       :rtype: :class:`ContentMap`
 
+   .. method:: getUrl( )
+
+      
+
+      :rtype: str
+
+   .. method:: getWorkshopId( )
+
+      
+
+      :rtype: long
+
    .. method:: has( arg2)
 
       :return: true if this package contains the specified content.
@@ -447,13 +506,19 @@ Package
 
       :rtype: bool
 
-   .. method:: isEnabled( )
+   .. method:: isShared( )
 
       
 
       :rtype: bool
 
-   .. method:: read( arg2)
+   .. method:: isWorkshopInstalled( )
+
+      
+
+      :rtype: bool
+
+   .. method:: read( arg2, arg3)
 
       Reads the package attributes, content ids and content paths from the passed :class:`DataStream`.
 
@@ -462,12 +527,17 @@ Package
 
       :type arg2: :class:`DataStream`
 
-   .. method:: validate( )
+      :param arg3: 
 
-      Validates whether package path & referenced content files exist.
+      :type arg3: int
 
+   .. method:: requestWorkshopDetails( arg2)
 
-      :rtype: bool
+      
+
+      :param arg2: 
+
+      :type arg2: long
 
    .. method:: write( arg2)
 
@@ -478,17 +548,22 @@ Package
 
       :type arg2: :class:`DataStream`
 
-   .. attribute:: getAuthor
+   .. attribute:: author
 
        |      The python module's "author" attribute.
 
 
-   .. attribute:: getDescription
+   .. attribute:: description
 
        |      The python module's "description" attribute.
 
 
-   .. attribute:: getName
+   .. attribute:: enabled
+
+       |      If this mod should be loaded.
+
+
+   .. attribute:: name
 
       
 
@@ -501,6 +576,14 @@ Package
 
        |      If set, the priority at which this module should be loaded.
 
+
+   .. attribute:: status
+
+      
+
+   .. attribute:: tags
+
+      
 
    .. attribute:: title
 
@@ -551,6 +634,8 @@ PackageList
 
       :type arg2: object
 
+      :rtype: bool
+
    .. method:: getOrdered( [coreLoading=siege.package.CorePackageLoading.First])
 
       Returns an ordered list of packages.
@@ -573,6 +658,16 @@ PackageList
 
       :rtype: :class:`Package`
 
+   .. method:: getPackage( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: long
+
+      :rtype: :class:`Package`
+
    .. method:: hasPackage( arg2)
 
       
@@ -583,7 +678,7 @@ PackageList
 
       :rtype: bool
 
-   .. method:: read( arg2)
+   .. method:: read( arg2, arg3)
 
       see `siege.package.Package.read`
 
@@ -591,6 +686,10 @@ PackageList
       :param arg2: 
 
       :type arg2: :class:`DataStream`
+
+      :param arg3: 
+
+      :type arg3: int
 
    .. method:: setPriority( arg2, arg3)
 
@@ -760,4 +859,88 @@ Packages
       :param arg2: 
 
       :type arg2: object
+
+Workshop
+-----------------------------------
+.. class:: Workshop
+
+   
+
+   .. method:: getUpdateProgress( )
+
+      
+
+      :rtype: :class:`WorkshopUpdateResult`
+
+   .. method:: publishWorkshopItem( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Package`
+
+      :param arg3: 
+
+      :type arg3: list
+
+   .. method:: subscribe( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Package`
+
+   .. method:: unsubscribe( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Package`
+
+   .. method:: updateWorkshopItem( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Package`
+
+      :param arg3: 
+
+      :type arg3: list
+
+   .. staticmethod:: getTags( )
+
+      
+
+      :rtype: :class:`StringList`
+
+   .. attribute:: onSubscribeFinish
+
+      
+
+WorkshopUpdateResult
+-----------------------------------
+.. class:: WorkshopUpdateResult
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: isFinished
+
+      
+
+   .. attribute:: percentage
+
+      
+
+   .. attribute:: status
+
+      
 

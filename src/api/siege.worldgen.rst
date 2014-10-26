@@ -119,6 +119,11 @@ Biome
        |      Fourth background layer for parallax scrolling.
 
 
+   .. attribute:: crystalIcon
+
+       |      The icon used on the travel UI to represent this biome.
+
+
    .. attribute:: frequency
 
        |      How often this :class:`Biome` will occur
@@ -319,7 +324,7 @@ ColorStamp
 
       :rtype: :class:`TileVectorList`
 
-   .. method:: getSimple( x, y, flipX)
+   .. method:: getSimple( x, y, flipX, flipY)
 
       Returns color value at x,y
 
@@ -338,6 +343,10 @@ ColorStamp
 
 
       :type flipX: bool
+
+      :param flipY: 
+
+      :type flipY: bool
 
       :rtype: int
 
@@ -395,7 +404,7 @@ Terraform
 
       :type world: :class:`World`
 
-   .. staticmethod:: applySimpleStamp( stamp, position, rules, flipX, ground, wall, automata)
+   .. staticmethod:: applySimpleStamp( stamp, position, rules, flipX, flipY, ground, wall, automata)
 
       Change all tiles under area according to the stamp pattern
 
@@ -419,6 +428,11 @@ Terraform
 
 
       :type flipX: bool
+
+      :param flipY:  Set to true to force flip stamp on y axis
+
+
+      :type flipY: bool
 
       :param ground:  Ground layer to be changed
 

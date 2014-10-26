@@ -182,6 +182,22 @@ RealmLoader
 
       :rtype: :class:`SegmentList`
 
+   .. method:: isRegionLoaded( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
+
+   .. method:: isSaving( )
+
+      
+
+      :rtype: bool
+
    .. method:: loadRegions( [callback=None])
 
       Load all regions in this realm and set call back if necessary
@@ -192,20 +208,15 @@ RealmLoader
 
       :type callback: object
 
-   .. method:: saveRegion( region[, shouldUnload=False, asynchronous)
+   .. method:: saveRegion( [shouldUnload=False, asynchronous)
 
       Saves a region to the file system
 
 
-      :param region:  Id of the region to save
-
-
-      :type region: int
-
       :param shouldUnload:  Set to true force unloading of region before saving, false otherwise
 
 
-      :type shouldUnload: bool
+      :type shouldUnload: int
 
       :param asynchronous:  Set to true to force asynchronous file writing, false otherwise
 
@@ -231,6 +242,14 @@ RealmLoader
 
 
       :type region: int
+
+   .. method:: update( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
 
    .. method:: updateRegion( region, handler)
 
@@ -403,6 +422,11 @@ World
 
       :rtype: :class:`Realm`
 
+   .. method:: finishSaving( )
+
+      Finishes any current saving and disables asynchronous saving.
+
+
    .. method:: getMousePosition( )
 
       Returns mouse pointer coordinates
@@ -485,6 +509,17 @@ World
 
 
       :rtype: :class:`RealmList`
+
+   .. method:: isActivePlayer( arg2)
+
+      Return True if provided player is the main player otherwise false.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Player`
+
+      :rtype: bool
 
    .. method:: isInitialized( )
 
@@ -709,10 +744,6 @@ World
 
       
 
-   .. attribute:: INFO_FILE_VERSION
-
-      
-
    .. attribute:: data
 
        |      (dict) Container for miscellaneous world data.
@@ -766,6 +797,94 @@ World
    .. attribute:: uid
 
        |      Unique indentifier for this world
+
+
+WorldInfo
+-----------------------------------
+.. class:: WorldInfo
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: load( worldPath)
+
+      Reads the world information stored at <path>/info.
+
+
+      :param worldPath:  (str) The world path.
+
+
+      :type worldPath: object
+
+   .. staticmethod:: save( world, asynchronous)
+
+      Saves the world information to disk.
+
+
+      :param world:  The world to save information about.
+
+
+      :type world: :class:`World`
+
+      :param asynchronous:  Whether the save should be asynchronous or not.
+
+
+      :type asynchronous: bool
+
+   .. staticmethod:: save( name, path, uid, playtime, asynchronous)
+
+      Saves the world information to disk.
+
+
+      :param name:  (str) The name of the world.
+
+
+      :type name: str
+
+      :param path:  (Path) The path of the world.
+
+
+      :type path: object
+
+      :param uid:  (uint32) The path of the world.
+
+
+      :type uid: int
+
+      :param playtime:  (uint32) Playtime of the world.
+
+
+      :type playtime: int
+
+      :param asynchronous: 
+
+      :type asynchronous: bool
+
+   .. attribute:: FILE_VERSION
+
+      
+
+   .. attribute:: name
+
+       |      The name of the world.
+
+
+   .. attribute:: packages
+
+       |      The packages state for the world.
+
+
+   .. attribute:: playtime
+
+       |      The playtime for the world.
+
+
+   .. attribute:: uid
+
+       |      The unique identifier for the world.
 
 
 WorldPlayerData

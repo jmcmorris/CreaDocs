@@ -563,12 +563,39 @@ BiomeTracker
       Returns a random position from depthStart to depthEnd based on underground threshold
 
 
-      :param depthStart:  Maximum height for position
+      :param depthStart:  Minimum depth for position
 
 
       :type depthStart: float
 
-      :param depthEnd:  Minimum height for position
+      :param depthEnd:  Maximum depth for position
+
+
+      :type depthEnd: float
+
+      :rtype: :class:`TileVector`
+
+   .. method:: getRandomUndergroundPosition( startX, endX, depthStart, depthEnd)
+
+      Returns a random position underground within the bounds provided.
+
+
+      :param startX:  Starting x bounds
+
+
+      :type startX: int
+
+      :param endX:  Ending x bounds
+
+
+      :type endX: int
+
+      :param depthStart:  Minimum depth for position
+
+
+      :type depthStart: float
+
+      :param depthEnd:  Maximum depth for position
 
 
       :type depthEnd: float
@@ -611,6 +638,14 @@ BiomeTracker
 
 
       :type biome: :class:`BiomeData`
+
+   .. method:: resetBackgrounds( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
 
    .. method:: updatePlayer( player[, force=False])
 
@@ -1898,11 +1933,15 @@ MapConflictRegion
 
    
 
+   .. attribute:: hostilityLevel
+
+      
+
    .. attribute:: icon
 
       
 
-   .. attribute:: level
+   .. attribute:: levels
 
       
 
@@ -1987,6 +2026,40 @@ MapConflictRegionList
       :param arg2: 
 
       :type arg2: object
+
+MapMarker
+-----------------------------------
+.. class:: MapMarker
+
+   
+
+   .. attribute:: entity
+
+      
+
+   .. attribute:: entityId
+
+      
+
+   .. attribute:: icon
+
+      
+
+   .. attribute:: name
+
+      
+
+   .. attribute:: position
+
+      
+
+   .. attribute:: sprite
+
+      
+
+   .. attribute:: updatePosition
+
+      
 
 PhysicsCollision
 -----------------------------------
@@ -2361,20 +2434,24 @@ PlacementHandler
 
       :type realm: :class:`Realm`
 
-   .. method:: calculatePosition( mousePos, entity)
+   .. method:: calculatePosition( arg2, mousePos, entity)
 
       Finds nearest valid new position based on mouse position, entity positions, and level structure
 
 
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
       :param mousePos:  Position of the mouse cursor
 
 
-      :type mousePos: :class:`Vector`
+      :type mousePos: :class:`Entity`
 
       :param entity:  The entity to use in the calculation
 
 
-      :type entity: :class:`Entity`
+      :type entity: bool
 
       :returns: Empty :class:`Vector` if no valid positions, else new position
 
@@ -2588,6 +2665,28 @@ Realm
 
       :rtype: :class:`Entity`
 
+   .. method:: getValidPositionForEntity( entity, area[, onGround=True])
+
+      Attempts to find a valid position for the entity to be placed. Returns Vector(0, 0) if no position is found.
+
+
+      :param entity:  (:class:`Entity`) The entity to search for.
+
+
+      :type entity: :class:`Entity`
+
+      :param area:  (:class:`TileRect`) The area to search within.
+
+
+      :type area: :class:`TileRect`
+
+      :param onGround:  (bool) If set true then it ensures the entity is placed on top of a solid tile.
+
+
+      :type onGround: bool
+
+      :rtype: :class:`Vector`
+
    .. method:: isActive( )
 
       Returns true if there are any players in this realm, false otherwise
@@ -2635,7 +2734,7 @@ Realm
 
       :type frameTime: int
 
-   .. staticmethod:: create( arg1, arg2, game, uid, name, realmSize, groundLevel)
+   .. staticmethod:: create( arg1, arg2, arg3, game, uid, name, realmSize, groundLevel)
 
       Creates a new realm according to parameters and returns it
 
@@ -2648,10 +2747,14 @@ Realm
 
       :type arg2: int
 
+      :param arg3: 
+
+      :type arg3: str
+
       :param game:  Which game the realm will be in
 
 
-      :type game: str
+      :type game: object
 
       :param uid:  Unique identifier for this realm
 
@@ -3075,6 +3178,16 @@ RealmMap
 
       :type arg5: bool
 
+   .. method:: getMarkerAtPosition( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: :class:`MapMarker`
+
    .. method:: moveFullscreen( arg2, arg3)
 
       
@@ -3157,6 +3270,17 @@ RealmSize
 
       :type arg3: int
 
+   .. method:: getRegionTilePosition( arg2)
+
+      Gets the tile position of the region given a region id.
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: :class:`TileVector`
+
    .. method:: getSegmentId( arg2)
 
       Gets the segmentId for a given :class:`Vector` position
@@ -3176,6 +3300,28 @@ RealmSize
       :param arg2: 
 
       :type arg2: :class:`TileVector`
+
+      :rtype: int
+
+   .. method:: getSegmentTilePosition( arg2)
+
+      Gets the tile position of the segment given a segment id.
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: :class:`TileVector`
+
+   .. method:: getValidRegionId( arg2)
+
+      Gets the valid region id by looping it around the world seam.
+
+
+      :param arg2: 
+
+      :type arg2: int
 
       :rtype: int
 

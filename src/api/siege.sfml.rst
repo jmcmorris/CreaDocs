@@ -3,19 +3,41 @@
 siege.sfml
 ==================
 
-BlendMode
+BlendModeEquation
 -----------------------------------
-.. class:: BlendMode
+.. class:: BlendModeEquation
 
    
 
-   .. data:: BlendAdd = siege.sfml.BlendMode.BlendAdd
+   .. data:: Add = siege.sfml.BlendModeEquation.Add
 
-   .. data:: BlendAlpha = siege.sfml.BlendMode.BlendAlpha
+   .. data:: Subtract = siege.sfml.BlendModeEquation.Subtract
 
-   .. data:: BlendMultiply = siege.sfml.BlendMode.BlendMultiply
+BlendModeFactor
+-----------------------------------
+.. class:: BlendModeFactor
 
-   .. data:: BlendNone = siege.sfml.BlendMode.BlendNone
+   
+
+   .. data:: DstAlpha = siege.sfml.BlendModeFactor.DstAlpha
+
+   .. data:: DstColor = siege.sfml.BlendModeFactor.DstColor
+
+   .. data:: One = siege.sfml.BlendModeFactor.One
+
+   .. data:: OneMinusDstAlpha = siege.sfml.BlendModeFactor.OneMinusDstAlpha
+
+   .. data:: OneMinusDstColor = siege.sfml.BlendModeFactor.OneMinusDstColor
+
+   .. data:: OneMinusSrcAlpha = siege.sfml.BlendModeFactor.OneMinusSrcAlpha
+
+   .. data:: OneMinusSrcColor = siege.sfml.BlendModeFactor.OneMinusSrcColor
+
+   .. data:: SrcAlpha = siege.sfml.BlendModeFactor.SrcAlpha
+
+   .. data:: SrcColor = siege.sfml.BlendModeFactor.SrcColor
+
+   .. data:: Zero = siege.sfml.BlendModeFactor.Zero
 
 PrimitiveType
 -----------------------------------
@@ -36,6 +58,100 @@ PrimitiveType
    .. data:: TrianglesFan = siege.sfml.PrimitiveType.TrianglesFan
 
    .. data:: TrianglesStrip = siege.sfml.PrimitiveType.TrianglesStrip
+
+BlendMode
+-----------------------------------
+.. class:: BlendMode
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( sourceFactor, destinationFactor[, blendEquation=siege.sfml.BlendModeEquation.Add])
+
+      
+
+      :param sourceFactor: 
+
+      :type sourceFactor: :class:`BlendModeFactor`
+
+      :param destinationFactor: 
+
+      :type destinationFactor: :class:`BlendModeFactor`
+
+      :param blendEquation: 
+
+      :type blendEquation: :class:`BlendModeEquation`
+
+   .. method:: __init__( colorSourceFactor, colorDestinationFactor, colorBlendEquation, alphaSourceFactor, alphaDestinationFactor, alphaBlendEquation)
+
+      
+
+      :param colorSourceFactor: 
+
+      :type colorSourceFactor: :class:`BlendModeFactor`
+
+      :param colorDestinationFactor: 
+
+      :type colorDestinationFactor: :class:`BlendModeFactor`
+
+      :param colorBlendEquation: 
+
+      :type colorBlendEquation: :class:`BlendModeEquation`
+
+      :param alphaSourceFactor: 
+
+      :type alphaSourceFactor: :class:`BlendModeFactor`
+
+      :param alphaDestinationFactor: 
+
+      :type alphaDestinationFactor: :class:`BlendModeFactor`
+
+      :param alphaBlendEquation: 
+
+      :type alphaBlendEquation: :class:`BlendModeEquation`
+
+   .. attribute:: BlendAdd
+
+      
+
+   .. attribute:: BlendAlpha
+
+      
+
+   .. attribute:: BlendMultiply
+
+      
+
+   .. attribute:: BlendNone
+
+      
+
+   .. attribute:: alphaDstFactor
+
+      
+
+   .. attribute:: alphaEquation
+
+      
+
+   .. attribute:: alphaSrcFactor
+
+      
+
+   .. attribute:: colorDstFactor
+
+      
+
+   .. attribute:: colorEquation
+
+      
+
+   .. attribute:: colorSrcFactor
+
+      
 
 Drawable
 -----------------------------------

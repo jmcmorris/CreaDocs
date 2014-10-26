@@ -29,6 +29,8 @@ Message
 
    .. data:: CHARACTER_MOVE = siege.network.Message.CHARACTER_MOVE
 
+   .. data:: CHARACTER_SAVE = siege.network.Message.CHARACTER_SAVE
+
    .. data:: CHAT_PLAYER = siege.network.Message.CHAT_PLAYER
 
    .. data:: CHAT_SYSTEM = siege.network.Message.CHAT_SYSTEM
@@ -36,6 +38,16 @@ Message
    .. data:: COMBAT_ATTACK = siege.network.Message.COMBAT_ATTACK
 
    .. data:: CONFLICT = siege.network.Message.CONFLICT
+
+   .. data:: CONNECTION_LOST = siege.network.Message.CONNECTION_LOST
+
+   .. data:: CONNECTION_REQUEST_ACCEPTED = siege.network.Message.CONNECTION_REQUEST...
+
+   .. data:: DISCONNECTION_NOTIFICATION = siege.network.Message.DISCONNECTION_NOTIF...
+
+   .. data:: HIDE_UI = siege.network.Message.HIDE_UI
+
+   .. data:: INVALID_PASSWORD = siege.network.Message.INVALID_PASSWORD
 
    .. data:: INVENTORY_CLOSE = siege.network.Message.INVENTORY_CLOSE
 
@@ -59,7 +71,11 @@ Message
 
    .. data:: ITEM_SPLIT = siege.network.Message.ITEM_SPLIT
 
+   .. data:: ITEM_SWAP_ARMS = siege.network.Message.ITEM_SWAP_ARMS
+
    .. data:: ITEM_SWAP_WITH_GRAB = siege.network.Message.ITEM_SWAP_WITH_GRAB
+
+   .. data:: ITEM_TRASH = siege.network.Message.ITEM_TRASH
 
    .. data:: ITEM_UNEQUIP = siege.network.Message.ITEM_UNEQUIP
 
@@ -68,6 +84,8 @@ Message
    .. data:: LOAD_COMPLETE = siege.network.Message.LOAD_COMPLETE
 
    .. data:: MERCHANT_CHANGE = siege.network.Message.MERCHANT_CHANGE
+
+   .. data:: NOTIFICATION_SYSTEM = siege.network.Message.NOTIFICATION_SYSTEM
 
    .. data:: NPC_DISMISS = siege.network.Message.NPC_DISMISS
 
@@ -83,7 +101,7 @@ Message
 
    .. data:: PLAYER_RESERVE = siege.network.Message.PLAYER_RESERVE
 
-   .. data:: REALM_INFO = siege.network.Message.REALM_INFO
+   .. data:: PLAYER_RESPAWN = siege.network.Message.PLAYER_RESPAWN
 
    .. data:: RESEARCH_DATA = siege.network.Message.RESEARCH_DATA
 
@@ -108,6 +126,8 @@ Message
    .. data:: TRAVEL_SELECT = siege.network.Message.TRAVEL_SELECT
 
    .. data:: TRAVEL_SHOW_UI = siege.network.Message.TRAVEL_SHOW_UI
+
+   .. data:: VERSION_CHECK = siege.network.Message.VERSION_CHECK
 
    .. data:: WORLD_INFO = siege.network.Message.WORLD_INFO
 
@@ -337,23 +357,21 @@ Server
 
    .. method:: ban( arg2)
 
-      Bans a client from the server.
-
-
-      :param arg2: 
-
-      :type arg2: :class:`NetworkId`
-
-      :rtype: str
-
-   .. method:: ban( arg2)
-
       Bans a client from the server by ip.
 
 
       :param arg2: 
 
       :type arg2: str
+
+   .. method:: getIp( arg2)
+
+      Retrieves the IP for the client.:param target: (:class:`NetworkId`)
+
+
+      :param arg2: 
+
+      :type arg2: :class:`NetworkId`
 
       :rtype: str
 
@@ -457,6 +475,10 @@ NetworkManager
 
       :type arg3: object
 
+   .. method:: clearConnect( )
+
+      
+
    .. method:: getClient( )
 
       
@@ -511,6 +533,12 @@ NetworkManager
 
       :type password: str
 
+   .. method:: shouldConnect( )
+
+      
+
+      :rtype: bool
+
    .. method:: update( frameTime)
 
       
@@ -544,6 +572,18 @@ NetworkManager
       :param standalone: 
 
       :type standalone: bool
+
+   .. attribute:: connectHasPassword
+
+      
+
+   .. attribute:: connectIp
+
+      
+
+   .. attribute:: connectPort
+
+      
 
    .. attribute:: onReset
 

@@ -35,7 +35,13 @@ CombatStatus
 
    .. data:: Dead = siege.component.CombatStatus.Dead
 
+   .. data:: Defending = siege.component.CombatStatus.Defending
+
+   .. data:: Dodging = siege.component.CombatStatus.Dodging
+
    .. data:: Idle = siege.component.CombatStatus.Idle
+
+   .. data:: Using = siege.component.CombatStatus.Using
 
 CombatTeam
 -----------------------------------
@@ -428,6 +434,18 @@ Component
 
       :type version: int
 
+   .. method:: readEntities( stream, version)
+
+      
+
+      :param stream: 
+
+      :type stream: :class:`DataStream`
+
+      :param version: 
+
+      :type version: int
+
    .. method:: restore( state)
 
       
@@ -474,6 +492,14 @@ Component
 
       :type stream: :class:`DataStream`
 
+   .. method:: writeEntities( stream)
+
+      
+
+      :param stream: 
+
+      :type stream: :class:`DataStream`
+
 AnimationComponent
 -----------------------------------
 .. class:: AnimationComponent
@@ -488,13 +514,13 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: getAnimationLength( arg2)
+   .. method:: getAnimationLength( [group=''])
 
       
 
-      :param arg2: 
+      :param group: 
 
-      :type arg2: str
+      :type group: str
 
       :rtype: int
 
@@ -552,13 +578,17 @@ AnimationComponent
 
       :rtype: bool
 
-   .. method:: hide( [group=''])
+   .. method:: hide( [group=''[, bypassLock=False]])
 
       
 
       :param group: 
 
       :type group: str
+
+      :param bypassLock: 
+
+      :type bypassLock: bool
 
    .. method:: hold( [group=''])
 
@@ -567,6 +597,12 @@ AnimationComponent
       :param group: 
 
       :type group: str
+
+   .. method:: isLocked( )
+
+      
+
+      :rtype: bool
 
    .. method:: isPlaying( name[, group=''])
 
@@ -592,7 +628,11 @@ AnimationComponent
 
       :rtype: bool
 
-   .. method:: pause( [group=''])
+   .. method:: lock( )
+
+      
+
+   .. method:: pause( [group=''[, bypassLock=False]])
 
       
 
@@ -600,7 +640,11 @@ AnimationComponent
 
       :type group: str
 
-   .. method:: play( [name=''[, group=''[, forceRestart=False]]])
+      :param bypassLock: 
+
+      :type bypassLock: bool
+
+   .. method:: play( [name=''[, group=''[, forceRestart=False[, bypassLock=False]]]])
 
       
 
@@ -615,6 +659,10 @@ AnimationComponent
       :param forceRestart: 
 
       :type forceRestart: bool
+
+      :param bypassLock: 
+
+      :type bypassLock: bool
 
    .. method:: queue( name[, group=''])
 
@@ -644,13 +692,21 @@ AnimationComponent
 
       :type downOnly: bool
 
-   .. method:: stop( [group=''])
+   .. method:: stop( [group=''[, bypassLock=False]])
 
       
 
       :param group: 
 
       :type group: str
+
+      :param bypassLock: 
+
+      :type bypassLock: bool
+
+   .. method:: unlock( )
+
+      
 
    .. method:: wasPlaying( name[, group=''])
 
@@ -666,9 +722,69 @@ AnimationComponent
 
       :rtype: bool
 
+   .. attribute:: defaultAnimation
+
+      
+
    .. attribute:: onFinished
 
       
+
+AttachmentComponent
+-----------------------------------
+.. class:: AttachmentComponent
+
+   
+
+   .. method:: attach( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: :class:`Entity`
+
+   .. method:: detach( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: getAttached( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: :class:`Entity`
+
+   .. method:: hasAttached( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
+   .. method:: hasAttached( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :rtype: bool
 
 BagComponent
 -----------------------------------
@@ -786,6 +902,16 @@ CombatComponent
 
       :rtype: bool
 
+   .. method:: hasCooldownTolerant( cooldown)
+
+      
+
+      :param cooldown: 
+
+      :type cooldown: :class:`Cooldown`
+
+      :rtype: bool
+
    .. method:: hit( attackId, entity)
 
       
@@ -812,6 +938,14 @@ CombatComponent
 
       :type alive: bool
 
+   .. method:: setCanRecover( canRecover)
+
+      
+
+      :param canRecover: 
+
+      :type canRecover: bool
+
    .. method:: setCooldown( cooldown)
 
       
@@ -819,6 +953,14 @@ CombatComponent
       :param cooldown: 
 
       :type cooldown: :class:`Cooldown`
+
+   .. method:: setFatigued( fatigued)
+
+      
+
+      :param fatigued: 
+
+      :type fatigued: bool
 
    .. method:: setInvincible( invincible)
 
@@ -858,6 +1000,10 @@ CombatComponent
 
       :type frameTime: int
 
+   .. attribute:: canRecover
+
+      
+
    .. attribute:: cooldowns
 
       
@@ -871,6 +1017,10 @@ CombatComponent
       
 
    .. attribute:: isAlive
+
+      
+
+   .. attribute:: isFatigued
 
       
 
@@ -972,11 +1122,15 @@ CraftComponent
 
       
 
+   .. attribute:: requiresDiscoveryMaterials
+
+      
+
    .. attribute:: results
 
       
 
-   .. attribute:: serviceRequired
+   .. attribute:: servicesRequired
 
       
 
@@ -1068,6 +1222,24 @@ EffectsComponent
 
       :rtype: bool
 
+   .. method:: level( effect, level, duration)
+
+      
+
+      :param effect: 
+
+      :type effect: str
+
+      :param level: 
+
+      :type level: int
+
+      :param duration: 
+
+      :type duration: int
+
+      :rtype: int
+
    .. method:: remove( effect[, duration=0])
 
       
@@ -1079,6 +1251,10 @@ EffectsComponent
       :param duration: 
 
       :type duration: int
+
+   .. method:: removeAll( )
+
+      
 
    .. attribute:: onAddEffect
 
@@ -1141,6 +1317,12 @@ EquipmentComponent
       :param type: 
 
       :type type: str
+
+      :rtype: bool
+
+   .. method:: isAttached( )
+
+      
 
       :rtype: bool
 
@@ -1210,7 +1392,7 @@ FoliageComponent
 
    
 
-   .. method:: getCompatableTiles( )
+   .. method:: getCompatibleTiles( )
 
       
 
@@ -1338,7 +1520,27 @@ GearComponent
 
       :rtype: :class:`GearSlot`
 
+   .. method:: getCategorySlots( category)
+
+      
+
+      :param category: 
+
+      :type category: str
+
+      :rtype: :class:`StringList`
+
    .. method:: isEnabled( slot)
+
+      
+
+      :param slot: 
+
+      :type slot: str
+
+      :rtype: bool
+
+   .. method:: isOpen( slot)
 
       
 
@@ -1532,6 +1734,16 @@ InventoryComponent
 
       :type item: :class:`InventoryItem`
 
+   .. method:: hasUniqueItem( entity)
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :rtype: bool
+
    .. method:: isEmpty( index)
 
       
@@ -1579,6 +1791,20 @@ InventoryComponent
       :param content: 
 
       :type content: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: int
+
+   .. method:: remove( content[, quantity=1])
+
+      
+
+      :param content: 
+
+      :type content: :class:`Entity`
 
       :param quantity: 
 
@@ -1636,6 +1862,14 @@ ItemComponent
 
       
 
+   .. attribute:: canRepeatUse
+
+      
+
+   .. attribute:: classification
+
+      
+
    .. attribute:: cooldown
 
       
@@ -1656,7 +1890,7 @@ ItemComponent
 
       
 
-   .. attribute:: isDiscovered
+   .. attribute:: holdExterior
 
       
 
@@ -1669,6 +1903,15 @@ ItemComponent
       
 
    .. attribute:: quality
+
+      
+
+   .. attribute:: requiresResearch
+
+       |      :class:`Item` requires to be research through research system otherwise item is automatically researched when first discovered.
+
+
+   .. attribute:: scraps
 
       
 
@@ -1864,7 +2107,15 @@ MonsterComponent
 
       
 
+   .. attribute:: isParagon
+
+      
+
    .. attribute:: layer
+
+      
+
+   .. attribute:: levels
 
       
 
@@ -1951,6 +2202,14 @@ PhysicsComponent
       :param direction: 
 
       :type direction: :class:`Direction`
+
+   .. method:: applyForce( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
 
    .. method:: calculateJumpHeight( speed, height)
 
@@ -2066,6 +2325,14 @@ PhysicsComponent
 
       :rtype: bool
 
+   .. method:: setBody( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Rect`
+
    .. method:: setFriction( friction)
 
       
@@ -2122,6 +2389,10 @@ PhysicsComponent
 
       
 
+   .. attribute:: isUnderwater
+
+      
+
    .. attribute:: jumpTimer
 
       
@@ -2156,7 +2427,7 @@ PlacementComponent
 
       
 
-      :rtype: str
+      :rtype: :class:`InventoryItem`
 
    .. method:: getRect( )
 
@@ -2194,6 +2465,10 @@ PlacementComponent
 
       
 
+   .. attribute:: destroyOnSupportRemoved
+
+      
+
    .. attribute:: supportEntity
 
       
@@ -2213,6 +2488,10 @@ PlayerStateComponent
       
 
    .. attribute:: canMove
+
+      
+
+   .. attribute:: isBeginner
 
       
 
@@ -2328,6 +2607,12 @@ RenderComponent
 
       :rtype: float
 
+   .. method:: getScale( )
+
+      
+
+      :rtype: :class:`Vector`
+
    .. method:: getSize( )
 
       
@@ -2390,6 +2675,14 @@ RenderComponent
 
       :type arg2: float
 
+   .. method:: setScale( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
    .. method:: setTexture( arg2)
 
       
@@ -2422,7 +2715,27 @@ RenderComponent
 
       :type arg3: int
 
+   .. method:: useIconTexture( )
+
+      
+
+   .. method:: useTexture( )
+
+      
+
+   .. method:: useWorldIconTexture( )
+
+      
+
+   .. attribute:: brightness
+
+      
+
    .. attribute:: onMove
+
+      
+
+   .. attribute:: rotation
 
       
 
@@ -2554,7 +2867,7 @@ ModularRenderComponent
 
       :type arg2: str
 
-   .. method:: render( target[, realmHalfWidth=0])
+   .. method:: render( target[, loopWidth=0])
 
       
 
@@ -2562,9 +2875,29 @@ ModularRenderComponent
 
       :type target: :class:`sfRenderTarget`
 
-      :param realmHalfWidth: 
+      :param loopWidth: 
 
-      :type realmHalfWidth: int
+      :type loopWidth: int
+
+   .. method:: renderLooped( target, position, >[, loopWidth=0]])
+
+      
+
+      :param target: 
+
+      :type target: :class:`sfRenderTarget`
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :param >: 
+
+      :type >: =0
+
+      :param loopWidth: 
+
+      :type loopWidth: int
 
    .. method:: setColor( arg2)
 
@@ -2611,6 +2944,10 @@ ModularRenderComponent
       :type arg2: int
 
    .. attribute:: alpha
+
+      
+
+   .. attribute:: brightness
 
       
 
@@ -2715,6 +3052,28 @@ ReservesComponent
       :param blacklist: 
 
       :type blacklist: :class:`StringSet`
+
+ShieldComponent
+-----------------------------------
+.. class:: ShieldComponent
+
+   
+
+   .. attribute:: blockSound
+
+      
+
+   .. attribute:: magicalReduction
+
+      
+
+   .. attribute:: onUse
+
+      
+
+   .. attribute:: physicalReduction
+
+      
 
 StatsComponent
 -----------------------------------
@@ -2890,6 +3249,12 @@ TileComponent
 
       :rtype: int
 
+   .. method:: getUpdateTime( )
+
+      
+
+      :rtype: :class:`RangeUint`
+
    .. method:: isCompatible( compatibles)
 
       
@@ -2924,6 +3289,38 @@ TileComponent
 
       
 
+   .. attribute:: onCreated
+
+      
+
+   .. attribute:: onDamaged
+
+      
+
+   .. attribute:: onDestroyed
+
+      
+
+   .. attribute:: onFoliageChange
+
+      
+
+   .. attribute:: onLoad
+
+      
+
+   .. attribute:: onNeighborChange
+
+      
+
+   .. attribute:: onPhysicsEntityContact
+
+      
+
+   .. attribute:: onUpdate
+
+      
+
    .. attribute:: particleColor
 
       
@@ -2938,7 +3335,55 @@ ToolComponent
 
    
 
+   .. method:: checkUsability( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`LayerManager`
+
+      :param arg3: 
+
+      :type arg3: :class:`Player`
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
+
+      :param arg5: 
+
+      :type arg5: :class:`Layer`
+
+      :rtype: :class:`ToolUsabilityResult`
+
+   .. method:: getHitTiles( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileLayer`
+
+      :param arg3: 
+
+      :type arg3: :class:`Player`
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
+
+      :param arg5: 
+
+      :type arg5: float
+
+      :rtype: :class:`TileVectorList`
+
    .. attribute:: compatible
+
+      
+
+   .. attribute:: harvestPower
 
       
 
@@ -3022,11 +3467,35 @@ ToolbarComponent
 
       :type arg4: :class:`ToolItem`
 
+   .. method:: set( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :param arg4: 
+
+      :type arg4: :class:`ToolbarSlot`
+
+      :param arg5: 
+
+      :type arg5: :class:`ToolItem`
+
    .. attribute:: onChange
 
       
 
    .. attribute:: onSelectedChange
+
+      
+
+   .. attribute:: onToolbarChange
 
       
 
@@ -3038,7 +3507,11 @@ ToolbarComponent
 
       
 
-   .. attribute:: tools
+   .. attribute:: toolbar
+
+      
+
+   .. attribute:: toolbars
 
       
 
@@ -3078,6 +3551,10 @@ WeaponComponent
 
       
 
+   .. attribute:: currentAttack
+
+      
+
    .. attribute:: damageType
 
       
@@ -3087,6 +3564,14 @@ WeaponComponent
       
 
    .. attribute:: power
+
+      
+
+   .. attribute:: swapBackOnAnimationFinish
+
+      
+
+   .. attribute:: weaponAttacks
 
       
 
@@ -3228,6 +3713,16 @@ Animation
 
       
 
+Attachment
+-----------------------------------
+.. class:: Attachment
+
+   
+
+   .. method:: __init__( )
+
+      
+
 Bag
 -----------------------------------
 .. class:: Bag
@@ -3318,7 +3813,7 @@ Craft
 
    
 
-   .. method:: __init__( [category=''[, subcategory=''[, level=1[, experience=0[, serviceRequired='']]]]])
+   .. method:: __init__( [category=''[, subcategory=''[, level=1[, experience=0]]]])
 
       
 
@@ -3338,10 +3833,6 @@ Craft
 
       :type experience: int
 
-      :param serviceRequired: 
-
-      :type serviceRequired: str
-
    .. method:: insertMaterial( itemPath, quantity)
 
       
@@ -3354,7 +3845,7 @@ Craft
 
       :type quantity: int
 
-   .. method:: material( itemPath, quantity)
+   .. method:: material( itemPath, quantity, requiresDiscovery)
 
       
 
@@ -3365,6 +3856,10 @@ Craft
       :param quantity: 
 
       :type quantity: int
+
+      :param requiresDiscovery: 
+
+      :type requiresDiscovery: bool
 
    .. method:: result( quantity, quality)
 
@@ -3430,11 +3925,15 @@ Craft
 
       
 
+   .. attribute:: requiresDiscoveryMaterials
+
+      
+
    .. attribute:: results
 
       
 
-   .. attribute:: serviceRequired
+   .. attribute:: servicesRequired
 
       
 
@@ -3705,11 +4204,15 @@ Item
 
       
 
-   .. attribute:: cooldown
+   .. attribute:: canRepeatUse
 
       
 
-   .. attribute:: discovered
+   .. attribute:: classification
+
+      
+
+   .. attribute:: cooldown
 
       
 
@@ -3721,7 +4224,19 @@ Item
 
       
 
+   .. attribute:: holdExterior
+
+      
+
    .. attribute:: quality
+
+      
+
+   .. attribute:: requiresResearch
+
+      
+
+   .. attribute:: scraps
 
       
 
@@ -3861,6 +4376,10 @@ ModularRender
 
       :type arg2: list
 
+   .. attribute:: attachmentAnimationBlacklists
+
+      
+
    .. attribute:: dataFile
 
       
@@ -3911,7 +4430,15 @@ Monster
 
       
 
+   .. attribute:: isParagon
+
+      
+
    .. attribute:: layer
+
+      
+
+   .. attribute:: levels
 
       
 
@@ -4081,6 +4608,10 @@ Placement
 
       
 
+   .. attribute:: destroyOnSupportRemoved
+
+      
+
    .. attribute:: dropped
 
       
@@ -4164,6 +4695,44 @@ Reserves
    
 
    .. method:: __init__( )
+
+      
+
+Shield
+-----------------------------------
+.. class:: Shield
+
+   
+
+   .. method:: __init__( [physicalReduction=0[, magicalReduction=0[, onUse=None]]])
+
+      
+
+      :param physicalReduction: 
+
+      :type physicalReduction: int
+
+      :param magicalReduction: 
+
+      :type magicalReduction: int
+
+      :param onUse: 
+
+      :type onUse: object
+
+   .. attribute:: blockSound
+
+      
+
+   .. attribute:: magicalReduction
+
+      
+
+   .. attribute:: onUse
+
+      
+
+   .. attribute:: physicalReduction
 
       
 
@@ -4317,6 +4886,10 @@ Equipment
 
       
 
+   .. attribute:: isAttached
+
+      
+
    .. attribute:: levelRequired
 
       
@@ -4459,7 +5032,39 @@ Tile
 
       
 
+   .. attribute:: onCreated
+
+      
+
+   .. attribute:: onDamaged
+
+      
+
+   .. attribute:: onDestroyed
+
+      
+
+   .. attribute:: onFoliageChange
+
+      
+
    .. attribute:: onHitSound
+
+      
+
+   .. attribute:: onLoad
+
+      
+
+   .. attribute:: onNeighborChange
+
+      
+
+   .. attribute:: onPhysicsEntityContact
+
+      
+
+   .. attribute:: onUpdate
 
       
 
@@ -4507,6 +5112,10 @@ Tile
 
       
 
+   .. attribute:: updateTime
+
+      
+
    .. attribute:: variants
 
       
@@ -4517,13 +5126,17 @@ Tool
 
    
 
-   .. method:: __init__( [power=0[, reach=0[, compatible=[]]]])
+   .. method:: __init__( [power=0[, harvestPower=0[, reach=0[, compatible=[]]]]])
 
       
 
       :param power: 
 
       :type power: int
+
+      :param harvestPower: 
+
+      :type harvestPower: int
 
       :param reach: 
 
@@ -4534,6 +5147,10 @@ Tool
       :type compatible: list
 
    .. attribute:: compatible
+
+      
+
+   .. attribute:: harvestPower
 
       
 
@@ -4644,6 +5261,14 @@ Weapon
       
 
    .. attribute:: power
+
+      
+
+   .. attribute:: swapBackOnAnimationFinish
+
+      
+
+   .. attribute:: weaponAttacks
 
       
 
@@ -5183,7 +5808,7 @@ GearSlot
 
    
 
-   .. method:: __init__( name, category, icon)
+   .. method:: __init__( name, category, icon[, attachment=''[, active=True]])
 
       
 
@@ -5198,6 +5823,22 @@ GearSlot
       :param icon: 
 
       :type icon: object
+
+      :param attachment: 
+
+      :type attachment: str
+
+      :param active: 
+
+      :type active: bool
+
+   .. attribute:: active
+
+      
+
+   .. attribute:: attachment
+
+      
 
    .. attribute:: category
 
@@ -6843,6 +7484,44 @@ TalentMap
 
       :type arg3: object
 
+ToolUsabilityResult
+-----------------------------------
+.. class:: ToolUsabilityResult
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: entity
+
+      
+
+   .. attribute:: harvestCompatible
+
+      
+
+   .. attribute:: isUsable
+
+      
+
+   .. attribute:: itemCompatible
+
+      
+
+   .. attribute:: layer
+
+      
+
+   .. attribute:: position
+
+      
+
+   .. attribute:: useTile
+
+      
+
 ToolbarItem
 -----------------------------------
 .. class:: ToolbarItem
@@ -6864,6 +7543,220 @@ ToolbarItem
 ToolbarItemList
 -----------------------------------
 .. class:: ToolbarItemList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+ToolbarList
+-----------------------------------
+.. class:: ToolbarList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+WeaponAttack
+-----------------------------------
+.. class:: WeaponAttack
+
+   
+
+   .. method:: __init__( power, animation[, hitFrames=[][, attackTime=0[, comboTime=0[, sound='']]]])
+
+      
+
+      :param power: 
+
+      :type power: int
+
+      :param animation: 
+
+      :type animation: str
+
+      :param hitFrames: 
+
+      :type hitFrames: list
+
+      :param attackTime: 
+
+      :type attackTime: int
+
+      :param comboTime: 
+
+      :type comboTime: int
+
+      :param sound: 
+
+      :type sound: str
+
+   .. attribute:: animation
+
+      
+
+   .. attribute:: attackTime
+
+      
+
+   .. attribute:: comboTime
+
+      
+
+   .. attribute:: hitFrames
+
+      
+
+   .. attribute:: power
+
+      
+
+   .. attribute:: sound
+
+      
+
+WeaponAttackList
+-----------------------------------
+.. class:: WeaponAttackList
 
    
 

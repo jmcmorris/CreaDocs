@@ -3,6 +3,18 @@
 siege.graphic
 ==================
 
+DisplayMode
+-----------------------------------
+.. class:: DisplayMode
+
+   
+
+   .. data:: Fullscreen = siege.graphic.DisplayMode.Fullscreen
+
+   .. data:: Window = siege.graphic.DisplayMode.Window
+
+   .. data:: WindowFullscreen = siege.graphic.DisplayMode.WindowFullscreen
+
 AnimationMap
 -----------------------------------
 .. class:: AnimationMap
