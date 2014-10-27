@@ -8,7 +8,9 @@ Modding in Crea has been a focus since the beginning. All of the game's content 
 Guides
 ------
 
-:doc:`Getting Started <gettingstarted>`
+* :doc:`Getting Started <gettingstarted>`
+* :doc:`Using a Mod <using_mod>`
+* :doc:`Creating a Mod <creating_mod>`
 
 
 Indices and tables

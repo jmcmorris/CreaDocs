@@ -32,22 +32,29 @@ Possibilities
  * Talent
 
 
-Directory Structure
--------------------
+Locating the Crea Files
+-----------------------
 
-Typically files can be placed however you want inside a mod; however, there are a few files that are needed or are treated specially.
+To find the Crea source code:
 
- * mymod
-  * info
-  * preview.png
-  * registration.py
-  * coremod/
+ * Open Steam and go to your library.
+ * Right click on Crea and click on the "Properties" option.
+ * Click on the "Local Files" tab.
+ * Click "Browse Local Files..." button from that page.
 
-info
-    Contains mod information such as title, description, and version number. (`JSON Format <http://www.json.org/>`_)
 
-registration.py
-    Game engine will call the ```register``` method when registering all mod packages.
+Getting a Text Editor
+---------------------
 
-coremod/
-    Allows for modification of python code in the core package
+Now that you've found the source code, you'll want to use a text editor while modding. We recommend using `Sublime Text <http://www.sublimetext.com/>`_. It's full-featured and is free to use for non-commercial use.
+
+Once that's installed, we'll setup the syntax highlighting for .ce files. To do this:
+ * Navigate to mods/core/body/player.ce and open that file in Sublime Text.
+ * With player.ce open, at the toolbar up top, click View => Syntax => Open all files with current extension as... => Python => Python.
+
+Syntax highlighting should now be enabled for all .ce files. Next we want to add the Python code base to Sublime Text as a project:
+ * Click Project => Add folder to project... and select Crea/mods
+ * Now all of the directories and files will be conveniently accessible from the panel to the left.
+
+`If you need more help using Sublime Text view the documentation provided here. <https://www.sublimetext.com/docs/2/>`_
+
