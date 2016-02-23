@@ -1,4 +1,9 @@
-Installing a mod
+
+Using Mods
+==========
+
+
+Installing a Mod
 ----------------
 
 * From the Steam "Library" tab, select Crea.
@@ -7,8 +12,8 @@ Installing a mod
 * From this page, you can browse, search, and review community made content.
 * If you want to install a mod, simply hit the "Subscribe" button at any workshop page.
 
-Managing mods
--------------
+Managing Installed Mods
+-----------------------
 
 * After you've subscribed to the workshop item, it'll automatically be downloaded.
 * Click the wrench in the top right of the Crea main menu to view a list of the currently installed mods.
