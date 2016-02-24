@@ -15,11 +15,15 @@ GrabbedItemLocation
 
    .. data:: CUSTOM = siege.GrabbedItemLocation.CUSTOM
 
+   .. data:: GADGET = siege.GrabbedItemLocation.GADGET
+
    .. data:: GEAR = siege.GrabbedItemLocation.GEAR
 
    .. data:: HAND = siege.GrabbedItemLocation.HAND
 
    .. data:: NONE = siege.GrabbedItemLocation.NONE
+
+   .. data:: QUICKBAR = siege.GrabbedItemLocation.QUICKBAR
 
    .. data:: RESERVE = siege.GrabbedItemLocation.RESERVE
 
@@ -40,6 +44,8 @@ PauseLocation
    .. data:: None = siege.PauseLocation.None
 
    .. data:: Option = siege.PauseLocation.Option
+
+   .. data:: PauseNoPlayers = siege.PauseLocation.PauseNoPlayers
 
    .. data:: Steam = siege.PauseLocation.Steam
 
@@ -119,6 +125,12 @@ ActiveTalent
 
       :rtype: bool
 
+   .. method:: isMaxLevel( )
+
+      
+
+      :rtype: bool
+
    .. method:: purchaseSkill( player, skill)
 
       
@@ -136,6 +148,10 @@ ActiveTalent
       
 
    .. attribute:: level
+
+      
+
+   .. attribute:: locked
 
       
 
@@ -392,6 +408,22 @@ CustomizationInfo
 
       
 
+   .. method:: read( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
+   .. method:: write( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
    .. attribute:: content
 
       
@@ -500,25 +532,13 @@ DynamicStat
 
       :type arg3: object
 
-   .. method:: addModifier( modifier)
-
-      
-
-      :param modifier: 
-
-      :type modifier: float
-
-   .. method:: adjust( value[, cap=0])
+   .. method:: adjust( value)
 
       
 
       :param value: 
 
       :type value: float
-
-      :param cap: 
-
-      :type cap: float
 
       :rtype: float
 
@@ -544,7 +564,13 @@ DynamicStat
 
       :rtype: float
 
-   .. method:: getValue( )
+   .. method:: getRaw( )
+
+      
+
+      :rtype: float
+
+   .. method:: getRawMax( )
 
       
 
@@ -562,15 +588,7 @@ DynamicStat
 
       :rtype: bool
 
-   .. method:: removeModifier( modifier)
-
-      
-
-      :param modifier: 
-
-      :type modifier: float
-
-   .. method:: set( value[, cap=0])
+   .. method:: mod( value[, isMultiplier=False])
 
       
 
@@ -578,9 +596,35 @@ DynamicStat
 
       :type value: float
 
-      :param cap: 
+      :param isMultiplier: 
 
-      :type cap: float
+      :type isMultiplier: bool
+
+      :rtype: int
+
+   .. method:: mod( key, value[, isMultiplier=False])
+
+      
+
+      :param key: 
+
+      :type key: str
+
+      :param value: 
+
+      :type value: float
+
+      :param isMultiplier: 
+
+      :type isMultiplier: bool
+
+   .. method:: set( value)
+
+      
+
+      :param value: 
+
+      :type value: float
 
    .. method:: setMax( value)
 
@@ -589,6 +633,22 @@ DynamicStat
       :param value: 
 
       :type value: float
+
+   .. method:: unmod( uid)
+
+      
+
+      :param uid: 
+
+      :type uid: int
+
+   .. method:: unmod( key)
+
+      
+
+      :param key: 
+
+      :type key: str
 
    .. attribute:: fullName
 
@@ -607,10 +667,6 @@ DynamicStat
       
 
    .. attribute:: onChangeMax
-
-      
-
-   .. attribute:: onChangeModifier
 
       
 
@@ -656,11 +712,19 @@ EngineSkill
 
       
 
-   .. attribute:: description
+   .. attribute:: getDescription
 
       
 
    .. attribute:: getIcon
+
+      
+
+   .. attribute:: getModifiers
+
+      
+
+   .. attribute:: getName
 
       
 
@@ -1030,6 +1094,10 @@ Entity
 
       
 
+   .. attribute:: realmUid
+
+      
+
 EntityManager
 -----------------------------------
 .. class:: EntityManager
@@ -1334,6 +1402,14 @@ Game
 
       
 
+   .. method:: abort( error)
+
+      
+
+      :param error: 
+
+      :type error: str
+
    .. method:: broadcastMessage( message)
 
       
@@ -1396,19 +1472,17 @@ Game
 
       :rtype: bool
 
-   .. method:: isPaused( )
-
-      
-
-      :rtype: bool
-
-   .. method:: openUrl( url)
+   .. method:: openUrl( url[, forceBrowser=False])
 
       
 
       :param url: 
 
       :type url: str
+
+      :param forceBrowser: 
+
+      :type forceBrowser: bool
 
    .. method:: pause( arg2)
 
@@ -1478,6 +1552,30 @@ Game
 
       
 
+   .. method:: requestTextInput( description, maxCharacters, currentText, isPassword, callback)
+
+      
+
+      :param description: 
+
+      :type description: str
+
+      :param maxCharacters: 
+
+      :type maxCharacters: int
+
+      :param currentText: 
+
+      :type currentText: str
+
+      :param isPassword: 
+
+      :type isPassword: bool
+
+      :param callback: 
+
+      :type callback: object
+
    .. method:: reset( )
 
       
@@ -1540,11 +1638,19 @@ Game
 
       :rtype: :class:`Game`
 
+   .. attribute:: achievements
+
+      
+
    .. attribute:: args
 
       
 
    .. attribute:: audio
+
+      
+
+   .. attribute:: configDirectory
 
       
 
@@ -1580,7 +1686,7 @@ Game
 
       
 
-   .. attribute:: netProfiler
+   .. attribute:: isPaused
 
       
 
@@ -1604,11 +1710,19 @@ Game
 
       
 
+   .. attribute:: renderCursor
+
+      
+
    .. attribute:: scene
 
       
 
    .. attribute:: state
+
+      
+
+   .. attribute:: steamUid
 
       
 
@@ -1719,6 +1833,60 @@ GrabbedItem
       
 
    .. attribute:: slot
+
+      
+
+Integrity
+-----------------------------------
+.. class:: Integrity
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. staticmethod:: checkModule( arg1)
+
+      
+
+      :param arg1: 
+
+      :type arg1: object
+
+      :rtype: bool
+
+   .. staticmethod:: checkPath( arg1)
+
+      
+
+      :param arg1: 
+
+      :type arg1: str
+
+      :rtype: bool
+
+   .. staticmethod:: create( arg1)
+
+      
+
+      :param arg1: 
+
+      :type arg1: list
+
+   .. staticmethod:: isEnabled( )
+
+      
+
+      :rtype: bool
+
+   .. staticmethod:: isValid( )
+
+      
+
+      :rtype: bool
+
+   .. staticmethod:: load( )
 
       
 
@@ -1941,6 +2109,80 @@ InventoryItem
 
       
 
+ItemGenus
+-----------------------------------
+.. class:: ItemGenus
+
+   
+
+   .. method:: __init__( content[, quantity=1])
+
+      
+
+      :param content: 
+
+      :type content: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( contentName[, quantity=1])
+
+      
+
+      :param contentName: 
+
+      :type contentName: str
+
+      :param quantity: 
+
+      :type quantity: int
+
+   .. method:: __init__( entity[, quantity=1])
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :param quantity: 
+
+      :type quantity: int
+
+   .. method:: __init__( entity, contentName[, quantity=1])
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :param contentName: 
+
+      :type contentName: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+   .. method:: __init__( item)
+
+      
+
+      :param item: 
+
+      :type item: :class:`ItemGenus`
+
+   .. attribute:: genus
+
+      
+
 ToolItem
 -----------------------------------
 .. class:: ToolItem
@@ -1999,9 +2241,13 @@ ToolItem
 
       :rtype: :class:`Cooldown`
 
-   .. method:: getIconPath( )
+   .. method:: getIconPath( player)
 
       
+
+      :param player: 
+
+      :type player: :class:`Player`
 
       :rtype: str
 
@@ -2016,6 +2262,18 @@ ToolItem
       
 
       :rtype: bool
+
+   .. method:: pack( stream, contentStash)
+
+      
+
+      :param stream: 
+
+      :type stream: :class:`DataStream`
+
+      :param contentStash: 
+
+      :type contentStash: :class:`ContentStash`
 
    .. method:: read( arg2, stream, contentStash, entityManager, player)
 
@@ -2040,6 +2298,26 @@ ToolItem
       :param player: 
 
       :type player: int
+
+   .. method:: unpack( stream, contentStash, entityManager, player)
+
+      
+
+      :param stream: 
+
+      :type stream: :class:`DataStream`
+
+      :param contentStash: 
+
+      :type contentStash: :class:`ContentStash`
+
+      :param entityManager: 
+
+      :type entityManager: :class:`EntityManager`
+
+      :param player: 
+
+      :type player: :class:`Player`
 
    .. method:: write( arg2, stream, contentStash)
 
@@ -2080,6 +2358,18 @@ ItemBag
       :param arg2: 
 
       :type arg2: int
+
+   .. method:: __init__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
 
    .. method:: __init__( arg2, arg3)
 
@@ -2191,6 +2481,16 @@ ItemBag
 
       :rtype: int
 
+   .. method:: hasContent( content)
+
+      
+
+      :param content: 
+
+      :type content: :class:`Content`
+
+      :rtype: bool
+
    .. method:: hasUniqueItem( entity)
 
       
@@ -2293,12 +2593,6 @@ ItemBag
 
       :type item: :class:`InventoryItem`
 
-   .. method:: size( )
-
-      
-
-      :rtype: int
-
    .. method:: stack( entity, quantity)
 
       
@@ -2362,6 +2656,10 @@ ItemBag
       
 
    .. attribute:: openSlots
+
+      
+
+   .. attribute:: size
 
       
 
@@ -2469,6 +2767,16 @@ Locale
 
       :rtype: str
 
+   .. staticmethod:: getFont( name)
+
+      
+
+      :param name: 
+
+      :type name: str
+
+      :rtype: str
+
    .. staticmethod:: getLocale( )
 
       
@@ -2507,24 +2815,6 @@ Locale
 
       :type packages: :class:`Packages`
 
-Overlay
------------------------------------
-.. class:: Overlay
-
-   
-
-   .. method:: handleResize( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: int
-
-      :param arg3: 
-
-      :type arg3: int
-
 Player
 -----------------------------------
 .. class:: Player
@@ -2551,9 +2841,13 @@ Player
 
       :type paths: :class:`StringList`
 
-   .. method:: attachHeldItems( )
+   .. method:: attachHeldItems( [removeAnimationHandler=True])
 
       
+
+      :param removeAnimationHandler: 
+
+      :type removeAnimationHandler: bool
 
    .. method:: attemptEquip( slot, item)
 
@@ -2597,13 +2891,17 @@ Player
       :rtype: bool
 
 
-   .. method:: canSplitItem( item)
+   .. method:: canSplitItem( item[, quantity=1])
 
       
 
       :param item: 
 
       :type item: :class:`InventoryItem`
+
+      :param quantity: 
+
+      :type quantity: int
 
       :rtype: bool
 
@@ -2622,6 +2920,20 @@ Player
       
 
       :rtype: str
+
+   .. method:: getSplitItemQuantity( item, quantity)
+
+      
+
+      :param item: 
+
+      :type item: :class:`InventoryItem`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: int
 
    .. method:: getToolPower( arg2)
 
@@ -2643,7 +2955,19 @@ Player
 
       :rtype: int
 
-   .. method:: loadInfo( contentStash, entityManager, playerPath)
+   .. method:: isAggressive( )
+
+      
+
+      :rtype: bool
+
+   .. method:: isPassive( )
+
+      
+
+      :rtype: bool
+
+   .. method:: loadInfo( contentStash, entityManager, playerPath[, setupEntity=True])
 
       Loads the character information from the provided path.
 
@@ -2663,6 +2987,10 @@ Player
 
       :type playerPath:  str or unicode
 
+
+      :param setupEntity: 
+
+      :type setupEntity: bool
 
    .. method:: save( arg2, fileManager, contentStash, writers, asynchronous)
 
@@ -2709,25 +3037,21 @@ Player
 
       :type entityId: int
 
-   .. method:: showUseItem( itemEntity, position, index, slot, toolItem[, swapBackOnAnimationFinish=True])
+   .. method:: showUseItem( position, index, slot, toolItem[, swapBackOnAnimationFinish=True])
 
       
 
-      :param itemEntity: 
-
-      :type itemEntity: :class:`Entity`
-
       :param position: 
 
-      :type position: :class:`Vector`
+      :type position: :class:`Entity`
 
       :param index: 
 
-      :type index: int
+      :type index: :class:`Vector`
 
       :param slot: 
 
-      :type slot: :class:`ToolbarSlot`
+      :type slot: bool
 
       :param toolItem: 
 
@@ -2741,6 +3065,11 @@ Player
 
       
 
+   .. attribute:: connectedTime
+
+       |      (:class:`Clock`) Tracks the amount of time the player has been connected to this world.
+
+
    .. attribute:: data
 
        |      (dict) Container for miscellaneous player data.
@@ -2749,6 +3078,11 @@ Player
    .. attribute:: directory
 
        |      Directory the character is saved into.
+
+
+   .. attribute:: dirty
+
+       |      (bool) Tracks if the player has data that needs to be sync'd from the server to client.
 
 
    .. attribute:: entity
@@ -2769,6 +3103,11 @@ Player
    .. attribute:: info
 
       
+
+   .. attribute:: lastUsedItemTimer
+
+       |      (:class:`Clock`) Tracks time since last used item.
+
 
    .. attribute:: mode
 
@@ -2830,10 +3169,6 @@ Profiler
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: disable( )
 
       
@@ -2842,67 +3177,39 @@ Profiler
 
       
 
-   .. method:: finish( arg2)
+   .. method:: finish( )
 
       
 
-      :param arg2: 
-
-      :type arg2: str
-
-   .. method:: start( arg2)
+   .. method:: log( [name=''])
 
       
 
-      :param arg2: 
+      :param name: 
 
-      :type arg2: str
+      :type name: str
 
-   .. attribute:: data
+   .. method:: start( name[, parent=''[, isStandalone=False]])
 
       
+
+      :param name: 
+
+      :type name: str
+
+      :param parent: 
+
+      :type parent: str
+
+      :param isStandalone: 
+
+      :type isStandalone: bool
 
    .. attribute:: enabled
 
       
 
-   .. attribute:: size
-
-      
-
-NetProfiler
------------------------------------
-.. class:: NetProfiler
-
-   
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: pushData( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: str
-
-      :param arg3: 
-
-      :type arg3: int
-
-ProfilerData
------------------------------------
-.. class:: ProfilerData
-
-   
-
-   .. method:: __init__( )
-
-      
-
-   .. attribute:: time
+   .. attribute:: netProfile
 
       
 
@@ -3034,11 +3341,19 @@ Skill
 
       
 
-   .. attribute:: description
+   .. attribute:: getDescription
 
       
 
    .. attribute:: getIcon
+
+      
+
+   .. attribute:: getModifiers
+
+      
+
+   .. attribute:: getName
 
       
 
@@ -3067,6 +3382,10 @@ Skill
       
 
    .. attribute:: onUse
+
+      
+
+   .. attribute:: staminaCosts
 
       
 
@@ -3260,13 +3579,23 @@ Damage
 
       :rtype: bool
 
+   .. method:: current( id)
+
+      
+
+      :param id: 
+
+      :type id: str
+
+      :rtype: int
+
 TimerSystem
 -----------------------------------
 .. class:: TimerSystem
 
    
 
-   .. method:: add( time, callback[, isPrecise=False])
+   .. method:: add( time, callback[, isPrecise=False[, isExitJob=False]])
 
       
 
@@ -3282,6 +3611,10 @@ TimerSystem
 
       :type isPrecise: bool
 
+      :param isExitJob: 
+
+      :type isExitJob: bool
+
       :rtype: int
 
    .. method:: cancel( arg2)
@@ -3293,6 +3626,10 @@ TimerSystem
       :type arg2: int
 
    .. method:: clear( )
+
+      
+
+   .. method:: completeOnExit( )
 
       
 

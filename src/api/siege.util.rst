@@ -296,7 +296,7 @@ ChunkRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -305,7 +305,7 @@ ChunkRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -313,7 +313,23 @@ ChunkRect
 
       :type position: :class:`ChunkVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`ChunkRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -352,7 +368,7 @@ ChunkRect
 
       :type intersection: :class:`ChunkRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -1004,6 +1020,84 @@ Clock
 
       :rtype: :class:`Time`
 
+ColorList
+-----------------------------------
+.. class:: ColorList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 EventArg
 -----------------------------------
 .. class:: EventArg
@@ -1025,6 +1119,84 @@ EventArg
    .. attribute:: start
 
       
+
+FloatList
+-----------------------------------
+.. class:: FloatList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
 
 GameEvent
 -----------------------------------
@@ -1602,7 +1774,7 @@ PixelRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -1611,7 +1783,7 @@ PixelRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -1619,7 +1791,23 @@ PixelRect
 
       :type position: :class:`PixelVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`PixelRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -1658,7 +1846,7 @@ PixelRect
 
       :type intersection: :class:`PixelRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -2628,6 +2816,176 @@ PropertyStr
 
       
 
+PropertyUint
+-----------------------------------
+.. class:: PropertyUint
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: get( )
+
+      Returns data
+
+
+      :rtype: int
+
+   .. method:: read( stream)
+
+      Read this :class:`Property` from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
+
+      :type args: list
+
+   .. method:: set( arg2)
+
+      Changes data to parameter
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: set( arg2, arg3)
+
+      Changes data to parameter
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: list
+
+   .. method:: write( arg2)
+
+      Write this :class:`Property` to a :class:`DataStream`.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
+   .. attribute:: onChange
+
+      
+
+PropertyUint8
+-----------------------------------
+.. class:: PropertyUint8
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: get( )
+
+      Returns data
+
+
+      :rtype: int
+
+   .. method:: read( stream)
+
+      Read this :class:`Property` from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+   .. method:: read( stream, args)
+
+      Read this property from a stream and invokes its onChange event.
+
+
+      :param stream:  :class:`DataStream` to read from.
+
+
+      :type stream: :class:`DataStream`
+
+      :param args:  Additional arguments to pass to onChange event.
+
+
+      :type args: list
+
+   .. method:: set( arg2)
+
+      Changes data to parameter
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: set( arg2, arg3)
+
+      Changes data to parameter
+
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: list
+
+   .. method:: write( arg2)
+
+      Write this :class:`Property` to a :class:`DataStream`.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`DataStream`
+
+   .. attribute:: onChange
+
+      
+
 Random
 -----------------------------------
 .. class:: Random
@@ -2746,6 +3104,14 @@ Range
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -2757,6 +3123,12 @@ Range
       :param arg3: 
 
       :type arg3: object
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -2828,6 +3200,14 @@ RangeColor
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Color`
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -2839,6 +3219,12 @@ RangeColor
       :param arg3: 
 
       :type arg3: :class:`Color`
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -2910,6 +3296,14 @@ RangeFloat
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: float
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -2921,6 +3315,12 @@ RangeFloat
       :param arg3: 
 
       :type arg3: float
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -2992,6 +3392,14 @@ RangeInt
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -3003,6 +3411,12 @@ RangeInt
       :param arg3: 
 
       :type arg3: int
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -3074,6 +3488,14 @@ RangeTileVector
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -3085,6 +3507,12 @@ RangeTileVector
       :param arg3: 
 
       :type arg3: :class:`TileVector`
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -3156,6 +3584,14 @@ RangeUint
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -3167,6 +3603,12 @@ RangeUint
       :param arg3: 
 
       :type arg3: int
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -3238,6 +3680,14 @@ RangeUint8
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -3249,6 +3699,12 @@ RangeUint8
       :param arg3: 
 
       :type arg3: int
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -3320,6 +3776,14 @@ RangeVector
 
       
 
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
    .. method:: __init__( arg2, arg3)
 
       
@@ -3331,6 +3795,12 @@ RangeVector
       :param arg3: 
 
       :type arg3: :class:`Vector`
+
+   .. method:: __str__( )
+
+      
+
+      :rtype: str
 
    .. method:: clamp( arg2)
 
@@ -3626,7 +4096,7 @@ Rect
 
       :type y: float
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: float
@@ -3635,7 +4105,7 @@ Rect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -3643,7 +4113,23 @@ Rect
 
       :type position: :class:`Vector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: float
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`Rect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: float
@@ -3682,7 +4168,7 @@ Rect
 
       :type intersection: :class:`Rect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: float
@@ -4060,7 +4546,7 @@ RegionRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -4069,7 +4555,7 @@ RegionRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -4077,7 +4563,23 @@ RegionRect
 
       :type position: :class:`RegionVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`RegionRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -4116,7 +4618,7 @@ RegionRect
 
       :type intersection: :class:`RegionRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -4980,7 +5482,7 @@ SegmentRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -4989,7 +5491,7 @@ SegmentRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -4997,7 +5499,23 @@ SegmentRect
 
       :type position: :class:`SegmentVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`SegmentRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -5036,7 +5554,7 @@ SegmentRect
 
       :type intersection: :class:`SegmentRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -5848,6 +6366,84 @@ SpatialHash
 
       :type obj: object
 
+StringList
+-----------------------------------
+.. class:: StringList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 StringMap
 -----------------------------------
 .. class:: StringMap
@@ -6308,7 +6904,7 @@ SubtileRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -6317,7 +6913,7 @@ SubtileRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -6325,7 +6921,23 @@ SubtileRect
 
       :type position: :class:`SubtileVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`SubtileRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -6364,7 +6976,7 @@ SubtileRect
 
       :type intersection: :class:`SubtileRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -7228,7 +7840,7 @@ TileRect
 
       :type y: int
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -7237,7 +7849,7 @@ TileRect
 
    .. method:: contains( position[, loopWidth=0])
 
-      Return true if positiion is within this rectangle false otherwise
+      Return true if position is within this rectangle false otherwise
 
 
       :param position:  x,y coordinates to check
@@ -7245,7 +7857,23 @@ TileRect
 
       :type position: :class:`TileVector`
 
-      :param loopWidth:  How far to check on the x axis from param x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
+
+
+      :type loopWidth: int
+
+      :rtype: bool
+
+   .. method:: contains( position[, loopWidth=0])
+
+      Return true if provided rectangle is completely within the bounds of this otherwise false
+
+
+      :param position: 
+
+      :type position: :class:`TileRect`
+
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -7284,7 +7912,7 @@ TileRect
 
       :type intersection: :class:`TileRect`
 
-      :param loopWidth:  How far to check on the x axis from rect.x
+      :param loopWidth:  The loopWidth of the realm. Use realm.size.loopWidth for :class:`Rect` and realm.size.loopTileWidth for Tile:class:`Rect`.
 
 
       :type loopWidth: int
@@ -7992,6 +8620,108 @@ TileVectorList
 
       :type arg2: object
 
+TileVectorSet
+-----------------------------------
+.. class:: TileVectorSet
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: add( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+   .. method:: clear( )
+
+      
+
+   .. method:: has( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: bool
+
+   .. method:: remove( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
 Time
 -----------------------------------
 .. class:: Time
@@ -8088,6 +8818,17 @@ Timer
 
 
       :type time: int
+
+   .. method:: restart( )
+
+      
+
+   .. method:: stop( )
+
+      Stops the timer.
+
+
+      :rtype: int
 
    .. method:: total( )
 
@@ -8285,6 +9026,84 @@ Uint32Set
       :param arg2: 
 
       :type arg2: int
+
+Uint8List
+-----------------------------------
+.. class:: Uint8List
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
 
 Vector
 -----------------------------------

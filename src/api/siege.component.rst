@@ -133,6 +133,20 @@ GrowthType
 
    .. data:: Vine = siege.component.GrowthType.Vine
 
+MapMode
+-----------------------------------
+.. class:: MapMode
+
+   
+
+   .. data:: Fullscreen = siege.component.MapMode.Fullscreen
+
+   .. data:: Hidden = siege.component.MapMode.Hidden
+
+   .. data:: Minimap = siege.component.MapMode.Minimap
+
+   .. data:: Overlay = siege.component.MapMode.Overlay
+
 MonsterPlacementType
 -----------------------------------
 .. class:: MonsterPlacementType
@@ -145,7 +159,19 @@ MonsterPlacementType
 
    .. data:: InGround = siege.component.MonsterPlacementType.InGround
 
+   .. data:: InWater = siege.component.MonsterPlacementType.InWater
+
    .. data:: OnGround = siege.component.MonsterPlacementType.OnGround
+
+PlayerMode
+-----------------------------------
+.. class:: PlayerMode
+
+   
+
+   .. data:: Aggressive = siege.component.PlayerMode.Aggressive
+
+   .. data:: Passive = siege.component.PlayerMode.Passive
 
 Slope
 -----------------------------------
@@ -173,16 +199,6 @@ SupportType
 
    .. data:: SUPPORT_TOP = siege.component.SupportType.SUPPORT_TOP
 
-ToolbarSlot
------------------------------------
-.. class:: ToolbarSlot
-
-   
-
-   .. data:: LEFT = siege.component.ToolbarSlot.LEFT
-
-   .. data:: RIGHT = siege.component.ToolbarSlot.RIGHT
-
 ActiveEffect
 -----------------------------------
 .. class:: ActiveEffect
@@ -205,6 +221,14 @@ ActiveEffect
 
       
 
+   .. attribute:: sourceContent
+
+      
+
+   .. attribute:: sourceId
+
+      
+
    .. attribute:: timer
 
        |      (:class:`Timer`)
@@ -213,6 +237,118 @@ ActiveEffect
 ActiveEffectMap
 -----------------------------------
 .. class:: ActiveEffectMap
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+AnimationDetails
+-----------------------------------
+.. class:: AnimationDetails
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: animating
+
+      
+
+   .. attribute:: currentAnimation
+
+      
+
+   .. attribute:: forced
+
+      
+
+   .. attribute:: frameScale
+
+      
+
+   .. attribute:: frameTime
+
+      
+
+   .. attribute:: group
+
+      
+
+   .. attribute:: hold
+
+      
+
+   .. attribute:: index
+
+      
+
+   .. attribute:: isVisible
+
+      
+
+   .. attribute:: playTime
+
+      
+
+AnimationDetailsMap
+-----------------------------------
+.. class:: AnimationDetailsMap
 
    
 
@@ -446,22 +582,6 @@ Component
 
       :type version: int
 
-   .. method:: restore( state)
-
-      
-
-      :param state: 
-
-      :type state: int
-
-   .. method:: save( state)
-
-      
-
-      :param state: 
-
-      :type state: int
-
    .. method:: unpack( stream)
 
       
@@ -505,6 +625,12 @@ AnimationComponent
 .. class:: AnimationComponent
 
    
+
+   .. method:: backupAnimations( )
+
+      
+
+      :rtype: :class:`AnimationDetailsMap`
 
    .. method:: clearQueue( [group=''])
 
@@ -676,6 +802,14 @@ AnimationComponent
 
       :type group: str
 
+   .. method:: restoreAnimations( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`AnimationDetailsMap`
+
    .. method:: scale( totalDelay[, group=''[, downOnly=True]])
 
       
@@ -707,6 +841,16 @@ AnimationComponent
    .. method:: unlock( )
 
       
+
+   .. method:: wasForced( [group=''])
+
+      
+
+      :param group: 
+
+      :type group: str
+
+      :rtype: bool
 
    .. method:: wasPlaying( name[, group=''])
 
@@ -748,6 +892,18 @@ AttachmentComponent
 
       :type arg3: :class:`Entity`
 
+   .. method:: attach( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :param arg3: 
+
+      :type arg3: :class:`Vector`
+
    .. method:: detach( arg2)
 
       
@@ -755,6 +911,14 @@ AttachmentComponent
       :param arg2: 
 
       :type arg2: str
+
+   .. method:: detach( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
 
    .. method:: getAttached( arg2)
 
@@ -822,6 +986,10 @@ BodyComponent
 
       
 
+   .. attribute:: initialize
+
+      
+
    .. attribute:: substitutions
 
       
@@ -866,9 +1034,13 @@ CombatComponent
 
       :type attackId: int
 
-   .. method:: getExperienceToLevel( )
+   .. method:: getExperienceToLevel( [level=0])
 
       
+
+      :param level: 
+
+      :type level: int
 
       :rtype: int
 
@@ -1000,6 +1172,14 @@ CombatComponent
 
       :type frameTime: int
 
+   .. attribute:: blockStaminaCost
+
+      
+
+   .. attribute:: blockThreshold
+
+      
+
    .. attribute:: canRecover
 
       
@@ -1052,6 +1232,10 @@ CombatComponent
 
       
 
+   .. attribute:: magicalReduction
+
+      
+
    .. attribute:: numberOffset
 
       
@@ -1080,6 +1264,10 @@ CombatComponent
 
       
 
+   .. attribute:: physicalReduction
+
+      
+
    .. attribute:: status
 
       
@@ -1097,6 +1285,16 @@ CraftComponent
 .. class:: CraftComponent
 
    
+
+   .. method:: usesMaterial( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
 
    .. attribute:: category
 
@@ -1170,6 +1368,10 @@ DroppedComponent
 
       
 
+   .. attribute:: ignorePlayer
+
+      
+
    .. attribute:: quantity
 
       
@@ -1180,7 +1382,7 @@ EffectsComponent
 
    
 
-   .. method:: add( effect, level, duration)
+   .. method:: add( effect, level, duration[, source=None])
 
       
 
@@ -1195,6 +1397,10 @@ EffectsComponent
       :param duration: 
 
       :type duration: int
+
+      :param source: 
+
+      :type source: :class:`Entity`
 
    .. method:: get( effect)
 
@@ -1274,7 +1480,7 @@ EquipmentComponent
 
    
 
-   .. method:: addAttribute( attribute[, ignoreMax=False])
+   .. method:: addAttribute( attribute)
 
       
 
@@ -1282,15 +1488,17 @@ EquipmentComponent
 
       :type attribute: object
 
-      :param ignoreMax: 
-
-      :type ignoreMax: bool
-
    .. method:: getAttributes( )
 
       
 
       :rtype: :class:`EquipmentAttributes`
+
+   .. method:: getContentAttributes( )
+
+      
+
+      :rtype: list
 
    .. method:: getModifiedName( )
 
@@ -1298,11 +1506,17 @@ EquipmentComponent
 
       :rtype: str
 
-   .. method:: getSlot( )
+   .. method:: getPotentialRange( )
 
       
 
-      :rtype: str
+      :rtype: :class:`RangeUint`
+
+   .. method:: getSlots( )
+
+      
+
+      :rtype: :class:`StringList`
 
    .. method:: getSubstitutions( )
 
@@ -1320,13 +1534,17 @@ EquipmentComponent
 
       :rtype: bool
 
-   .. method:: isAttached( )
+   .. method:: hasSlot( arg2)
 
       
 
+      :param arg2: 
+
+      :type arg2: str
+
       :rtype: bool
 
-   .. method:: isFull( )
+   .. method:: isAttached( )
 
       
 
@@ -1341,10 +1559,6 @@ EquipmentComponent
       :type attribute: object
 
    .. attribute:: levelRequired
-
-      
-
-   .. attribute:: maxAttributes
 
       
 
@@ -1396,7 +1610,13 @@ FoliageComponent
 
       
 
-      :rtype: list
+      :rtype: :class:`StringList`
+
+   .. method:: getOnPhysicsEntityContact( )
+
+      
+
+      :rtype: object
 
    .. method:: getTimeToUpdate( )
 
@@ -1409,6 +1629,10 @@ FoliageComponent
       
 
    .. attribute:: growthType
+
+      
+
+   .. attribute:: id
 
       
 
@@ -1426,6 +1650,16 @@ GearComponent
 
    
 
+   .. method:: __eq__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Component`
+
+      :rtype: bool
+
    .. method:: __getattr__( arg2)
 
       
@@ -1435,6 +1669,26 @@ GearComponent
       :type arg2: str
 
       :rtype: object
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: add( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: int
 
    .. method:: canEquip( item[, slotName=''])
 
@@ -1530,6 +1784,46 @@ GearComponent
 
       :rtype: :class:`StringList`
 
+   .. method:: getContentQuantity( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Content`
+
+      :rtype: int
+
+   .. method:: getSlot( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :rtype: str
+
+   .. method:: hasSlot( slotName)
+
+      
+
+      :param slotName: 
+
+      :type slotName: str
+
+      :rtype: bool
+
+   .. method:: hasUniqueItem( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :rtype: bool
+
    .. method:: isEnabled( slot)
 
       
@@ -1550,9 +1844,53 @@ GearComponent
 
       :rtype: bool
 
+   .. method:: next( )
+
+      
+
+      :rtype: object
+
+   .. method:: remove( content[, quantity=1])
+
+      
+
+      :param content: 
+
+      :type content: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: int
+
+   .. method:: remove( content[, quantity=1])
+
+      
+
+      :param content: 
+
+      :type content: :class:`Entity`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: int
+
    .. method:: resetGraphics( )
 
       
+
+   .. method:: stack( item)
+
+      
+
+      :param item: 
+
+      :type item: :class:`InventoryItem`
+
+      :rtype: :class:`InventoryItem`
 
    .. method:: unequip( slotName)
 
@@ -1577,6 +1915,22 @@ InventoryComponent
 .. class:: InventoryComponent
 
    
+
+   .. method:: __eq__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Component`
+
+      :rtype: bool
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
 
    .. method:: add( entity[, quantity=1])
 
@@ -1603,6 +1957,20 @@ InventoryComponent
       :param bagEntity: 
 
       :type bagEntity: :class:`Entity`
+
+      :rtype: :class:`ItemBag`
+
+   .. method:: addBag( bagIndex, size)
+
+      
+
+      :param bagIndex: 
+
+      :type bagIndex: int
+
+      :param size: 
+
+      :type size: int
 
       :rtype: :class:`ItemBag`
 
@@ -1698,6 +2066,26 @@ InventoryComponent
 
       :rtype: int
 
+   .. method:: getBagIndexForContent( content)
+
+      
+
+      :param content: 
+
+      :type content: :class:`Content`
+
+      :rtype: int
+
+   .. method:: getBagIndexForUniqueItem( entity)
+
+      
+
+      :param entity: 
+
+      :type entity: :class:`Entity`
+
+      :rtype: int
+
    .. method:: getBags( )
 
       
@@ -1713,6 +2101,16 @@ InventoryComponent
       :type content: :class:`Content`
 
       :rtype: int
+
+   .. method:: getSlot( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :rtype: str
 
    .. method:: handleChange( bagIndex, index, previous, item)
 
@@ -1733,6 +2131,20 @@ InventoryComponent
       :param item: 
 
       :type item: :class:`InventoryItem`
+
+   .. method:: hasContentQuantity( content, quantity)
+
+      
+
+      :param content: 
+
+      :type content: :class:`Content`
+
+      :param quantity: 
+
+      :type quantity: int
+
+      :rtype: bool
 
    .. method:: hasUniqueItem( entity)
 
@@ -1783,6 +2195,12 @@ InventoryComponent
       :type bagIndex: int
 
       :rtype: bool
+
+   .. method:: next( )
+
+      
+
+      :rtype: object
 
    .. method:: remove( content[, quantity=1])
 
@@ -1858,6 +2276,16 @@ ItemComponent
 
    
 
+   .. method:: hasTag( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
    .. attribute:: buyPrice
 
       
@@ -1883,6 +2311,10 @@ ItemComponent
       
 
    .. attribute:: flavor
+
+      
+
+   .. attribute:: genus
 
       
 
@@ -2153,18 +2585,6 @@ OrganicComponent
 
       :type arg2: list
 
-   .. method:: setImage( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: str
-
-      :param arg3: 
-
-      :type arg3: :class:`ModularSprite`
-
    .. attribute:: axis
 
       
@@ -2180,6 +2600,12 @@ OrganicComponent
    .. attribute:: size
 
       
+
+ParticleComponent
+-----------------------------------
+.. class:: ParticleComponent
+
+   
 
 PhysicsComponent
 -----------------------------------
@@ -2228,6 +2654,14 @@ PhysicsComponent
    .. method:: clearPassingThrough( )
 
       
+
+   .. method:: factorSurfaceFriction( surfaceFriction)
+
+      
+
+      :param surfaceFriction: 
+
+      :type surfaceFriction: :class:`Vector`
 
    .. method:: flipX( flip)
 
@@ -2325,6 +2759,20 @@ PhysicsComponent
 
       :rtype: bool
 
+   .. method:: isTouchingTile( position)
+
+      
+
+      :param position: 
+
+      :type position: :class:`TileVector`
+
+      :rtype: bool
+
+   .. method:: resetGroundFriction( )
+
+      
+
    .. method:: setBody( arg2)
 
       
@@ -2389,6 +2837,10 @@ PhysicsComponent
 
       
 
+   .. attribute:: immovable
+
+      
+
    .. attribute:: isUnderwater
 
       
@@ -2410,6 +2862,10 @@ TilePhysicsComponent
 .. class:: TilePhysicsComponent
 
    
+
+   .. attribute:: tilePosition
+
+      
 
 PlacementComponent
 -----------------------------------
@@ -2441,6 +2897,10 @@ PlacementComponent
 
       :rtype: object
 
+   .. method:: setAxisAnimation( )
+
+      
+
    .. method:: setPlacement( placement)
 
       
@@ -2448,6 +2908,12 @@ PlacementComponent
       :param placement: 
 
       :type placement: :class:`PlacementComponent`
+
+   .. method:: shouldDropItem( )
+
+      
+
+      :rtype: bool
 
    .. attribute:: allowCollection
 
@@ -2469,6 +2935,14 @@ PlacementComponent
 
       
 
+   .. attribute:: onCreate
+
+      
+
+   .. attribute:: onHit
+
+      
+
    .. attribute:: supportEntity
 
       
@@ -2483,7 +2957,45 @@ PlayerStateComponent
 
    
 
+   .. method:: addGrappler( id, support)
+
+      
+
+      :param id: 
+
+      :type id: int
+
+      :param support: 
+
+      :type support: :class:`PhysicsComponent`
+
+   .. method:: clearGrapplers( )
+
+      
+
+   .. method:: hasGrapplers( )
+
+      
+
+      :rtype: bool
+
+   .. method:: removeGrappler( index)
+
+      
+
+      :param index: 
+
+      :type index: int
+
    .. attribute:: activeItem
+
+      
+
+   .. attribute:: canAttack
+
+      
+
+   .. attribute:: canCast
 
       
 
@@ -2491,7 +3003,23 @@ PlayerStateComponent
 
       
 
-   .. attribute:: isBeginner
+   .. attribute:: channel
+
+      
+
+   .. attribute:: grapplerId
+
+      
+
+   .. attribute:: grapplers
+
+      
+
+   .. attribute:: mapMode
+
+      
+
+   .. attribute:: mode
 
       
 
@@ -2500,6 +3028,20 @@ PlayerStateComponent
       
 
    .. attribute:: perseveranceTimerJob
+
+      
+
+   .. attribute:: toolState
+
+      
+
+RecipeSetComponent
+-----------------------------------
+.. class:: RecipeSetComponent
+
+   
+
+   .. attribute:: recipes
 
       
 
@@ -2651,6 +3193,18 @@ RenderComponent
 
       :type arg2: :class:`Color`
 
+   .. method:: setFrame( frame[, group=''])
+
+      
+
+      :param frame: 
+
+      :type frame: :class:`Frame`
+
+      :param group: 
+
+      :type group: str
+
    .. method:: setOrigin( arg2, arg3)
 
       
@@ -2691,6 +3245,14 @@ RenderComponent
 
       :type arg2: :class:`Texture`
 
+   .. method:: setTextureRect( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`PixelRect`
+
    .. method:: setTrail( arg2, arg3)
 
       
@@ -2715,6 +3277,14 @@ RenderComponent
 
       :type arg3: int
 
+   .. method:: updateSprite( position)
+
+      
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
    .. method:: useIconTexture( )
 
       
@@ -2724,6 +3294,10 @@ RenderComponent
       
 
    .. method:: useWorldIconTexture( )
+
+      
+
+   .. attribute:: alpha
 
       
 
@@ -2747,23 +3321,55 @@ RenderComponent
 
       
 
+ExtendableRenderComponent
+-----------------------------------
+.. class:: ExtendableRenderComponent
+
+   
+
+   .. method:: getTransform( )
+
+      
+
+      :rtype: :class:`Transform`
+
+   .. attribute:: length
+
+      
+
 ModularRenderComponent
 -----------------------------------
 .. class:: ModularRenderComponent
 
    
 
-   .. method:: addTexture( arg2, arg3)
+   .. method:: addTexture( spriteId, texturePath)
 
       
 
-      :param arg2: 
+      :param spriteId: 
 
-      :type arg2: int
+      :type spriteId: int
 
-      :param arg3: 
+      :param texturePath: 
 
-      :type arg3: str
+      :type texturePath: str
+
+   .. method:: addTexture( spriteId, texturePath, textureRect)
+
+      
+
+      :param spriteId: 
+
+      :type spriteId: int
+
+      :param texturePath: 
+
+      :type texturePath: str
+
+      :param textureRect: 
+
+      :type textureRect: :class:`PixelRect`
 
    .. method:: changeSprite( arg2)
 
@@ -2899,6 +3505,10 @@ ModularRenderComponent
 
       :type loopWidth: int
 
+   .. method:: resetTextures( )
+
+      
+
    .. method:: setColor( arg2)
 
       
@@ -2942,6 +3552,10 @@ ModularRenderComponent
       :param arg2: 
 
       :type arg2: int
+
+   .. method:: updateForced( )
+
+      
 
    .. attribute:: alpha
 
@@ -3074,6 +3688,98 @@ ShieldComponent
    .. attribute:: physicalReduction
 
       
+
+   .. attribute:: staminaCost
+
+      
+
+   .. attribute:: threshold
+
+      
+
+StatisticsComponent
+-----------------------------------
+.. class:: StatisticsComponent
+
+   
+
+   .. method:: adjust( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: int
+
+   .. method:: get( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: int
+
+   .. method:: has( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :rtype: bool
+
+   .. method:: remove( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+   .. method:: set( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: int
+
+   .. method:: unwatch( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: watch( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: object
 
 StatsComponent
 -----------------------------------
@@ -3243,6 +3949,12 @@ TileComponent
 
       :rtype: str
 
+   .. method:: getRenderLayer( )
+
+      
+
+      :rtype: :class:`TileRenderLayer`
+
    .. method:: getTileId( )
 
       
@@ -3261,7 +3973,7 @@ TileComponent
 
       :param compatibles: 
 
-      :type compatibles: list
+      :type compatibles: :class:`StringList`
 
       :rtype: bool
 
@@ -3269,7 +3981,15 @@ TileComponent
 
       
 
+   .. attribute:: consumeOnUse
+
+      
+
    .. attribute:: durability
+
+      
+
+   .. attribute:: isFoliage
 
       
 
@@ -3285,7 +4005,15 @@ TileComponent
 
       
 
+   .. attribute:: isUpdateVisual
+
+      
+
    .. attribute:: level
+
+      
+
+   .. attribute:: lightSource
 
       
 
@@ -3335,7 +4063,7 @@ ToolComponent
 
    
 
-   .. method:: checkUsability( arg2, arg3, arg4, arg5)
+   .. method:: checkUsability( arg2, arg3, arg4)
 
       
 
@@ -3350,10 +4078,6 @@ ToolComponent
       :param arg4: 
 
       :type arg4: :class:`Vector`
-
-      :param arg5: 
-
-      :type arg5: :class:`Layer`
 
       :rtype: :class:`ToolUsabilityResult`
 
@@ -3379,7 +4103,7 @@ ToolComponent
 
       :rtype: :class:`TileVectorList`
 
-   .. attribute:: compatible
+   .. attribute:: compatibles
 
       
 
@@ -3413,6 +4137,30 @@ ToolbarComponent
 
       :type arg3: :class:`ItemBag`
 
+   .. method:: changeToolbar( )
+
+      
+
+   .. method:: clearQuick( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: clearQuick( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
    .. method:: get( arg2)
 
       
@@ -3421,7 +4169,7 @@ ToolbarComponent
 
       :type arg2: int
 
-      :rtype: :class:`ToolbarItem`
+      :rtype: :class:`ToolItem`
 
    .. method:: get( arg2, arg3)
 
@@ -3433,9 +4181,43 @@ ToolbarComponent
 
       :param arg3: 
 
-      :type arg3: :class:`ToolbarSlot`
+      :type arg3: int
 
       :rtype: :class:`ToolItem`
+
+   .. method:: getQuick( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: :class:`ToolItem`
+
+   .. method:: getQuick( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: :class:`ToolItem`
+
+   .. method:: isEmpty( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
 
    .. method:: isEmpty( arg2, arg3)
 
@@ -3447,11 +4229,21 @@ ToolbarComponent
 
       :param arg3: 
 
-      :type arg3: :class:`ToolbarSlot`
+      :type arg3: int
 
       :rtype: bool
 
-   .. method:: set( arg2, arg3, arg4)
+   .. method:: isQuickEmpty( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :rtype: bool
+
+   .. method:: isQuickEmpty( arg2, arg3)
 
       
 
@@ -3461,13 +4253,23 @@ ToolbarComponent
 
       :param arg3: 
 
-      :type arg3: :class:`ToolbarSlot`
+      :type arg3: int
 
-      :param arg4: 
+      :rtype: bool
 
-      :type arg4: :class:`ToolItem`
+   .. method:: set( arg2, arg3)
 
-   .. method:: set( arg2, arg3, arg4, arg5)
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: :class:`ToolItem`
+
+   .. method:: set( arg2, arg3, arg4)
 
       
 
@@ -3481,13 +4283,65 @@ ToolbarComponent
 
       :param arg4: 
 
-      :type arg4: :class:`ToolbarSlot`
+      :type arg4: :class:`ToolItem`
 
-      :param arg5: 
+   .. method:: setQuick( arg2, arg3)
 
-      :type arg5: :class:`ToolItem`
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: :class:`ToolItem`
+
+   .. method:: setQuick( arg2, arg3, arg4)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :param arg4: 
+
+      :type arg4: :class:`ToolItem`
+
+   .. method:: setQuickBar( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. method:: setToolbar( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+   .. attribute:: items
+
+      
 
    .. attribute:: onChange
+
+      
+
+   .. attribute:: onQuickBarChange
+
+      
+
+   .. attribute:: onQuickChange
 
       
 
@@ -3499,6 +4353,18 @@ ToolbarComponent
 
       
 
+   .. attribute:: quickSize
+
+      
+
+   .. attribute:: quickbarIndex
+
+      
+
+   .. attribute:: quickbarSize
+
+      
+
    .. attribute:: selected
 
       
@@ -3507,11 +4373,11 @@ ToolbarComponent
 
       
 
-   .. attribute:: toolbar
+   .. attribute:: toolbarIndex
 
       
 
-   .. attribute:: toolbars
+   .. attribute:: toolbarSize
 
       
 
@@ -3771,6 +4637,14 @@ Combat
 
       :type >]]: =0
 
+   .. attribute:: blockStaminaCost
+
+      
+
+   .. attribute:: blockThreshold
+
+      
+
    .. attribute:: experienceYield
 
       
@@ -3780,6 +4654,10 @@ Combat
       
 
    .. attribute:: levels
+
+      
+
+   .. attribute:: magicalReduction
 
       
 
@@ -3800,6 +4678,10 @@ Combat
       
 
    .. attribute:: onLevelUp
+
+      
+
+   .. attribute:: physicalReduction
 
       
 
@@ -3833,13 +4715,13 @@ Craft
 
       :type experience: int
 
-   .. method:: insertMaterial( itemPath, quantity)
+   .. method:: genus( item, quantity)
 
       
 
-      :param itemPath: 
+      :param item: 
 
-      :type itemPath: str
+      :type item: str
 
       :param quantity: 
 
@@ -4047,6 +4929,22 @@ Foliage
 
       
 
+   .. attribute:: hasAutotiling
+
+      
+
+   .. attribute:: maxLength
+
+      
+
+   .. attribute:: onPhysicsEntityContact
+
+      
+
+   .. attribute:: onlyAutotileWithSelf
+
+      
+
    .. attribute:: particlePath
 
       
@@ -4217,6 +5115,10 @@ Item
       
 
    .. attribute:: features
+
+      
+
+   .. attribute:: genus
 
       
 
@@ -4500,6 +5402,80 @@ Organic
 
       
 
+Particle
+-----------------------------------
+.. class:: Particle
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: alpha
+
+      
+
+   .. attribute:: amount
+
+      
+
+   .. attribute:: color
+
+      
+
+   .. attribute:: lifetime
+
+      
+
+   .. attribute:: lightSource
+
+      
+
+   .. attribute:: particleArea
+
+      
+
+   .. attribute:: particleLife
+
+      
+
+   .. attribute:: particlePositions
+
+      
+
+   .. attribute:: position
+
+      
+
+   .. attribute:: rate
+
+      
+
+   .. attribute:: rotation
+
+      
+
+   .. attribute:: scale
+
+      
+
+   .. attribute:: textureCoords
+
+      
+
+   .. attribute:: texturePath
+
+      
+
+   .. attribute:: x
+
+      
+
+   .. attribute:: y
+
+      
+
 Physics
 -----------------------------------
 .. class:: Physics
@@ -4616,6 +5592,18 @@ Placement
 
       
 
+   .. attribute:: onCreate
+
+      
+
+   .. attribute:: onHit
+
+      
+
+   .. attribute:: shouldDropItem
+
+      
+
 PlayerState
 -----------------------------------
 .. class:: PlayerState
@@ -4625,6 +5613,20 @@ PlayerState
    .. method:: __init__( )
 
       
+
+RecipeSet
+-----------------------------------
+.. class:: RecipeSet
+
+   
+
+   .. method:: __init__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: list
 
 Render
 -----------------------------------
@@ -4676,6 +5678,10 @@ Render
 
       
 
+   .. attribute:: resetStates
+
+      
+
    .. attribute:: rotation
 
       
@@ -4684,7 +5690,45 @@ Render
 
       
 
+   .. attribute:: states
+
+      
+
    .. attribute:: wicon
+
+      
+
+ExtendableRender
+-----------------------------------
+.. class:: ExtendableRender
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( image[, contentPath=''])
+
+      
+
+      :param image: 
+
+      :type image: str
+
+      :param contentPath: 
+
+      :type contentPath: object
+
+   .. attribute:: endWidth
+
+      
+
+   .. attribute:: middleWidth
+
+      
+
+   .. attribute:: startWidth
 
       
 
@@ -4733,6 +5777,24 @@ Shield
       
 
    .. attribute:: physicalReduction
+
+      
+
+   .. attribute:: staminaCost
+
+      
+
+   .. attribute:: threshold
+
+      
+
+Statistics
+-----------------------------------
+.. class:: Statistics
+
+   
+
+   .. method:: __init__( )
 
       
 
@@ -4834,6 +5896,10 @@ Body
 
       
 
+   .. attribute:: initialize
+
+      
+
 Customization
 -----------------------------------
 .. class:: Customization
@@ -4870,17 +5936,21 @@ Equipment
 
    
 
-   .. method:: __init__( [slot=''[, levelRequired=0]])
+   .. method:: __init__( [slots=[][, levelRequired=0]])
 
       
 
-      :param slot: 
+      :param slots: 
 
-      :type slot: str
+      :type slots: list
 
       :param levelRequired: 
 
       :type levelRequired: int
+
+   .. attribute:: attributes
+
+      
 
    .. attribute:: canEquip
 
@@ -4910,11 +5980,15 @@ Equipment
 
       
 
+   .. attribute:: potentialRange
+
+      
+
    .. attribute:: potentials
 
       
 
-   .. attribute:: slot
+   .. attribute:: slots
 
       
 
@@ -4988,6 +6062,10 @@ Tile
 
       :type variant: list
 
+   .. attribute:: allowLightThrough
+
+      
+
    .. attribute:: canPlace
 
       
@@ -4996,11 +6074,19 @@ Tile
 
       
 
+   .. attribute:: consume
+
+      
+
    .. attribute:: dropped
 
       
 
    .. attribute:: durability
+
+      
+
+   .. attribute:: foliage
 
       
 
@@ -5017,6 +6103,10 @@ Tile
       
 
    .. attribute:: level
+
+      
+
+   .. attribute:: lightSource
 
       
 
@@ -5088,6 +6178,10 @@ Tile
 
       
 
+   .. attribute:: renderLayer
+
+      
+
    .. attribute:: replaceable
 
       
@@ -5112,11 +6206,23 @@ Tile
 
       
 
+   .. attribute:: surfaceFriction
+
+      
+
    .. attribute:: updateTime
 
       
 
+   .. attribute:: updateVisual
+
+      
+
    .. attribute:: variants
+
+      
+
+   .. attribute:: wallOpacity
 
       
 
@@ -5296,13 +6402,13 @@ ComponentFactory
 
       :rtype: :class:`Component`
 
-   .. staticmethod:: create( arg1)
+   .. staticmethod:: create( [func=None])
 
       
 
-      :param arg1: 
+      :param func: 
 
-      :type arg1: object
+      :type func: object
 
       :rtype: :class:`ComponentFactory`
 
@@ -5682,6 +6788,20 @@ EventMap
 
       :type arg3: object
 
+EventResult
+-----------------------------------
+.. class:: EventResult
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: result
+
+      
+
 FoliageNeighbor
 -----------------------------------
 .. class:: FoliageNeighbor
@@ -5808,7 +6928,7 @@ GearSlot
 
    
 
-   .. method:: __init__( name, category, icon[, attachment=''[, active=True]])
+   .. method:: __init__( name, category, icon[, attachment=''[, active=True[, showInUi=False]]])
 
       
 
@@ -5831,6 +6951,10 @@ GearSlot
       :param active: 
 
       :type active: bool
+
+      :param showInUi: 
+
+      :type showInUi: bool
 
    .. attribute:: active
 
@@ -5860,9 +6984,121 @@ GearSlot
 
       
 
+   .. attribute:: showInUi
+
+      
+
 GearSlots
 -----------------------------------
 .. class:: GearSlots
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+GrapplerData
+-----------------------------------
+.. class:: GrapplerData
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __init__( id, support)
+
+      
+
+      :param id: 
+
+      :type id: int
+
+      :param support: 
+
+      :type support: :class:`PhysicsComponent`
+
+   .. attribute:: id
+
+      
+
+   .. attribute:: support
+
+      
+
+GrapplerDataList
+-----------------------------------
+.. class:: GrapplerDataList
 
    
 
@@ -6077,6 +7313,84 @@ LoopingMap
       :param arg3: 
 
       :type arg3: object
+
+MaterialList
+-----------------------------------
+.. class:: MaterialList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
 
 ModularRenderSprite
 -----------------------------------
@@ -6484,15 +7798,15 @@ PlacementAxis
 
       
 
-   .. attribute:: axis
-
-      
-
    .. attribute:: layer
 
       
 
    .. attribute:: range
+
+      
+
+   .. attribute:: type
 
       
 
@@ -7188,84 +8502,6 @@ StatDefinitionList
 
       :type arg2: object
 
-StringList
------------------------------------
-.. class:: StringList
-
-   
-
-   .. method:: __contains__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: bool
-
-   .. method:: __delitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: __getitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: object
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: __iter__( )
-
-      
-
-      :rtype: object
-
-   .. method:: __len__( )
-
-      
-
-      :rtype: int
-
-   .. method:: __setitem__( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :param arg3: 
-
-      :type arg3: object
-
-   .. method:: append( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: extend( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
 TalentDefinitionList
 -----------------------------------
 .. class:: TalentDefinitionList
@@ -7484,6 +8720,84 @@ TalentMap
 
       :type arg3: object
 
+ToolItemList
+-----------------------------------
+.. class:: ToolItemList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
 ToolUsabilityResult
 -----------------------------------
 .. class:: ToolUsabilityResult
@@ -7506,10 +8820,6 @@ ToolUsabilityResult
 
       
 
-   .. attribute:: itemCompatible
-
-      
-
    .. attribute:: layer
 
       
@@ -7522,187 +8832,13 @@ ToolUsabilityResult
 
       
 
-ToolbarItem
------------------------------------
-.. class:: ToolbarItem
-
-   
-
-   .. method:: __init__( )
-
-      
-
-   .. attribute:: left
-
-      
-
-   .. attribute:: right
-
-      
-
-ToolbarItemList
------------------------------------
-.. class:: ToolbarItemList
-
-   
-
-   .. method:: __contains__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: bool
-
-   .. method:: __delitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: __getitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: object
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: __iter__( )
-
-      
-
-      :rtype: object
-
-   .. method:: __len__( )
-
-      
-
-      :rtype: int
-
-   .. method:: __setitem__( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :param arg3: 
-
-      :type arg3: object
-
-   .. method:: append( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: extend( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-ToolbarList
------------------------------------
-.. class:: ToolbarList
-
-   
-
-   .. method:: __contains__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: bool
-
-   .. method:: __delitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: __getitem__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :rtype: object
-
-   .. method:: __init__( )
-
-      
-
-   .. method:: __iter__( )
-
-      
-
-      :rtype: object
-
-   .. method:: __len__( )
-
-      
-
-      :rtype: int
-
-   .. method:: __setitem__( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-      :param arg3: 
-
-      :type arg3: object
-
-   .. method:: append( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
-   .. method:: extend( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: object
-
 WeaponAttack
 -----------------------------------
 .. class:: WeaponAttack
 
    
 
-   .. method:: __init__( power, animation[, hitFrames=[][, attackTime=0[, comboTime=0[, sound='']]]])
+   .. method:: __init__( power, animation[, hitFrames=[][, attackTime=0[, comboTime=0[, cost=0[, sound='']]]]])
 
       
 
@@ -7725,6 +8861,10 @@ WeaponAttack
       :param comboTime: 
 
       :type comboTime: int
+
+      :param cost: 
+
+      :type cost: int
 
       :param sound: 
 
@@ -7751,6 +8891,10 @@ WeaponAttack
       
 
    .. attribute:: sound
+
+      
+
+   .. attribute:: staminaCost
 
       
 

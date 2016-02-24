@@ -3,6 +3,16 @@
 siege.world.realm
 ==================
 
+CellType
+-----------------------------------
+.. class:: CellType
+
+   
+
+   .. data:: Lava = siege.world.realm.CellType.Lava
+
+   .. data:: Water = siege.world.realm.CellType.Water
+
 DistributeResult
 -----------------------------------
 .. class:: DistributeResult
@@ -59,19 +69,39 @@ LightSourceType
 
    .. data:: Cone = siege.world.realm.LightSourceType.Cone
 
-MapMode
+LightingMode
 -----------------------------------
-.. class:: MapMode
+.. class:: LightingMode
 
    
 
-   .. data:: Fullscreen = siege.world.realm.MapMode.Fullscreen
+   .. data:: Normal = siege.world.realm.LightingMode.Normal
 
-   .. data:: Hidden = siege.world.realm.MapMode.Hidden
+   .. data:: Simple = siege.world.realm.LightingMode.Simple
 
-   .. data:: Minimap = siege.world.realm.MapMode.Minimap
+TileRenderLayer
+-----------------------------------
+.. class:: TileRenderLayer
 
-   .. data:: Overlay = siege.world.realm.MapMode.Overlay
+   
+
+   .. data:: Background = siege.world.realm.TileRenderLayer.Background
+
+   .. data:: Foreground = siege.world.realm.TileRenderLayer.Foreground
+
+   .. data:: Midground = siege.world.realm.TileRenderLayer.Midground
+
+UnderwaterSupport
+-----------------------------------
+.. class:: UnderwaterSupport
+
+   
+
+   .. data:: Allow = siege.world.realm.UnderwaterSupport.Allow
+
+   .. data:: Disallow = siege.world.realm.UnderwaterSupport.Disallow
+
+   .. data:: Require = siege.world.realm.UnderwaterSupport.Require
 
 ActiveTile
 -----------------------------------
@@ -83,34 +113,42 @@ ActiveTile
 
       
 
-   .. method:: __init__( arg2)
+   .. method:: __init__( arg2, arg3)
 
       
 
       :param arg2: 
 
-      :type arg2: :class:`TileComponent`
+      :type arg2: int
 
-   .. method:: getId( )
+      :param arg3: 
+
+      :type arg3: int
+
+   .. method:: getId( arg2)
 
       Returns the tile id for this tile's component. If tile is empty then 0 is returned.
 
 
+      :param arg2: 
+
+      :type arg2: :class:`TileSystem`
+
       :rtype: int
 
-   .. attribute:: component
+   .. attribute:: foliageId
 
-       |      The component for this tile
-
-
-   .. attribute:: foliage
-
-       |      The foliage component for this tile
+       |      The :class:`FoliageSystem` id index that corresponds to a specific :class:`FoliageComponent`
 
 
    .. attribute:: frame
 
        |      The current frame of animation
+
+
+   .. attribute:: tileId
+
+       |      The :class:`TileSystem` id index that corresponds to a specific :class:`TileComponent`
 
 
 AutomataCell
@@ -211,6 +249,8 @@ WaterCell
       :param quantity: 
 
       :type quantity: int
+
+   .. data:: MAX_QUANTITY = 16
 
 LavaCell
 -----------------------------------
@@ -847,21 +887,29 @@ FoliageHandler
 
       :rtype: bool
 
-   .. method:: spreadFoliage( arg2, arg3, arg4)
+   .. method:: simulate( )
 
       
 
-      :param arg2: 
+   .. method:: spreadFoliage( foliage, area, amount[, layer=siege.world.realm.Layer.Ground])
 
-      :type arg2: :class:`FoliageComponent`
+      
 
-      :param arg3: 
+      :param foliage: 
 
-      :type arg3: :class:`TileRect`
+      :type foliage: :class:`FoliageComponent`
 
-      :param arg4: 
+      :param area: 
 
-      :type arg4: int
+      :type area: :class:`TileRect`
+
+      :param amount: 
+
+      :type amount: int
+
+      :param layer: 
+
+      :type layer: :class:`Layer`
 
    .. method:: update( arg2)
 
@@ -1227,6 +1275,54 @@ TileLayer
 
       :rtype: :class:`ActiveTile`
 
+   .. method:: getTileComponent( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: :class:`TileComponent`
+
+   .. method:: getTileComponent( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: :class:`TileComponent`
+
+   .. method:: getTileId( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: int
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: int
+
+   .. method:: getTileId( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: int
+
    .. method:: getTileInDirection( position, direction[, solidOnly=False])
 
       If position is valid add direction to position and return the tile underneath
@@ -1347,7 +1443,7 @@ TileLayer
 
       :rtype: bool
 
-   .. method:: overlaps( rect, solidOnly, includeTouching[, ignoreTiles=[]])
+   .. method:: overlaps( rect, solidOnly, includeTouching[, ignoreTiles=<siege.util.Uint32Set)
 
       Returns all tiles under the area rect
 
@@ -1367,10 +1463,10 @@ TileLayer
 
       :type includeTouching: bool
 
-      :param ignoreTiles:  A list of tileIds to skip during the search
+      :param ignoreTiles:  (:class:`Uint32Set`) The tileIds to skip during the search
 
 
-      :type ignoreTiles: list
+      :type ignoreTiles: :class:`Uint32Set`
 
       :rtype: :class:`TileVectorList`
 
@@ -1647,11 +1743,6 @@ LightSource
 
    
 
-   .. method:: updateLightColor( )
-
-      Updates light color to be used in lighting system.
-
-
    .. attribute:: angle
 
        |      (float) The angle (in degrees) the light spreads out from the direction on each side.
@@ -1700,6 +1791,11 @@ LightSource
    .. attribute:: onVisible
 
        |      (callable) Called when the light source is visible and being simulated. Signature is void(frameTime).
+
+
+   .. attribute:: onVisibleFrequency
+
+       |      (:class:`RangeUint`) The rate that the onVisible callback is invoked.
 
 
    .. attribute:: position
@@ -1780,6 +1876,11 @@ LightSourceData
    .. attribute:: onVisible
 
        |      (callable) Called when the light source is visible and being simulated. Signature is void(frameTime).
+
+
+   .. attribute:: onVisibleFrequency
+
+       |      (:class:`RangeUint`) The rate that the onVisible callback is invoked.
 
 
    .. attribute:: size
@@ -2458,25 +2559,29 @@ PlacementHandler
 
       :rtype: :class:`Vector`
 
-   .. method:: checkPosition( result, neighbor, entity, x, y)
+   .. method:: checkPosition( arg2, result, neighbor, entity, x, y)
 
       Checks the results of calculatePosition on entity and neighbor added to x,y. 
 
 
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
       :param result:  Result of caclulatePosition if SUCCESS is returned
 
 
-      :type result: :class:`Vector`
+      :type result: :class:`TileVector`
 
       :param neighbor:  Target TilePosition
 
 
-      :type neighbor: :class:`TileVector`
+      :type neighbor: :class:`Entity`
 
       :param entity:  The entity to use in the calculation
 
 
-      :type entity: :class:`Entity`
+      :type entity: :class:`UnderwaterSupport`
 
       :param x:  Change in tile x coordinate
 
@@ -2530,25 +2635,29 @@ PlacementHandler
 
       :rtype: :class:`Entity`
 
-   .. method:: findSpace( content, realmArea, axisType)
+   .. method:: findSpace( arg2, content, realmArea, axisType)
 
       Returns vector to available space near content in direction of axisType
 
 
+      :param arg2: 
+
+      :type arg2: :class:`Content`
+
       :param content:  Where to find space near
 
 
-      :type content: :class:`Content`
+      :type content: :class:`RealmArea`
 
       :param realmArea:  Which realm to search
 
 
-      :type realmArea: :class:`RealmArea`
+      :type realmArea: :class:`AxisType`
 
       :param axisType:  Which direction to search
 
 
-      :type axisType: :class:`AxisType`
+      :type axisType: :class:`UnderwaterSupport`
 
       :rtype: :class:`Vector`
 
@@ -2615,6 +2724,50 @@ Realm
 
       :type player: bool
 
+   .. method:: canPlaceItem( player, position)
+
+      Checks if the provided location is valid for the player to place an item at.
+
+
+      :param player:  (:class:`Player`) The player attempting to place the item.
+
+
+      :type player: :class:`Player`
+
+      :param position:  (:class:`Vector`) The target position.
+
+
+      :type position: :class:`Vector`
+
+      :rtype: bool
+
+   .. method:: canPlaceTile( player, item, targetLayer, position)
+
+      Checks if the provided location is valid for the player to place a tile at.
+
+
+      :param player:  (:class:`Player`) The player attempting to place the tile.
+
+
+      :type player: :class:`Player`
+
+      :param item:  (:class:`Entity`) The tile entity that the player is trying to use.
+
+
+      :type item: :class:`Entity`
+
+      :param targetLayer:  (LayerType) The targeted layer.
+
+
+      :type targetLayer: :class:`Layer`
+
+      :param position:  (:class:`Vector`) The target position.
+
+
+      :type position: :class:`Vector`
+
+      :rtype: bool
+
    .. method:: clear( )
 
       Removes all layers from this realm
@@ -2632,7 +2785,35 @@ Realm
 
       :rtype: object
 
-   .. method:: getInteracted( player, position)
+   .. method:: getCollectable( player, position)
+
+      
+
+      :param player: 
+
+      :type player: :class:`Player`
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :rtype: :class:`Entity`
+
+   .. method:: getHarvestable( player, position)
+
+      
+
+      :param player: 
+
+      :type player: :class:`Player`
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :rtype: :class:`Entity`
+
+   .. method:: getInteracted( player, position[, eventName='interact'])
 
       Returns an entity that player can interact with at position
 
@@ -2647,12 +2828,43 @@ Realm
 
       :type position: :class:`Vector`
 
+      :param eventName: 
+
+      :type eventName: str
+
       :rtype: :class:`Entity`
 
-   .. method:: getTargeted( position[, filter=None])
+   .. method:: getInteracted( player, position, events)
+
+      Returns an entity that player can interact with at position
+
+
+      :param player:  The player to use for the calculation
+
+
+      :type player: :class:`Player`
+
+      :param position:  The coordinates to search
+
+
+      :type position: :class:`Vector`
+
+      :param events:  (:class:`StringList`) The list of events to check for.
+
+
+      :type events: :class:`StringList`
+
+      :rtype: :class:`Entity`
+
+   .. method:: getTargeted( player, position[, filter=None])
 
       Returns an entity that can be targeted at position based on filter rules
 
+
+      :param player:  The player to use for the calculation
+
+
+      :type player: :class:`Player`
 
       :param position:  Coordinates to search
 
@@ -2723,6 +2935,10 @@ Realm
 
 
       :type stream: :class:`DataStream`
+
+   .. method:: tearDown( )
+
+      
 
    .. method:: update( frameTime)
 
@@ -2860,6 +3076,10 @@ Realm
        |      Text name for this realm
 
 
+   .. attribute:: onCreateRemnaSpring
+
+      
+
    .. attribute:: onPlayerEnter
 
       
@@ -2892,6 +3112,14 @@ Realm
 
        |      Players in this realm
 
+
+   .. attribute:: remnaSpringRegions
+
+      
+
+   .. attribute:: remnaSpringTimer
+
+      
 
    .. attribute:: size
 
@@ -3059,6 +3287,16 @@ RealmInfo
        |      Dictionary of options for this :class:`RealmInfo`
 
 
+   .. attribute:: path
+
+       |      The path to the realm on disk
+
+
+   .. attribute:: regions
+
+       |      Number of vertical regions inside the realm.
+
+
    .. attribute:: size
 
        |      Coordinates for this :class:`RealmInfo` size
@@ -3178,6 +3416,26 @@ RealmMap
 
       :type arg5: bool
 
+   .. method:: addMarker( arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: str
+
+      :param arg4: 
+
+      :type arg4: str
+
+      :param arg5: 
+
+      :type arg5: :class:`Vector`
+
    .. method:: getMarkerAtPosition( arg2)
 
       
@@ -3212,6 +3470,18 @@ RealmMap
 
       :type arg3: :class:`Entity`
 
+   .. method:: removeMarker( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: str
+
    .. method:: setOriginToPosition( arg2)
 
       
@@ -3219,6 +3489,22 @@ RealmMap
       :param arg2: 
 
       :type arg2: :class:`Vector`
+
+   .. method:: updateMarkerPosition( arg2, arg3, arg4)
+
+      
+
+      :param arg2: 
+
+      :type arg2: str
+
+      :param arg3: 
+
+      :type arg3: str
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
 
    .. method:: zoomIn( )
 
@@ -3237,10 +3523,6 @@ RealmMap
       
 
    .. attribute:: isVisible
-
-      
-
-   .. attribute:: mode
 
       
 
@@ -3269,6 +3551,28 @@ RealmSize
       :param arg3: 
 
       :type arg3: int
+
+   .. method:: getRegionId( arg2)
+
+      Gets the regionId for a given :class:`Vector` position
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: int
+
+   .. method:: getRegionId( arg2)
+
+      Gets the regionId for a given :class:`TileVector` position
+
+
+      :param arg2: 
+
+      :type arg2: :class:`TileVector`
+
+      :rtype: int
 
    .. method:: getRegionTilePosition( arg2)
 
@@ -3595,6 +3899,50 @@ AutomataManager
 
       :type y: int
 
+   .. method:: findCells( area, cellType, requiresFull)
+
+      Return a list of cells that are within area
+
+
+      :param area:  Coordinates to search
+
+
+      :type area: :class:`Rect`
+
+      :param cellType:  The Cell::Type the cell must be to match
+
+
+      :type cellType: :class:`CellType`
+
+      :param requiresFull:  If true the cell must be full to match
+
+
+      :type requiresFull: bool
+
+      :rtype: :class:`TileVectorSet`
+
+   .. method:: findCells( area, cellType, requiresFull)
+
+      Return a list of cells that are within area
+
+
+      :param area:  Coordinates to search
+
+
+      :type area: :class:`PixelRect`
+
+      :param cellType:  The Cell::Type the cell must be to match
+
+
+      :type cellType: :class:`CellType`
+
+      :param requiresFull:  If true the cell must be full to match
+
+
+      :type requiresFull: bool
+
+      :rtype: :class:`TileVectorSet`
+
    .. method:: getActiveCount( )
 
       Return the number of active cells
@@ -3695,6 +4043,8 @@ AutomataManager
    .. attribute:: skippedCells
 
       
+
+   .. data:: FILE_VERSION = 2
 
 Subsystem)
 -----------------------------------

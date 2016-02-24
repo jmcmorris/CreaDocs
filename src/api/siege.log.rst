@@ -41,11 +41,19 @@ Log
 
       :type arg1: str
 
-   .. staticmethod:: initialize( )
+   .. staticmethod:: initialize( [path=''])
 
       
 
+      :param path: 
+
+      :type path: object
+
    .. staticmethod:: shutdown( )
+
+      
+
+   .. staticmethod:: stacktrace( )
 
       
 

@@ -8,6 +8,7 @@ Contents:
    :maxdepth: 2
 
    siege
+   siege.achievement
    siege.audio
    siege.component
    siege.graphic

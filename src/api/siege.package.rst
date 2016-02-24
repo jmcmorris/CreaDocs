@@ -325,6 +325,21 @@ ContentStash
 
       :rtype: :class:`PackageList`
 
+   .. method:: has( content[, onlyEnabled=False])
+
+      Returns true if content exists otherwise false:param content: (str) Name of content to check for.:param onlyEnabled: (bool) Only accept content from enabled packages. Defaults to False.
+
+
+      :param content: 
+
+      :type content: str
+
+      :param onlyEnabled: 
+
+      :type onlyEnabled: bool
+
+      :rtype: bool
+
    .. method:: loadContent( stream)
 
       Currently, calls unpackContent.
@@ -575,6 +590,11 @@ Package
    .. attribute:: priority
 
        |      If set, the priority at which this module should be loaded.
+
+
+   .. attribute:: serverOnly
+
+       |      If this mod is only required by the server.
 
 
    .. attribute:: status

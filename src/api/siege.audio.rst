@@ -21,18 +21,6 @@ SoundEffect
 
    
 
-   .. method:: attachToEntity( entity[, stopWhenDestroyed=True])
-
-      
-
-      :param entity: 
-
-      :type entity: :class:`Entity`
-
-      :param stopWhenDestroyed: 
-
-      :type stopWhenDestroyed: bool
-
    .. method:: getLoop( )
 
       
@@ -69,7 +57,7 @@ SoundEffect
 
       
 
-   .. method:: setLocation( arg2, arg3)
+   .. method:: setLocation( arg2, arg3, arg4, arg5)
 
       
 
@@ -80,6 +68,14 @@ SoundEffect
       :param arg3: 
 
       :type arg3: :class:`Vector`
+
+      :param arg4: 
+
+      :type arg4: :class:`Vector`
+
+      :param arg5: 
+
+      :type arg5: int
 
    .. method:: setLoop( arg2)
 

@@ -18,6 +18,11 @@ ActionState
       Clears all added inputs.
 
 
+   .. method:: requireRelease( )
+
+      Requires this action to have all inputs released before it can be triggered again.
+
+
    .. attribute:: elapsed
 
        |      Total time for current state
@@ -66,6 +71,11 @@ ActionState
    .. attribute:: onChange
 
        |      :class:`Event` to call on state change
+
+
+   .. attribute:: whilePressed
+
+       |      :class:`Event` to call every frame the input is pressed
 
 
 DataStream
@@ -209,6 +219,13 @@ DataStream
 
       :rtype: int
 
+   .. method:: readNullTermString( )
+
+      Reads a null terminated string from the buffer and returns it
+
+
+      :rtype: str
+
    .. method:: readObject( )
 
       Reads a Python obejct from the buffer and returns it
@@ -277,7 +294,7 @@ DataStream
       Read an integer from the buffer and returns it
 
 
-      :rtype: int
+      :rtype: long
 
    .. method:: readUint8( )
 
@@ -417,6 +434,16 @@ DataStream
 
       :type data: int
 
+   .. method:: writeNullTermString( data)
+
+      Appends a null terminated string to the end of the current buffer.
+
+
+      :param data:  String to write to buffer
+
+
+      :type data: str
+
    .. method:: writeObject( data)
 
       Appends data to the end of the current buffer data
@@ -515,7 +542,7 @@ DataStream
       :param data:  Uint64 to write to buffer
 
 
-      :type data: int
+      :type data: long
 
    .. method:: writeUint8( data)
 
@@ -589,9 +616,13 @@ File
 
       :rtype: bool
 
-   .. staticmethod:: getCharacters( )
+   .. staticmethod:: getCharacters( configDirectory)
 
       
+
+      :param configDirectory: 
+
+      :type configDirectory: object
 
       :rtype: :class:`StringList`
 
@@ -610,9 +641,13 @@ File
 
       :rtype: str
 
-   .. staticmethod:: getWorlds( )
+   .. staticmethod:: getWorlds( configDirectory)
 
       
+
+      :param configDirectory: 
+
+      :type configDirectory: object
 
       :rtype: :class:`StringList`
 
@@ -742,7 +777,7 @@ FileManager
       :param onComplete:  Filer handler for a complete read
 
 
-      :type onComplete: object
+      :type onComplete: :class:`FileOnCompleteHandler`
 
       :param isCreaFile:  Set to true to mark file as a Crea file, false otherwise
 
@@ -759,7 +794,7 @@ FileManager
 
       :type isCloudSave: bool
 
-   .. method:: asyncWrite( filePath, stream[, useCompression=True[, isCloudSave=True]])
+   .. method:: asyncWrite( filePath, onComplete, stream[, useCompression=True[, isCloudSave=True]])
 
       Writes to a file using a new thread
 
@@ -769,18 +804,53 @@ FileManager
 
       :type filePath: object
 
+      :param onComplete:  :class:`FileOnCompleteHandler` Callback function that is called when the file write is finished.
+
+
+      :type onComplete: :class:`FileOnCompleteHandler`
+
       :param stream:  :class:`DataStream` to write to
 
 
       :type stream: :class:`DataStream`
 
-      :param useCompression: 
+      :param useCompression:  Compress stream before writing to file.
+
 
       :type useCompression: bool
 
-      :param isCloudSave: 
+      :param isCloudSave:  Saved to Steam Cloud (if enabled)
+
 
       :type isCloudSave: bool
+
+FileOnCompleteHandler
+-----------------------------------
+.. class:: FileOnCompleteHandler
+
+   
+
+   .. method:: __call__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: :class:`DataStream`
+
+   .. staticmethod:: create( [func=None])
+
+      
+
+      :param func: 
+
+      :type func: object
+
+      :rtype: :class:`FileOnCompleteHandler`
 
 GameInput
 -----------------------------------
@@ -792,6 +862,12 @@ GameInput
 
       
 
+   .. method:: isPriorityPressed( )
+
+      
+
+      :rtype: bool
+
    .. method:: update( )
 
       Updates each :class:`ActionState` in game
@@ -802,11 +878,44 @@ GameInput
        |      True if any input was received from the user
 
 
+   .. attribute:: priorityInputs
+
+      
+
+ComboInput
+-----------------------------------
+.. class:: ComboInput
+
+   
+
+   .. method:: __init__( inputs)
+
+      
+
+      :param inputs: 
+
+      :type inputs: list
+
+   .. attribute:: inputs
+
+       |      The combination of GameInputs used.
+
+
 JoyInput
 -----------------------------------
 .. class:: JoyInput
 
    
+
+   .. method:: __eq__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`JoyInput`
+
+      :rtype: bool
 
    .. method:: __init__( joyId, joyButton)
 
@@ -856,6 +965,11 @@ JoyInput
        |      Index for this :class:`Joystick`
 
 
+   .. attribute:: position
+
+       |      The current position for the axis.
+
+
    .. attribute:: useAxis
 
        |      Set to True for a joystick axis
@@ -871,6 +985,16 @@ KeyInput
 .. class:: KeyInput
 
    
+
+   .. method:: __eq__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`KeyInput`
+
+      :rtype: bool
 
    .. method:: __init__( key)
 
@@ -890,6 +1014,16 @@ MouseInput
 .. class:: MouseInput
 
    
+
+   .. method:: __eq__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`MouseInput`
+
+      :rtype: bool
 
    .. method:: __init__( button)
 
@@ -1069,6 +1203,21 @@ Joystick
 
       :rtype: int
 
+   .. staticmethod:: getIdentification( joystick)
+
+      Get the joystick information
+
+
+      :param joystick:  Index of the joystick
+
+
+      :type joystick: int
+
+      :returns: Structure containing joystick information.
+
+
+      :rtype: :class:`JoystickIdentification`
+
    .. staticmethod:: hasAxis( joystick, axis)
 
       Check if a joystick supports a given axis.
@@ -1152,6 +1301,28 @@ Joystick
    .. data:: Y = siege.io.Axis.Y
 
    .. data:: Z = siege.io.Axis.Z
+
+JoystickIdentification
+-----------------------------------
+.. class:: JoystickIdentification
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: name
+
+      
+
+   .. attribute:: productId
+
+      
+
+   .. attribute:: vendorId
+
+      
 
 Keyboard
 -----------------------------------

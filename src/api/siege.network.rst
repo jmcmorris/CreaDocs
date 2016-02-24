@@ -9,6 +9,8 @@ Message
 
    
 
+   .. data:: ACHIEVEMENT_SYSTEM = siege.network.Message.ACHIEVEMENT_SYSTEM
+
    .. data:: AUDIO_MUSIC = siege.network.Message.AUDIO_MUSIC
 
    .. data:: AUDIO_SYSTEM = siege.network.Message.AUDIO_SYSTEM
@@ -16,6 +18,8 @@ Message
    .. data:: CARTOGRAPHY = siege.network.Message.CARTOGRAPHY
 
    .. data:: CHANGE_INPUT_STATE = siege.network.Message.CHANGE_INPUT_STATE
+
+   .. data:: CHANGE_TOOL_STATE = siege.network.Message.CHANGE_TOOL_STATE
 
    .. data:: CHARACTER_CREATE = siege.network.Message.CHARACTER_CREATE
 
@@ -26,6 +30,8 @@ Message
    .. data:: CHARACTER_INFO = siege.network.Message.CHARACTER_INFO
 
    .. data:: CHARACTER_INFO_LIST = siege.network.Message.CHARACTER_INFO_LIST
+
+   .. data:: CHARACTER_INFUSION = siege.network.Message.CHARACTER_INFUSION
 
    .. data:: CHARACTER_MOVE = siege.network.Message.CHARACTER_MOVE
 
@@ -45,6 +51,12 @@ Message
 
    .. data:: DISCONNECTION_NOTIFICATION = siege.network.Message.DISCONNECTION_NOTIF...
 
+   .. data:: DUNGEONEER = siege.network.Message.DUNGEONEER
+
+   .. data:: DUNGEON_INFO = siege.network.Message.DUNGEON_INFO
+
+   .. data:: GADGET_USE = siege.network.Message.GADGET_USE
+
    .. data:: HIDE_UI = siege.network.Message.HIDE_UI
 
    .. data:: INVALID_PASSWORD = siege.network.Message.INVALID_PASSWORD
@@ -53,15 +65,17 @@ Message
 
    .. data:: INVENTORY_INTERACT = siege.network.Message.INVENTORY_INTERACT
 
-   .. data:: ITEM_ACTIVE_TOOLBAR = siege.network.Message.ITEM_ACTIVE_TOOLBAR
+   .. data:: ITEM_CLAIM = siege.network.Message.ITEM_CLAIM
 
    .. data:: ITEM_CRAFT = siege.network.Message.ITEM_CRAFT
 
-   .. data:: ITEM_DROP_GRAB = siege.network.Message.ITEM_DROP_GRAB
+   .. data:: ITEM_DROP = siege.network.Message.ITEM_DROP
 
    .. data:: ITEM_INTERACT = siege.network.Message.ITEM_INTERACT
 
    .. data:: ITEM_INVENTORY_EQUIP = siege.network.Message.ITEM_INVENTORY_EQUIP
+
+   .. data:: ITEM_QUICK_SELECT = siege.network.Message.ITEM_QUICK_SELECT
 
    .. data:: ITEM_RESEARCH = siege.network.Message.ITEM_RESEARCH
 
@@ -81,8 +95,6 @@ Message
 
    .. data:: ITEM_USE = siege.network.Message.ITEM_USE
 
-   .. data:: LOAD_COMPLETE = siege.network.Message.LOAD_COMPLETE
-
    .. data:: MERCHANT_CHANGE = siege.network.Message.MERCHANT_CHANGE
 
    .. data:: NOTIFICATION_SYSTEM = siege.network.Message.NOTIFICATION_SYSTEM
@@ -95,13 +107,23 @@ Message
 
    .. data:: PLAYER_ANIMATION = siege.network.Message.PLAYER_ANIMATION
 
+   .. data:: PLAYER_CHANGE_MODE = siege.network.Message.PLAYER_CHANGE_MODE
+
+   .. data:: PLAYER_FORCE = siege.network.Message.PLAYER_FORCE
+
    .. data:: PLAYER_INPUT = siege.network.Message.PLAYER_INPUT
 
    .. data:: PLAYER_POSITION = siege.network.Message.PLAYER_POSITION
 
+   .. data:: PLAYER_READY = siege.network.Message.PLAYER_READY
+
    .. data:: PLAYER_RESERVE = siege.network.Message.PLAYER_RESERVE
 
    .. data:: PLAYER_RESPAWN = siege.network.Message.PLAYER_RESPAWN
+
+   .. data:: PYTHON_MESSAGE = siege.network.Message.PYTHON_MESSAGE
+
+   .. data:: QUICK_USE = siege.network.Message.QUICK_USE
 
    .. data:: RESEARCH_DATA = siege.network.Message.RESEARCH_DATA
 
@@ -117,7 +139,11 @@ Message
 
    .. data:: SHOW_UI = siege.network.Message.SHOW_UI
 
+   .. data:: SKILL_USE = siege.network.Message.SKILL_USE
+
    .. data:: TALENT_PURCHASE_SKILL = siege.network.Message.TALENT_PURCHASE_SKILL
+
+   .. data:: TILE_INFO = siege.network.Message.TILE_INFO
 
    .. data:: TRAVEL = siege.network.Message.TRAVEL
 
@@ -143,7 +169,7 @@ PacketPriority
 
    .. data:: Low = siege.network.PacketPriority.Low
 
-   .. data:: MeDdium = siege.network.PacketPriority.MeDdium
+   .. data:: Medium = siege.network.PacketPriority.Medium
 
 PacketReliability
 -----------------------------------
@@ -153,19 +179,19 @@ PacketReliability
 
    .. data:: Reliable = siege.network.PacketReliability.Reliable
 
-   .. data:: Reliable_ordered = siege.network.PacketReliability.Reliable_ordered
+   .. data:: ReliableOrdered = siege.network.PacketReliability.ReliableOrdered
 
-   .. data:: Reliable_ordered_receipt = siege.network.PacketReliability.Reliable_or...
+   .. data:: ReliableOrderedReceipt = siege.network.PacketReliability.ReliableOrder...
 
-   .. data:: Reliable_receipt = siege.network.PacketReliability.Reliable_receipt
+   .. data:: ReliableReceipt = siege.network.PacketReliability.ReliableReceipt
 
-   .. data:: Reliable_sequenced = siege.network.PacketReliability.Reliable_sequence...
+   .. data:: ReliableSequenced = siege.network.PacketReliability.ReliableSequenced
 
    .. data:: Unreliable = siege.network.PacketReliability.Unreliable
 
-   .. data:: Unreliable_receipt = siege.network.PacketReliability.Unreliable_receip...
+   .. data:: UnreliableReceipt = siege.network.PacketReliability.UnreliableReceipt
 
-   .. data:: Unreliable_sequenced = siege.network.PacketReliability.Unreliable_sequ...
+   .. data:: UnreliableSequenced = siege.network.PacketReliability.UnreliableSequen...
 
 MessageHandler
 -----------------------------------
@@ -185,13 +211,13 @@ MessageHandler
 
       :type arg3: :class:`DataStream`
 
-   .. staticmethod:: create( arg1)
+   .. staticmethod:: create( [func=None])
 
       
 
-      :param arg1: 
+      :param func: 
 
-      :type arg1: object
+      :type func: object
 
       :rtype: :class:`MessageHandler`
 
@@ -213,7 +239,19 @@ NetworkConnection
 
       :type arg3: object
 
-   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
+   .. method:: addMessageCallback( messageId, callback)
+
+      
+
+      :param messageId: 
+
+      :type messageId: str
+
+      :param callback: 
+
+      :type callback: object
+
+   .. method:: broadcast( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       Broadcast a message to all available recipients.
 
@@ -244,6 +282,16 @@ NetworkConnection
       :rtype: int
 
 
+   .. method:: getMessageCallback( messageId)
+
+      
+
+      :param messageId: 
+
+      :type messageId: str
+
+      :rtype: object
+
    .. method:: receive( )
 
       Handle all queued incoming packets.
@@ -264,7 +312,7 @@ NetworkConnection
 
       :type callback: :class:`MessageHandler`
 
-   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
+   .. method:: send( recipient, packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       Sends a packet to the recipient.
 
@@ -309,13 +357,29 @@ NetworkConnection
       :type messageId:  Message
 
 
+   .. method:: usingLobby( )
+
+      
+
+      :rtype: bool
+
 Client
 -----------------------------------
 .. class:: Client
 
    
 
-   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.MeDdium]]])
+   .. method:: joinLobby( lobbyId)
+
+      
+
+      :param lobbyId: 
+
+      :type lobbyId: long
+
+      :rtype: bool
+
+   .. method:: send( packet[, channel=0[, reliability=siege.network.PacketReliability.Reliable[, priority=siege.network.PacketPriority.Medium]]])
 
       Sends a packet to the server.
 
@@ -375,6 +439,13 @@ Server
 
       :rtype: str
 
+   .. method:: hasPassword( )
+
+      Returns if the server is password protected or not.
+
+
+      :rtype: bool
+
    .. method:: kick( arg2)
 
       Kicks a client from the server.
@@ -392,6 +463,122 @@ Server
       :param arg2: 
 
       :type arg2: str
+
+   .. attribute:: maxPlayers
+
+      
+
+   .. attribute:: name
+
+      
+
+   .. attribute:: playerCount
+
+      
+
+   .. attribute:: worldName
+
+      
+
+NetworkFriend
+-----------------------------------
+.. class:: NetworkFriend
+
+   
+
+   .. method:: __init__( )
+
+      
+
+   .. attribute:: lobby
+
+      
+
+   .. attribute:: name
+
+      
+
+   .. attribute:: usingPassword
+
+      
+
+NetworkFriendList
+-----------------------------------
+.. class:: NetworkFriendList
+
+   
+
+   .. method:: __contains__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: bool
+
+   .. method:: __delitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: __getitem__( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: object
+
+   .. method:: __init__( )
+
+      
+
+   .. method:: __iter__( )
+
+      
+
+      :rtype: object
+
+   .. method:: __len__( )
+
+      
+
+      :rtype: int
+
+   .. method:: __setitem__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :param arg3: 
+
+      :type arg3: object
+
+   .. method:: append( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
+
+   .. method:: extend( arg2)
+
+      
+
+      :param arg2: 
+
+      :type arg2: object
 
 NetworkId
 -----------------------------------
@@ -475,6 +662,12 @@ NetworkManager
 
       :type arg3: object
 
+   .. method:: canUseLobby( )
+
+      
+
+      :rtype: bool
+
    .. method:: clearConnect( )
 
       
@@ -484,6 +677,12 @@ NetworkManager
       
 
       :rtype: :class:`Client`
+
+   .. method:: getFriendHosts( )
+
+      
+
+      :rtype: :class:`NetworkFriendList`
 
    .. method:: getId( )
 
@@ -521,7 +720,7 @@ NetworkManager
 
       
 
-   .. method:: setupServer( port, password)
+   .. method:: setupServer( port, password[, hostAddress=''])
 
       
 
@@ -532,6 +731,10 @@ NetworkManager
       :param password: 
 
       :type password: str
+
+      :param hostAddress: 
+
+      :type hostAddress: str
 
    .. method:: shouldConnect( )
 
@@ -577,11 +780,7 @@ NetworkManager
 
       
 
-   .. attribute:: connectIp
-
-      
-
-   .. attribute:: connectPort
+   .. attribute:: connectLobby
 
       
 

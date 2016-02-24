@@ -369,7 +369,7 @@ DrawableText
 
       :param text: 
 
-      :type text: str
+      :type text: object
 
    .. attribute:: isVisible
 
@@ -394,6 +394,10 @@ Frame
       :type arg3: int
 
    .. attribute:: delay
+
+      
+
+   .. attribute:: forced
 
       
 
@@ -509,11 +513,11 @@ PixelCheck
 
       :param arg1: 
 
-      :type arg1: :class:`RenderComponent`
+      :type arg1: :class:`ExtendableRenderComponent`
 
       :param arg2: 
 
-      :type arg2: :class:`ModularRenderSpriteList`
+      :type arg2: :class:`RenderComponent`
 
       :param arg3: 
 
@@ -527,7 +531,47 @@ PixelCheck
 
       :param arg1: 
 
-      :type arg1: :class:`ModularRenderSpriteList`
+      :type arg1: :class:`RenderComponent`
+
+      :param arg2: 
+
+      :type arg2: :class:`ExtendableRenderComponent`
+
+      :param arg3: 
+
+      :type arg3: int
+
+      :rtype: bool
+
+   .. staticmethod:: collision( arg1, arg2, arg3, arg4)
+
+      
+
+      :param arg1: 
+
+      :type arg1: :class:`RenderComponent`
+
+      :param arg2: 
+
+      :type arg2: :class:`ModularRenderComponent`
+
+      :param arg3: 
+
+      :type arg3: :class:`ModularRenderSpriteList`
+
+      :param arg4: 
+
+      :type arg4: int
+
+      :rtype: bool
+
+   .. staticmethod:: collision( arg1, arg2, arg3, arg4, arg5)
+
+      
+
+      :param arg1: 
+
+      :type arg1: :class:`ModularRenderComponent`
 
       :param arg2: 
 
@@ -535,7 +579,15 @@ PixelCheck
 
       :param arg3: 
 
-      :type arg3: int
+      :type arg3: :class:`ModularRenderComponent`
+
+      :param arg4: 
+
+      :type arg4: :class:`ModularRenderSpriteList`
+
+      :param arg5: 
+
+      :type arg5: int
 
       :rtype: bool
 
@@ -591,21 +643,25 @@ PixelCheck
 
       :rtype: bool
 
-   .. staticmethod:: contains( arg1, arg2, arg3)
+   .. staticmethod:: contains( arg1, arg2, arg3, arg4)
 
       
 
       :param arg1: 
 
-      :type arg1: :class:`ModularRenderSpriteList`
+      :type arg1: :class:`ModularRenderComponent`
 
       :param arg2: 
 
-      :type arg2: :class:`Rect`
+      :type arg2: :class:`ModularRenderSpriteList`
 
       :param arg3: 
 
-      :type arg3: int
+      :type arg3: :class:`Rect`
+
+      :param arg4: 
+
+      :type arg4: int
 
       :rtype: bool
 
@@ -1219,9 +1275,41 @@ TextureCache
 
       :rtype: :class:`Texture`
 
+   .. staticmethod:: getAbsolutePath( arg1)
+
+      
+
+      :param arg1: 
+
+      :type arg1: object
+
+      :rtype: str
+
+   .. staticmethod:: getPath( arg1, arg2)
+
+      
+
+      :param arg1: 
+
+      :type arg1: object
+
+      :param arg2: 
+
+      :type arg2: object
+
+      :rtype: str
+
    .. staticmethod:: instance( )
 
       
 
       :rtype: :class:`TextureCache`
+
+   .. staticmethod:: setSmooth( arg1)
+
+      
+
+      :param arg1: 
+
+      :type arg1: bool
 

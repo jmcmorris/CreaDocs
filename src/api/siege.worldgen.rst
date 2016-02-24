@@ -15,6 +15,28 @@ FillMode
 
    .. data:: SOLID_ONLY = siege.worldgen.FillMode.SOLID_ONLY
 
+TileDirection
+-----------------------------------
+.. class:: TileDirection
+
+   
+
+   .. data:: Bottom = siege.worldgen.TileDirection.Bottom
+
+   .. data:: BottomLeft = siege.worldgen.TileDirection.BottomLeft
+
+   .. data:: BottomRight = siege.worldgen.TileDirection.BottomRight
+
+   .. data:: Left = siege.worldgen.TileDirection.Left
+
+   .. data:: Right = siege.worldgen.TileDirection.Right
+
+   .. data:: Top = siege.worldgen.TileDirection.Top
+
+   .. data:: TopLeft = siege.worldgen.TileDirection.TopLeft
+
+   .. data:: TopRight = siege.worldgen.TileDirection.TopRight
+
 Biome
 -----------------------------------
 .. class:: Biome
@@ -33,6 +55,13 @@ Biome
       :rtype: str
 
    .. method:: getActions( )
+
+      Returns a Python list
+
+
+      :rtype: list
+
+   .. method:: getFinalActions( )
 
       Returns a Python list
 
@@ -77,15 +106,19 @@ Biome
 
       :rtype: list
 
-   .. method:: isCompatible( biome)
+   .. method:: isCompatible( arg2, biome)
 
       True if biome is marked compatible, false otherwise
 
 
-      :param biome:  A :class:`Biome`
+      :param arg2: 
+
+      :type arg2: :class:`Biome`
+
+      :param biome:  The next biome to be added.
 
 
-      :type biome: :class:`Biome`
+      :type biome: int
 
       :rtype: bool
 
@@ -131,7 +164,7 @@ Biome
 
    .. attribute:: height
 
-       |      Height of the :class:`Biome`
+       |      Height of the :class:`Biome` in stamps
 
 
    .. attribute:: layer
@@ -151,7 +184,12 @@ Biome
 
    .. attribute:: width
 
-       |      Width of the :class:`Biome`
+       |      Width of the :class:`Biome` in stamps
+
+
+   .. attribute:: widthIncrement
+
+       |      Number of tiles in a single stamp for this biome.
 
 
 BoolStamp
@@ -407,6 +445,11 @@ Terraform
    .. staticmethod:: applySimpleStamp( stamp, position, rules, flipX, flipY, ground, wall, automata)
 
       Change all tiles under area according to the stamp pattern
+The dictionary is keyed with StampColor
+The dictionary's value is a tuple with (groundId, wallId) or (groundId, wallId, foliageGroundId, foliageWallId)
+If groundId or wallId is 1, the tile will not be replaced
+If groundId or wallId is 0, the tile will be deleted
+If foliageGroundId or foliageWallId is 0, no foliage will be placed:param flipX: Set to true to force flip stamp on x axis
 
 
       :param stamp:  Pattern to use
@@ -424,8 +467,7 @@ Terraform
 
       :type rules: dict
 
-      :param flipX:  Set to true to force flip stamp on x axis
-
+      :param flipX: 
 
       :type flipX: bool
 
@@ -448,6 +490,31 @@ Terraform
 
 
       :type automata: :class:`AutomataManager`
+
+   .. staticmethod:: fillGrassFoliage( realm, layerType, foliage, area)
+
+      Cover the provided area with the grass foliage. Only applied to compatible tiles that have an exposed side.
+
+
+      :param realm:  :class:`Realm` that will be changed.
+
+
+      :type realm: :class:`Realm`
+
+      :param layerType:  :class:`Layer` that will be changed (:class:`Layer`.Ground, :class:`Layer`.Wall).
+
+
+      :type layerType: :class:`Layer`
+
+      :param foliage:  The grass foliage to fill this area with.
+
+
+      :type foliage: :class:`FoliageComponent`
+
+      :param area:  Area of layer to replace tiles within.
+
+
+      :type area: :class:`TileRect`
 
    .. staticmethod:: fillTiles( layer, area, tileId, fillMode)
 
@@ -504,6 +571,35 @@ Terraform
       :type realmSize: :class:`RealmSize`
 
       :rtype: bool
+
+   .. staticmethod:: placeFoliage( arg1, area, layer, fillMode, stamp)
+
+      Change all foliage under area according to the stamp pattern
+
+
+      :param arg1: 
+
+      :type arg1: int
+
+      :param area:  Coordinates to change
+
+
+      :type area: :class:`TileRect`
+
+      :param layer:  :class:`Layer` to change tiles in
+
+
+      :type layer: :class:`TileLayer`
+
+      :param fillMode:  Set to ALL to change any tiles.  Set to OPEN_ONLY to change only open tiles.  Set to SOLID_ONLY to change only solid tiles. 
+
+
+      :type fillMode: :class:`FillMode`
+
+      :param stamp:   Pattern image to follow
+
+
+      :type stamp: :class:`BoolStamp`
 
    .. staticmethod:: placeTiles( arg1, area, layer, fillMode, stamp)
 
@@ -592,4 +688,102 @@ Terraform
 
 
       :type colors: dict
+
+   .. staticmethod:: replaceTiles( realm, layerType, area, tiles)
+
+      Goes through area and replaces tiles according to tile mapping with dithering.
+
+
+      :param realm:  :class:`Realm` that will be changed.
+
+
+      :type realm: :class:`Realm`
+
+      :param layerType:  :class:`Layer` that will be changed (:class:`Layer`.Ground, :class:`Layer`.Wall, or :class:`Layer`.WallAndGround).
+
+
+      :type layerType: :class:`Layer`
+
+      :param area:  Area of layer to replace tiles within.
+
+
+      :type area: :class:`TileRect`
+
+      :param tiles:  (dict) Mapping of existing tile ids to new tile ids.
+
+
+      :type tiles: dict
+
+   .. staticmethod:: replaceTilesDither( realm, layerType, area, direction, startPosition, endPosition, tiles)
+
+      Goes through area and replaces tiles according to tile mapping.
+
+
+      :param realm:  :class:`Realm` that will be changed.
+
+
+      :type realm: :class:`Realm`
+
+      :param layerType:  :class:`Layer` that will be changed (:class:`Layer`.Ground, :class:`Layer`.Wall, or :class:`Layer`.WallAndGround).
+
+
+      :type layerType: :class:`Layer`
+
+      :param area:  Area of layer to replace tiles within.
+
+
+      :type area: :class:`TileRect`
+
+      :param direction:  (:class:`Tile:class:`Direction``) :class:`Direction` of source moving from this origin.
+
+
+      :type direction: :class:`TileDirection`
+
+      :param startPosition: 
+
+      :type startPosition: int
+
+      :param endPosition: 
+
+      :type endPosition: int
+
+      :param tiles:  (dict) Mapping of existing tile ids to new tile ids.
+
+
+      :type tiles: dict
+
+   .. staticmethod:: stampGrassFoliage( realm, layerType, foliage, foliageSupport, area, stamp)
+
+      Cover the provided area with the grass foliage. Only applied to compatible tiles that have an exposed side.
+
+
+      :param realm:  :class:`Realm` that will be changed.
+
+
+      :type realm: :class:`Realm`
+
+      :param layerType:  :class:`Layer` that will be changed (:class:`Layer`.Ground, :class:`Layer`.Wall).
+
+
+      :type layerType: :class:`Layer`
+
+      :param foliage:  The grass foliage to fill this area with.
+
+
+      :type foliage: :class:`FoliageComponent`
+
+      :param foliageSupport:  The support foliage content id.
+
+
+      :type foliageSupport: int
+
+      :param area:  Area of layer to replace tiles within.
+
+
+      :type area: :class:`TileRect`
+
+      :param stamp:   Pattern image to follow
+
+
+      :type stamp: :class:`BoolStamp`
 

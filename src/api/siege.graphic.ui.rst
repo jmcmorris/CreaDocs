@@ -9,7 +9,7 @@ GuiManager
 
    
 
-   .. method:: createView( name, area, >])
+   .. method:: createView( name, area, >[, fullscreen=False]])
 
       
 
@@ -21,9 +21,13 @@ GuiManager
 
       :type area: :class:`PixelRect`
 
-      :param >]: 
+      :param >: 
 
-      :type >]: eight=0
+      :type >: eight=0
+
+      :param fullscreen: 
+
+      :type fullscreen: bool
 
       :rtype: :class:`View`
 
@@ -57,13 +61,31 @@ GuiManager
 
       :rtype: :class:`View`
 
-   .. method:: getView( name)
+   .. method:: getScale( )
+
+      
+
+      :rtype: float
+
+   .. method:: getView( name, area, >[, fullscreen=False]])
 
       
 
       :param name: 
 
       :type name: str
+
+      :param area: 
+
+      :type area: :class:`PixelRect`
+
+      :param >: 
+
+      :type >: eight=0
+
+      :param fullscreen: 
+
+      :type fullscreen: bool
 
       :rtype: :class:`View`
 
@@ -79,9 +101,37 @@ GuiManager
 
       :type height: int
 
-   .. method:: reset( )
+   .. method:: hasView( name)
 
       
+
+      :param name: 
+
+      :type name: str
+
+      :rtype: bool
+
+   .. method:: hideAll( )
+
+      
+
+   .. method:: isMousedOver( )
+
+      
+
+      :rtype: bool
+
+   .. method:: setScale( zoom, scale)
+
+      
+
+      :param zoom: 
+
+      :type zoom: float
+
+      :param scale: 
+
+      :type scale: float
 
    .. method:: unfocusView( view)
 
@@ -95,6 +145,32 @@ GuiManager
 
       
 
+   .. attribute:: onUiZoom
+
+      
+
+ToolbarUiHelper
+-----------------------------------
+.. class:: ToolbarUiHelper
+
+   
+
+   .. method:: __init__( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`View`
+
+      :param arg3: 
+
+      :type arg3: :class:`Player`
+
+   .. method:: update( )
+
+      
+
 View
 -----------------------------------
 .. class:: View
@@ -104,6 +180,28 @@ View
    .. method:: clearCallbacks( )
 
       
+
+   .. method:: createImageData( renderSystem, name, width, height)
+
+      
+
+      :param renderSystem: 
+
+      :type renderSystem: :class:`RenderSystem`
+
+      :param name: 
+
+      :type name: str
+
+      :param width: 
+
+      :type width: int
+
+      :param height: 
+
+      :type height: int
+
+      :rtype: bool
 
    .. method:: execute( script)
 
@@ -198,6 +296,46 @@ View
       :param ignoreCache: 
 
       :type ignoreCache: bool
+
+   .. method:: renderLoopedToImageData( name, render, position, loopWidth[, finalize=True])
+
+      
+
+      :param name: 
+
+      :type name: str
+
+      :param render: 
+
+      :type render: :class:`RenderComponent`
+
+      :param position: 
+
+      :type position: :class:`Vector`
+
+      :param loopWidth: 
+
+      :type loopWidth: int
+
+      :param finalize: 
+
+      :type finalize: bool
+
+   .. method:: renderToImageData( name, render[, finalize=True])
+
+      
+
+      :param name: 
+
+      :type name: str
+
+      :param render: 
+
+      :type render: :class:`RenderComponent`
+
+      :param finalize: 
+
+      :type finalize: bool
 
    .. method:: resize( width, height)
 

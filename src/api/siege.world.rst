@@ -264,7 +264,11 @@ RealmLoader
       :param handler:  Function for region load
 
 
-      :type handler: object
+      :type handler: :class:`FileOnCompleteHandler`
+
+   .. method:: updateSaving( )
+
+      
 
    .. attribute:: onRegionLoad
 
@@ -453,6 +457,18 @@ World
 
       :rtype: :class:`Player`
 
+   .. method:: getPlayer( uid)
+
+      Returns target player with the matching UID for this world
+
+
+      :param uid:  The player's uid to retrieve.
+
+
+      :type uid: int
+
+      :rtype: :class:`Player`
+
    .. method:: getPlayer( entity)
 
       Returns target entity from this world
@@ -472,6 +488,17 @@ World
 
       :rtype: :class:`PlayerList`
 
+   .. method:: getPositionFromWorld( arg2)
+
+      Gets the screen position from the provided world position.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Vector`
+
+      :rtype: :class:`PixelVector`
+
    .. method:: getRealm( )
 
       Return the realm single player is in
@@ -484,7 +511,7 @@ World
       Return target realm in this world
 
 
-      :param uid:  Unique indentifier for target realm
+      :param uid:  Unique identifier for target realm
 
 
       :type uid: int
@@ -521,6 +548,17 @@ World
 
       :rtype: bool
 
+   .. method:: isActivePlayer( arg2)
+
+      Return True if provided entity is the main player otherwise false.
+
+
+      :param arg2: 
+
+      :type arg2: :class:`Entity`
+
+      :rtype: bool
+
    .. method:: isInitialized( )
 
       Returns True if the world is fully initialized and ready for full use otherwise False.
@@ -543,7 +581,7 @@ World
 
       :type entity: :class:`Entity`
 
-      :param realmUid:  Unique indentifier for target realm
+      :param realmUid:  Unique identifier for target realm
 
 
       :type realmUid: int
@@ -613,7 +651,7 @@ World
 
       :type callback: object
 
-   .. method:: save( [asynchronous=True])
+   .. method:: save( [asynchronous=True[, isExiting=False]])
 
       Save this world to the file system
 
@@ -622,6 +660,23 @@ World
 
 
       :type asynchronous: bool
+
+      :param isExiting:  Flag which should be set to true if the game is exiting immediately after this save.
+
+
+      :type isExiting: bool
+
+   .. method:: saveCharacter( arg2, arg3)
+
+      
+
+      :param arg2: 
+
+      :type arg2: :class:`NetworkId`
+
+      :param arg3: 
+
+      :type arg3: :class:`DataStream`
 
    .. method:: setPlayersHomePoint( player, realm, position)
 
@@ -653,7 +708,7 @@ World
 
       :type frameTime: int
 
-   .. staticmethod:: create( game, name, size[, seed=0])
+   .. staticmethod:: create( game, name, size[, seed=0[, hasServerSideCharacters=False]])
 
       Creates a new :class:`World` instance.
 
@@ -678,6 +733,10 @@ World
 
       :type seed: int
 
+      :param hasServerSideCharacters: 
+
+      :type hasServerSideCharacters: bool
+
       :rtype: :class:`World`
 
    .. staticmethod:: get( )
@@ -687,7 +746,7 @@ World
 
       :rtype: :class:`World`
 
-   .. staticmethod:: join( game, uid, name, realmInfos)
+   .. staticmethod:: join( game, uid, name, realmInfos[, hasServerSideCharacters=False])
 
       Add all realms from realmInfos to this world
 
@@ -697,7 +756,7 @@ World
 
       :type game: :class:`Game`
 
-      :param uid:  Unique indentifier for this world
+      :param uid:  Unique identifier for this world
 
 
       :type uid: int
@@ -711,6 +770,11 @@ World
 
 
       :type realmInfos: :class:`RealmInfoList`
+
+      :param hasServerSideCharacters:  Option to enforce characters to be created and saved on the server side.
+
+
+      :type hasServerSideCharacters: bool
 
       :rtype: :class:`World`
 
@@ -747,6 +811,11 @@ World
    .. attribute:: data
 
        |      (dict) Container for miscellaneous world data.
+
+
+   .. attribute:: hasServerSideCharacters
+
+       |      Tracks if characters are saved on the server side
 
 
    .. attribute:: name
@@ -796,7 +865,7 @@ World
 
    .. attribute:: uid
 
-       |      Unique indentifier for this world
+       |      Unique identifier for this world
 
 
 WorldInfo
@@ -819,7 +888,32 @@ WorldInfo
 
       :type worldPath: object
 
-   .. staticmethod:: save( world, asynchronous)
+   .. method:: packagesAvailable( contentStash)
+
+      Returns true if all enabled packages are available in content stash otherwise false.
+
+
+      :param contentStash: 
+
+      :type contentStash: :class:`ContentStash`
+
+      :rtype: bool
+
+   .. method:: save( path, asynchronous)
+
+      Saves the world information to disk.
+
+
+      :param path:  (Path) The path of the world.
+
+
+      :type path: object
+
+      :param asynchronous: 
+
+      :type asynchronous: bool
+
+   .. staticmethod:: saveWorld( world, asynchronous)
 
       Saves the world information to disk.
 
@@ -834,38 +928,14 @@ WorldInfo
 
       :type asynchronous: bool
 
-   .. staticmethod:: save( name, path, uid, playtime, asynchronous)
-
-      Saves the world information to disk.
-
-
-      :param name:  (str) The name of the world.
-
-
-      :type name: str
-
-      :param path:  (Path) The path of the world.
-
-
-      :type path: object
-
-      :param uid:  (uint32) The path of the world.
-
-
-      :type uid: int
-
-      :param playtime:  (uint32) Playtime of the world.
-
-
-      :type playtime: int
-
-      :param asynchronous: 
-
-      :type asynchronous: bool
-
    .. attribute:: FILE_VERSION
 
       
+
+   .. attribute:: hasServerSideCharacters
+
+       |      Tracks if characters are saved on the server side
+
 
    .. attribute:: name
 
@@ -880,6 +950,11 @@ WorldInfo
    .. attribute:: playtime
 
        |      The playtime for the world.
+
+
+   .. attribute:: realms
+
+       |      (:class:`:class:`RealmInfo`List`) List of all :class:`RealmInfo` saved for the world.
 
 
    .. attribute:: uid
@@ -1009,6 +1084,51 @@ WorldTime
 
    
 
+   .. method:: getAmbientColor( hour)
+
+      Gets the ambient light color for the provided time.
+
+
+      :param hour:  (Int32) The time for the desired color.
+
+
+      :type hour: int
+
+      :rtype: :class:`Color`
+
+   .. method:: getBackgroundColor( hour)
+
+      Gets the background color for the provided time.
+
+
+      :param hour:  (Int32) The time's hour to get the background for.
+
+
+      :type hour: int
+
+      :rtype: :class:`Color`
+
+   .. method:: getHour( )
+
+      Gets the current hour. Will return realm set time if defined.
+
+
+      :rtype: int
+
+   .. method:: getMinutes( )
+
+      Gets the current minutes in the hour. Returns 0 if realm has a set time.
+
+
+      :rtype: int
+
+   .. method:: getNextHour( )
+
+      Gets the next hour. Will use realm set time if defined.
+
+
+      :rtype: int
+
    .. method:: handleResize( width, height)
 
       Recreate rendering context for window resize
@@ -1052,11 +1172,6 @@ WorldTime
 
 
       :type transitionTime: int
-
-   .. attribute:: backgroundColor
-
-       |      :class:`Color` of the background
-
 
    .. attribute:: days
 

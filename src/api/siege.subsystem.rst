@@ -267,9 +267,9 @@ EquipmentAttributes
 
       :type arg2: object
 
-InventorySet
+ItemComponentMap
 -----------------------------------
-.. class:: InventorySet
+.. class:: ItemComponentMap
 
    
 
@@ -280,16 +280,6 @@ InventorySet
       :param arg2: 
 
       :type arg2: object
-
-      :rtype: bool
-
-   .. method:: __contains__( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: :class:`InventoryComponent`
 
       :rtype: bool
 
@@ -338,36 +328,6 @@ InventorySet
       :param arg3: 
 
       :type arg3: object
-
-   .. method:: add( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: :class:`InventoryComponent`
-
-   .. method:: clear( )
-
-      
-
-   .. method:: has( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: :class:`InventoryComponent`
-
-      :rtype: bool
-
-   .. method:: remove( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: :class:`InventoryComponent`
 
 Subsystem
 -----------------------------------
@@ -507,7 +467,7 @@ CraftSystem
 
    
 
-   .. method:: getAvailableInventories( layerManager, layers, playerEntity)
+   .. method:: getAvailableInventories( layerManager, layers, playerEntity, reachModifier)
 
       
 
@@ -522,10 +482,14 @@ CraftSystem
       :param playerEntity: 
 
       :type playerEntity: :class:`Entity`
+
+      :param reachModifier: 
+
+      :type reachModifier: float
 
       :rtype: list
 
-   .. method:: getAvailableServices( layerManager, layers, playerEntity)
+   .. method:: getAvailableServices( layerManager, layers, playerEntity, reachModifier)
 
       
 
@@ -540,6 +504,10 @@ CraftSystem
       :param playerEntity: 
 
       :type playerEntity: :class:`Entity`
+
+      :param reachModifier: 
+
+      :type reachModifier: float
 
       :rtype: :class:`StringSet`
 
@@ -601,17 +569,21 @@ EquipmentSystem
 
    
 
-   .. method:: create( type, definition)
+   .. method:: create( content, quality[, attributes=[]])
 
       
 
-      :param type: 
+      :param content: 
 
-      :type type: :class:`Content`
+      :type content: :class:`Content`
 
-      :param definition: 
+      :param quality: 
 
-      :type definition: int
+      :type quality: int
+
+      :param attributes: 
+
+      :type attributes: list
 
       :rtype: :class:`Entity`
 
@@ -654,6 +626,26 @@ FoliageSystem
       :type foliageId: int
 
       :rtype: :class:`Entity`
+
+   .. method:: hasFoliage( foliageId)
+
+      
+
+      :param foliageId: 
+
+      :type foliageId: int
+
+      :rtype: bool
+
+ItemsSystem
+-----------------------------------
+.. class:: ItemsSystem
+
+   
+
+   .. attribute:: components
+
+      
 
 LightSystem
 -----------------------------------
@@ -731,29 +723,21 @@ OrganicSystem
 
    
 
-   .. method:: __init__( arg2)
+   .. method:: checkPosition( arg2, arg3, arg4, arg5, arg6)
 
       
 
       :param arg2: 
 
-      :type arg2: :class:`Game`
-
-   .. method:: checkPosition( arg2, arg3, arg4, arg5, arg6, arg7)
-
-      
-
-      :param arg2: 
-
-      :type arg2: :class:`EntitySet`
+      :type arg2: :class:`Entity`
 
       :param arg3: 
 
-      :type arg3: :class:`Content`
+      :type arg3: :class:`Realm`
 
       :param arg4: 
 
-      :type arg4: object
+      :type arg4: :class:`Vector`
 
       :param arg5: 
 
@@ -761,15 +745,11 @@ OrganicSystem
 
       :param arg6: 
 
-      :type arg6: int
+      :type arg6: :class:`UnderwaterSupport`
 
-      :param arg7: 
+      :rtype: bool
 
-      :type arg7: int
-
-      :rtype: :class:`DistributeResult`
-
-   .. method:: plant( arg2, arg3, arg4, arg5)
+   .. method:: plant( arg2, arg3, arg4, arg5, arg6)
 
       
 
@@ -789,9 +769,13 @@ OrganicSystem
 
       :type arg5: :class:`Vector`
 
+      :param arg6: 
+
+      :type arg6: :class:`UnderwaterSupport`
+
       :rtype: :class:`Entity`
 
-   .. method:: plantMany( arg2, arg3, arg4, arg5, arg6)
+   .. method:: plantMany( arg2, arg3, arg4, arg5, arg6, arg7)
 
       
 
@@ -814,6 +798,10 @@ OrganicSystem
       :param arg6: 
 
       :type arg6: int
+
+      :param arg7: 
+
+      :type arg7: :class:`UnderwaterSupport`
 
       :rtype: :class:`EntitySet`
 
@@ -875,17 +863,7 @@ RenderSystem
 
       :type arg4: object
 
-   .. method:: getImageSize( arg2)
-
-      
-
-      :param arg2: 
-
-      :type arg2: str
-
-      :rtype: :class:`PixelVector`
-
-   .. method:: getShader( path[, setCurrentTextureParam=True])
+   .. method:: createShader( path[, setCurrentTextureParam=True])
 
       
 
@@ -899,13 +877,19 @@ RenderSystem
 
       :rtype: :class:`Shader`
 
-   .. method:: getWindowSize( [ignoreScale=False])
+   .. method:: getImageSize( arg2)
 
       
 
-      :param ignoreScale: 
+      :param arg2: 
 
-      :type ignoreScale: bool
+      :type arg2: str
+
+      :rtype: :class:`PixelVector`
+
+   .. method:: getWindowSize( )
+
+      
 
       :rtype: :class:`PixelVector`
 
@@ -917,7 +901,7 @@ RenderSystem
 
       :type arg2: :class:`Renderable`
 
-   .. method:: setMode( mode, displayMode[, scale=1])
+   .. method:: setMode( mode, displayMode)
 
       
 
@@ -929,15 +913,31 @@ RenderSystem
 
       :type displayMode: :class:`DisplayMode`
 
-      :param scale: 
+   .. method:: setVerticalSync( arg2)
 
-      :type scale: float
+      
+
+      :param arg2: 
+
+      :type arg2: bool
+
+   .. method:: zoomIn( )
+
+      
+
+   .. method:: zoomOut( )
+
+      
 
    .. attribute:: onResize
 
       
 
-   .. attribute:: scale
+   .. attribute:: windowPosition
+
+      
+
+   .. attribute:: zoom
 
       
 
@@ -966,4 +966,14 @@ TileSystem
       :type tileId: int
 
       :rtype: :class:`Entity`
+
+   .. method:: hasTile( tileId)
+
+      
+
+      :param tileId: 
+
+      :type tileId: int
+
+      :rtype: bool
 
