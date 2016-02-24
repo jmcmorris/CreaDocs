@@ -1,46 +1,10 @@
 
-Creating a Mod
-==============
-
-Modding in Crea is all done in `Python <https://www.python.org/>`_; however,
-you don't have to know Python to create simple content such as items or new
-character customizations. When modding in Crea there are several file types to 
-be aware of.
-
-* *.ce*   - Content Entity file which represents a type of content such as a single monster or item (Python file treated specially by the game)
-* *.py*   - Python file used for systems
-* *.png*  - Image file used by the game
-* *.scml* - `Spriter <http://www.brashmonkey.com/spriter.htm>`_ character file used for modular sprites
+Getting Started
+===============
 
 
-Possibilities
--------------
-
-"Is it possible to mod ____?" - The answer is almost always yes. Here is a list
-of some of the things you can mod.
-
-**Content**
-
-* Character Customizations
-* Items (Materials, Equipment, Weapons, Blocks)
-* Monsters and Bosses
-* NPCS
-* Character Races
-* Biomes and Plants
-* Talents and Skills
-
-**Systems**
-
-* Crafting
-* Research
-* World Generation
-* Conflict
-* Combat
-* Talent
-
-
-Locating the Crea Files
------------------------
+Locating the Crea Source Code
+-----------------------------
 
 To find the Crea source code:
 
@@ -139,6 +103,18 @@ specially.
     can inherit and overload the existing code base. 
 
 
+File types
+----------
+
+When modding in Crea there are several file types to 
+be aware of.
+
+* *.ce*   - Content Entity file which represents a type of content such as a single monster or item (Python file treated specially by the game)
+* *.py*   - Python file used for systems
+* *.png*  - Image file used by the game
+* *.scml* - `Spriter <http://www.brashmonkey.com/spriter.htm>`_ character file used for modular sprites
+
+
 Behavior of .ce Files
 ---------------------
 
@@ -196,3 +172,4 @@ Publishing your mod
    * Note that updating the mod will automatically set your mod to visible again.
 #. Add more screenshots and fill any other information you'd like to display
    from the "Owner Controls".
+
