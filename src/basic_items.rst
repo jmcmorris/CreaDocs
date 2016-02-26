@@ -2,87 +2,179 @@
 Basic Items
 ===========
 
-Modding items in Crea is easy! In this guide we will break down all of the different components used to make different types of items.
+In this section, we'll start off with some simple decorative items to get you
+on the right track. Then we'll go over how to make items that are interactable.
+
+Items in Crea are considered content entities. Content entity files are
+designated with the file extension (.ce). The Crea game engine looks for
+these files when the game is launched and then looks for an image file
+(.png) to match them with.
 
 
-Furniture
----------
+Decorative Items
+----------------
 
-**Antlers**
+Red Table
+^^^^^^^^^
 
-There will be multiple examples in this section, since different items perform different roles. The first example will be antlers.
-1.png
+The existing small table within Crea is nice and very functional, but let's say
+we wanted a red table.
 
-First notice that on line 1 we import Axis.
-::
+In-game sprite:
 
-    from core.template.item import Axis, Item, Material
+.. image:: images/red_table.png
 
-On line 5 we have useTime, this tells the game how much time it takes for the player to use the item in the game.
-::
+In-game icon:
 
-    useTime=20,
+.. image:: images/red_table_icon.png
 
-All the way at the bottom on line 21 we tell the game that the antlers can be placed on backwalls.
-::
+The first image is what the red table will look like in game, and the second
+image is what will be displayed when the red table is in our bags.
 
-    antlers.placeable(backwall_axis=Axis())
+Now that we have the sprites for our new table, let's write the code that
+defines how it functions.
 
-The backwall_axis portion is the part that tells the game where to look to see if there is support for the item.
+Remember that the engine matches content entity files with images of the same
+name. We'll call the .ce file red_table.ce.
 
+Tables are items and they also need to be placeable on the ground. Let's import
+the template for Item, as well as for Axis and Support so that we can place the
+table on the floor:
 
-**Small Table**
+.. code-block:: python
+   :linenos:
 
-The next example will be a small table.
-2.png
+    from core.template.item import Axis, Item
 
-On lines 1 through 4 we import some more groups. Support and Direction are the two new ones.
-::
+Next, let's define how we want to use that template:
 
-    from core.template.item import Axis, Item, Material, Support
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 3-9
+
+    from core.template.item import Axis, Item
+
+    redTable = Item(
+        name = "RedTable",
+        stack = 99,
+        useTime = 5
+    )
+
+    redTable.placeable(floor_axis=Axis())
+
+And that's all it takes to add an item into Crea! Easy, right? This tells the
+Crea engine that there is content called RedTable that can be placed in our
+bags in stacks of 99. The last line tells the Crea engine to add a Placement
+Component to the item, and that it is placeable on the floor.
+
+Let's place red_table.ce, red_table.png, and red_table_icon.png into the
+mods/core/item directory so that the game engine can find them. Now launch the
+game and enter "/spawn red_table" into the chat box to test it out.
+
+Everything works! Well, almost. Tables should have hard tops so that we can
+stand on top of them or place other items on top of it. Let's add a Physics
+Component to the red table.
+
+First we'll need to import the Direction Component. Our imports should now
+look like this:
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 1, 3-4, 12-19
+
+    from core.template.item import Axis, Item, Support
 
     from siege.component import Direction
     from siege.util import Vector
 
-On line 8 we have stack, this tells the game how many of the item can be held in a single inventory slot.
-::
+    redTable = Item(
+        name = "RedTable",
+        stack = 99,
+        useTime = 5
+    )
 
-	stack = 99,
+    redTable.placeable(floor_axis=Axis(support_top=Support()))
 
-The player will be able to hold up to 99 small tables in a single space of their bag.
-
-On line 23 it tells the game that the small table can be placed on the floor and can support things on top of it.
-::
-
-    small_table.placeable(floor_axis=Axis(support_top=Support()))
-
-The floor_axis section tells the game that the table needs blocks under it.
-The Axis(support_top=Support()) tells the game that the item will support other items on top of it.
-
-On lines 25 through 30 we have some code to manage the support.
-::
-
-    small_table.hasPhysics(
+    redTable.hasPhysics(
         immovable = True,
         collision = Direction.TOP,
         passthrough = Direction.TOP,
         gravity = Vector()
     )
 
-Line 26 tells the game that once the table is placed down the blocks that are supporting it can't be removed. This is done to
-prevent a cascade of items breaking, since a player can place things on top of the table.
-Line 27 tells the game that things can collide with the top of the table. This means player will be able to jump on top of it.
-Line 28 tells the game that if players want to they can pass through the top of the table.
+We also added lines 14-19 which tells the Crea engine that the Red Table once
+placed, shouldn't move. It should also have a collision check on the top of
+the table, and that players should be able to pass through that top when
+jumping. Now, in-game, you can jump on top of the red table as well as place
+other items on top of it!
+
+The last thing you'll need to do to complete the item is to make it craftable.
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 1, 12-21
+
+    from core.template.item import Axis, Item, Genus, Support
+
+    from siege.component import Direction
+    from siege.util import Vector
+
+    redTable = Item(
+        name = "RedTable",
+        stack = 99,
+        useTime = 5
+    )
+
+    redTable.craftable(
+        category = "Home",
+        subcategory = "Furniture",
+        level = 4,
+        experience = 15,
+        serviceRequired = "Workstation",
+        materials = [
+            Genus('lumber', quantity=5)
+        ]
+    )
+
+    redTable.placeable(floor_axis=Axis())
+
+    redTable.hasPhysics(
+        immovable = True,
+        collision = Direction.TOP,
+        passthrough = Direction.TOP,
+        gravity = Vector()
+    )
+
+The new lines tell the Crea engine that the Item should be added to the list
+of craftable Items. From the crafting UI the red table will be under the Home
+category under Furniture. Level defines how difficult the craft is within the
+game, and experience defines how much experience the player will receive for
+crafting the red table. The serviceRequired parameter defines what crafting
+surface the player needs, and finally, the materials parameter is a list of
+materials the player is required to use to craft the Item.
 
 
-**Door**
+Door
+^^^^
 
-The next example will be the door. This starts to get a little more complicated, since the player can interact with it in the game.
-3.png
-4.png
+Now let's go over an item that is animated, interactable, and plays a sound.
+Let's add a red door to the game.
 
-Lines 1 through 6 import all the groups that we will be using. The three new ones are Frame, Frames, and game.
-::
+In-game sprite:
+
+.. image:: images/red_door.png
+
+In-game icon:
+
+.. image:: images/red_door_icon.png
+
+
+Just like the table we added into the game, the door will be an item, and it
+will be placeable on the floor.
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 1, 4
 
     from core.template.animation import Frame, Frames
     from core.template.item import Axis, Item, Material
@@ -91,130 +183,215 @@ Lines 1 through 6 import all the groups that we will be using. The three new one
     from siege.component import Direction
     from siege.util import Vector
 
-The frames are needed since the item will change what it looks like when the player interacts with it.
-The game import is needed since it will need to know what state the item is in, so it knows what to do when the player interacts
-with it.
+The new imports of note are Frame and Frames. These concepts allow us to use the
+red_door.png sprite sheet and break it down into single frames which can then be
+combined into animations. In this case, we want the red door to have an opened
+state, which is represented by the first frame in the red_door.png sprite sheet,
+and a closed state, which is represented by the second frame.
 
-Line 26 makes it so the supporting blocks can be destroyed, causing the item to break and be picked up.
-::
+The other import of note is game. The game object manages nearly every in-game
+system. It handles combat, dungeons, events, timers, and tweens just to name a
+few. You will be using this object a lot in your Crea modding career. In the
+case of the red door though, you'll only be using it for audio.
 
-    allowSupportRemoval = True,
+.. code-block:: python
+   :linenos:
 
-On line 32 the collision is set to every direction. When the door has physics nothing will be able to pass through it.
-::
+    from core.template.animation import Frame, Frames
+    from core.template.item import Axis, Item, Genus
 
-    collision = Direction.ALL,
+    from siege import game
+    from siege.component import Direction
+    from siege.util import Vector
 
-Lines 37 through 48 set up the door so it can be changed between being open and closed
-::
+    redDoor = Item(
+        name="RedDoor",
+        stack=99,
+        useTime=20,
+        price=10
+    )
 
-    @door.events('interact')
-    def interactDoor(player, entity, position):
-        #Toggle between being open and closed
-        #We can check which animation is currently being played to know the state
-        isActive = entity.physics.active
-        if isActive:
-            entity.animation.play("opened", forceRestart=True)
-            game.audio.playAt("mods/core/audio/sfx/misc/door_open.ogg", entity.realm.uid, entity.getPosition(), broadcast=True)
-        else:
-            entity.animation.play("closed", forceRestart=True)
-            game.audio.playAt("mods/core/audio/sfx/misc/door_close.ogg", entity.realm.uid, entity.getPosition(), broadcast=True)
-        entity.physics.active = not isActive
+    redDoor.craftable(
+        category = "Home",
+        subcategory = "Architecture",
+        level = 2,
+        experience = 15,
+        materials = [
+            Genus('lumber', quantity=6)
+        ]
+    )
 
-Line 37 it is telling the game that the player is able to interact with the item.
-Line 38 it is setting up all of the code below that will be part of it. The three variables, or arguments inside the parentheses 
-are what the code is going to determine where each individual door is in the world, and letting the player interact with it.
-Lines 39 and 40 are just comment lines, that are there to tell people what the code is for. Any line with a # in front of it
-will become a comment line, and have no effect to the code.
-Line 41 tells the game that if the door is closed, then it has physics and things can't pass through it.
-Line 42 checks to see if the door is closed.
-If the door is closed it will go ahead with lines 43 and 44. Line 43 tells the game to play the open animation and resets the
-physics. On line 44 it tells the game to play the opening door sound effect and to broadcast it to nearby players.
-If the door was open it will skip lines 43 and 44 and perform lines 46 and 47, which will close the door.
-Line 48 will change the door between being active and not active.
+    redDoor.placeable(
+        allowSupportRemoval = True,
+        floor_axis = Axis(),
+    )
 
-Lines 50 and 51 are going into the png file and assigning which image is closed and which one is open.
-::
+    redDoor.hasPhysics(
+        immovable = True,
+        collision = Direction.ALL,
+        gravity = Vector(0, 0)
+    )
 
-    closed = door.getSpriteFrames(Frame(39, 2, size=(14, 48)))
-    opened = door.getSpriteFrames(Frame(2, 2, size=(35, 48)))
+If you went over the previous tutorial with the red table, most of this should
+look familiar. We're using the Item template to add the item into the game.
+We're adding the item to the in-game crafting system under Architecture. We've
+also given the red door a Placement Component so that it can be placed on the
+floor. Lastly, we're giving the red door a Physics Component that provides a 
+collision check from every direction so that it blocks off unwanted enemies or
+players when the door is closed.
 
-For the opened frame it tells the code to start at the vector 2x, 2y on the png file. Then it tells the game to use from the 
-start all the way to 35x, 48y.
+Let's place our new red_door.ce, red_door.png, and red_door_icon.png into the
+mods/core/item directory and see what it looks like in game.
 
-Lines 53 through 57 are setting up the animations.
-::
+Uh oh! Looks like the red door when placed contains both the closed and opened
+animations. Everything else seems to be working correctly though. We'll need to
+use the newly imported Frame and Frames concepts to define the sections of the
+sprite sheet that we actually want to use:
 
-    door.animations(
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 36-43
+
+    from core.template.animation import Frame, Frames
+    from core.template.item import Axis, Item, Genus
+
+    from siege import game
+    from siege.component import Direction
+    from siege.util import Vector
+
+    redDoor = Item(
+        name="RedDoor",
+        stack=99,
+        useTime=20,
+        price=10
+    )
+
+    redDoor.craftable(
+        category = "Home",
+        subcategory = "Architecture",
+        level = 2,
+        experience = 15,
+        materials = [
+            Genus('lumber', quantity=6)
+        ]
+    )
+
+    redDoor.placeable(
+        allowSupportRemoval = True,
+        floor_axis = Axis(),
+    )
+
+    redDoor.hasPhysics(
+        immovable = True,
+        collision = Direction.ALL,
+        gravity = Vector(0, 0)
+    )
+
+    opened = redDoor.getSpriteFrames(Frame(2, 2, size=(35, 48)))
+    closed = redDoor.getSpriteFrames(Frame(39, 2, size=(14, 48)))
+
+    redDoor.animations(
         start = 'closed',
         closed = Frames(closed()),
         opened = Frames(opened())
     )
 
-On line 54 it tells the game to always place doors down as being closed.
-Then on lines 55 and 56 it is assigning what frame is considered opened and what one is closed.
+Lines 36 and 37 define the closed and opened animations. These lines use the
+red_door.png spritesheet. The opened animation takes the Frame from pixel
+coordinate (2, 2) with a width of 35 pixels and a height of 48 pixels. The
+closed animation uses the Frame from (39, 2) with a width of 14 and a height of
+48. We then add these animations into the red door's Animation component. Now,
+when you test the red door out in game, it'll be placed correctly with the
+closed animation.
 
-I know that was a lot, but hopefully now you can make some basic interactable objects.
+But we can't open the red door! Now we need to make the red door interactable.
+The plan is to have the red door start off using the closed Frame and then
+change into the opened Frame when clicked and back to closed if clicked again.
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 46-56
+
+    from core.template.animation import Frame, Frames
+    from core.template.item import Axis, Item, Genus
+
+    from siege import game
+    from siege.component import Direction
+    from siege.util import Vector
+
+    redDoor = Item(
+        name="RedDoor",
+        stack=99,
+        useTime=20,
+        price=10
+    )
+
+    redDoor.craftable(
+        category = "Home",
+        subcategory = "Architecture",
+        level = 2,
+        experience = 15,
+        materials = [
+            Genus('lumber', quantity=6)
+        ]
+    )
+
+    redDoor.placeable(
+        allowSupportRemoval = True,
+        floor_axis = Axis(),
+    )
+
+    redDoor.hasPhysics(
+        immovable = True,
+        collision = Direction.ALL,
+        gravity = Vector(0, 0)
+    )
+
+    opened = redDoor.getSpriteFrames(Frame(2, 2, size=(35, 48)))
+    closed = redDoor.getSpriteFrames(Frame(39, 2, size=(14, 48)))
+
+    redDoor.animations(
+        start = 'closed',
+        closed = Frames(closed()),
+        opened = Frames(opened())
+    )
 
 
-Bags and Chest
---------------
+    @redDoor.events('interact')
+    def interactWithRedDoor(player, entity, position):
+        isActive = entity.physics.active
+        if isActive:
+            entity.animation.play("opened", forceRestart=True)
+            game.audio.playAt("mods/core/audio/sfx/misc/door_open.ogg", entity.realm.uid, entity.getPosition(), broadcast=True)
+            entity.physics.active = False
+        else:
+            entity.animation.play("closed", forceRestart=True)
+            game.audio.playAt("mods/core/audio/sfx/misc/door_close.ogg", entity.realm.uid, entity.getPosition(), broadcast=True)
+            entity.physics.active = True
 
-Before reading it is recommended to have already gone through the guides above, as things that were explained in them will not be explained here.
+Line 46 is a decorator. The Crea engine is extremely flexible and allows us to
+overwrite or include a new definition using one line. This one line decorator
+states that the following function definition must replace the original Item
+template's interact event. The following function will now be called whenever
+the player clicks on the red door. 
 
-Bags and chest are not all that difficult. They just require a few new lines of code. There will be two examples here, the bag and the large gold
-chest.
+The interactWithRedDoor function checks whether the red door's Physics Component
+is active or not. If the Physics Component is active, it will be checking for
+collisions in all directions. This is the state we want to use when the door is
+closed. The Physics Component will always start as active because we've defined
+it as so. That's why the red door's Animation Component starts off using the 
+closed Frame.
 
-The bag will be first.
-1.png
+When the door is clicked, isActive will check through as True and so we will play the
+opened animation that we've defined and play a door opening sound. More importantly,
+we will set the red door's Physics Component as not active. When the Physics
+Component is inactive, it will no longer check for collisions and allow the player
+and monsters to run through unblocked.
 
-The first new variable we see is on line 7.
-::
+If the door is opened, isActive will check through as False. We want to then play
+the closed animation along with the door close sound and set the Physics Component
+as active.
 
-    requiresResearch = False
-
-This makes it so once the player gets the item in their inventory they gain knowledge of it and don't have to research it. This is most often done
-for rare items that it might be unreasonable to require player's to waste some researching.
-
-On line 10  it sets the bag with the ability to carry items.
-::
-
-    bag.hasInventory(capacity=20, carryable=True)
-
-The capacity tells the game how many slots the bag has.
-The carryable tells the game that the player is able to put the bag in the pouch slot in their inventory menu.
-
-On to the large gold chest
-2.png
-
-On lines 1 and 2 we have some new groups, or classes.
-::
-
-    from core.template.item import Material, StorageContainer
-    from siege.util import PixelRect
-
-The StorageContainer is called since there is some special logic involved with placing down chest in the world generation and populating it with
-items with a player opens it for the first time.
-The PixelRect is used since pixel perfect collision doesn't work alone for placing down a chest, since it gets larger when it opens.
-
-Line 7 and 8 tells the game what is required to open the chest if it is locked.
-::
-
-    keyRequired = 'gold_key',
-    lockpick = 'gold_lockpick',
-
-For the gold chest it tells the game that the player either needs to have a gold key or a gold lockpick.
-
-Line 16 sets the area needed for the chest to be placed down.
-::
-
-    area = PixelRect(0, 12, 32, 16)
-
-Then on line 19 it tells the game to create a marker on the map.
-::
-
-    chest.hasMapMarker(markerType='chest')
-
-The marker type is set to chest for this, as defined in the parentheses.
-
-That concludes the item guide! Hopefully it helped. Now go make some items!
+Now when you test it, everything should be working correctly, and you'll have created
+a Crea item that is animated and interactive! Use what you've learned and create
+more!
