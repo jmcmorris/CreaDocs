@@ -3,7 +3,7 @@ Getting Started
 ===============
 
 
-.. _locating_crea:
+.. _locating-crea:
 
 Locating the Crea Source Code
 -----------------------------
@@ -16,7 +16,7 @@ To find the Crea source code:
 * Click "Browse Local Files..." button from that page.
 
 
-.. _text_editor:
+.. _text-editor:
 
 Getting a Text Editor
 ---------------------

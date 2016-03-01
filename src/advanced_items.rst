@@ -1,4 +1,6 @@
 
+.. _advanced-items:
+
 Advanced Items
 ==============
 

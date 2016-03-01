@@ -1,4 +1,6 @@
 
+.. _basic-items:
+
 Basic Items
 ===========
 
@@ -6,8 +8,9 @@ In this section, we'll take a look at some source code from very simple items
 already in the game to get you on the right track.
 
 Let's head over to the Crea directory (and if you don't know how to navigate
-there, take a minute to look over where it's located and how it's structured
-:ref:`_locating_crea`), and then into mods/core/item/material.
+there, take a minute to look over 
+:ref:`where it's located and how it's structured <locating-crea>`), and then
+into mods/core/item/material.
 
 Take a look through. The first thing you might notice is that every item is 
 composed of at least two files, an image file (.png) and some source code 
@@ -48,7 +51,7 @@ What you need to know at this point is that parenthases '()' following a class
 name initializes an instance of that class, so what we are saying at line 3 is
 that we are initializing an instance of an Item.
 
-The following lines to the closing parenthases ')' are parameters defining this
+The following lines up to the closing parenthases ')' are parameters defining this
 specific Item instance. Here we have an Item with the name Hide and an Item
 classification of Trophy. We can stack 99 of them in one item slot in our bag,
 It has a price of 40 Auri when sold, and gives the lowest number of scraps
