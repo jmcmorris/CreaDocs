@@ -137,3 +137,79 @@ Weapon. The Equipment Component is what makes the Sword Item equippable.
 The highlighted section on lines 17-25 redefines the default Equipment
 Component. Here we are redefining it to add potential StatAttributes to the
 weapon. We'll discuss how to create and add Gear Attributes in a later section.
+
+
+Bronze Armor
+------------
+
+Now, let's go over a very simple piece of armor. Let's head over to the Crea
+directory (and if you don't know how to navigate there, take a minute to look
+over :ref:`where it's located and how it's structured <locating-crea>`), and
+then into mods/core/item/armor/chest.
+
+The first thing to note is that spearate sprite sheets have to be made for male
+and female characters. Each sprite sheet contains animations to fit character
+actions and animationsn in game. The naming convention has .ce file name
+matching the male character's sprite sheet, and the female character's sprite
+sheet matching with the same name with _hf added at the end.
+
+bronze_armor.png:
+
+.. image:: images/bronze_armor.png
+
+bronze_armor_hf.png:
+
+.. image:: images/bronze_armor_hf.png
+
+bronze_armor_icon.png:
+
+.. image:: images/bronze_armor_icon.png
+
+Now, let's look over the source code. I've removed the 
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 22
+
+    from core.template.template import Substitute
+    from core.template.item import Item, Material, StatAttribute
+
+    bronzeArmor = Item(
+        name = "BronzeArmor",
+        unique = True,
+        price = 70
+    )
+
+    bronzeArmor.craftable(
+        category = "Armor",
+        subcategory = "Chest",
+        level = 4,
+        experience = 50,
+        serviceRequired = "Forge",
+        materials = [Material('bronze_ingot', quantity=5)]
+    )
+
+    bronzeArmor.equippable(
+        slot = "chest",
+        levelRequired = 4,
+        visuals = [Substitute('shirt')],
+        attributes = [
+            StatAttribute('DEF', valueRange=(2, 5)),
+            StatAttribute('MIND', valueRange=(2, 4))
+        ]
+    )
+
+Note is that there is no template specific to armor. This is because Armor is
+simply an Item with an EquipmentComponent added to it. This is one of the many
+advantages to the Entity-Component design philosophy. 
+
+The key to armor is the EquipmentComponent. The 'visuals' keyword is what 
+substitutes the default player visuals with the armor sprite sheet. What you see
+happening on line 22 is the spritesheet being placed on top of the area
+designated as shirt on the player sprite.
+
+The player sprite components that can be replaced are:
+
+* 'helmet'
+* 'shirt'
+* 'pants'
