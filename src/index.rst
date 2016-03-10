@@ -11,7 +11,9 @@ Modding in Crea has been a focus since the beginning. All of the game's content 
    mod_possibilities
    creating_mod
    basic_items
+   advanced_items
    gear
+   basic_tile
 
 
 Indices and tables
