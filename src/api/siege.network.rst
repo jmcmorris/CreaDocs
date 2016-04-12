@@ -55,6 +55,8 @@ Message
 
    .. data:: DUNGEON_INFO = siege.network.Message.DUNGEON_INFO
 
+   .. data:: ENTITY_RENAME = siege.network.Message.ENTITY_RENAME
+
    .. data:: GADGET_USE = siege.network.Message.GADGET_USE
 
    .. data:: HIDE_UI = siege.network.Message.HIDE_UI
@@ -486,10 +488,6 @@ NetworkFriend
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: lobby
 
       
@@ -535,10 +533,6 @@ NetworkFriendList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 

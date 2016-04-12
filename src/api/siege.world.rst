@@ -37,10 +37,6 @@ PlayerList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -114,10 +110,6 @@ RealmList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -313,10 +305,6 @@ SegmentList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -874,10 +862,6 @@ WorldInfo
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: load( worldPath)
 
       Reads the world information stored at <path>/info.
@@ -954,7 +938,7 @@ WorldInfo
 
    .. attribute:: realms
 
-       |      (:class:`:class:`RealmInfo`List`) List of all :class:`RealmInfo` saved for the world.
+       |      (:class:`RealmInfoList`) List of all :class:`RealmInfo` saved for the world.
 
 
    .. attribute:: uid
@@ -967,10 +951,6 @@ WorldPlayerData
 .. class:: WorldPlayerData
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __setattr__( arg2, arg3)
 
@@ -1033,10 +1013,6 @@ WorldPlayerDataList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 

@@ -37,10 +37,6 @@ BodyComponentMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -98,10 +94,6 @@ CraftComponentMap
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -161,10 +153,6 @@ CustomizationComponentMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -222,10 +210,6 @@ EquipmentAttributes
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -301,10 +285,6 @@ ItemComponentMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -334,10 +314,6 @@ Subsystem
 .. class:: Subsystem
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __setattr__( arg2, arg3)
 

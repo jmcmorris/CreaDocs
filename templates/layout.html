@@ -1,5 +1,7 @@
 {% extends "!layout.html" %}
 
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = ['_static/custom.css'] %}
 
 {% block rootrellink %}
         <li><a href="{{ pathto('index') }}">home</a>|&nbsp;</li>
@@ -20,4 +22,3 @@ pathto("_static/llama_types.jpg", 1) }}" border="0" alt="sampledoc"/></a>
 {# put the sidebar before the body #}
 {% block sidebar1 %}{{ sidebar() }}{% endblock %}
 {% block sidebar2 %}{% endblock %}
-

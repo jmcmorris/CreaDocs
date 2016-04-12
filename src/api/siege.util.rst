@@ -9,10 +9,6 @@ AssetCache
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: clean( )
 
       Clean up all redirections.
@@ -77,10 +73,6 @@ ChunkRect
       :type arg2: :class:`ChunkRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -603,10 +595,6 @@ ChunkVector
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y)
 
       
@@ -1004,10 +992,6 @@ Clock
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: getElapsedTime( )
 
       
@@ -1053,10 +1037,6 @@ ColorList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -1154,10 +1134,6 @@ FloatList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1203,10 +1179,6 @@ GameEvent
 .. class:: GameEvent
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: clear( )
 
@@ -1512,10 +1484,6 @@ ObjectMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1555,10 +1523,6 @@ PixelRect
       :type arg2: :class:`PixelRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -2081,10 +2045,6 @@ PixelVector
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y)
 
       
@@ -2482,10 +2442,6 @@ Property
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -2566,10 +2522,6 @@ PropertyBool
 .. class:: PropertyBool
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -2652,10 +2604,6 @@ PropertyInt
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -2736,10 +2684,6 @@ PropertyStr
 .. class:: PropertyStr
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -2822,10 +2766,6 @@ PropertyUint
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -2906,10 +2846,6 @@ PropertyUint8
 .. class:: PropertyUint8
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -3100,10 +3036,6 @@ Range
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -3195,10 +3127,6 @@ RangeColor
 .. class:: RangeColor
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -3292,10 +3220,6 @@ RangeFloat
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -3387,10 +3311,6 @@ RangeInt
 .. class:: RangeInt
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -3484,10 +3404,6 @@ RangeTileVector
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -3579,10 +3495,6 @@ RangeUint
 .. class:: RangeUint
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -3676,10 +3588,6 @@ RangeUint8
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -3771,10 +3679,6 @@ RangeVector
 .. class:: RangeVector
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -3877,10 +3781,6 @@ Rect
       :type arg2: :class:`Rect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -4327,10 +4227,6 @@ RegionRect
       :type arg2: :class:`RegionRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -4853,10 +4749,6 @@ RegionVector
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y)
 
       
@@ -5263,10 +5155,6 @@ SegmentRect
       :type arg2: :class:`SegmentRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -5788,10 +5676,6 @@ SegmentVector
       :type arg2: :class:`SegmentVector`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y)
 
@@ -6400,10 +6284,6 @@ StringList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6478,10 +6358,6 @@ StringMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6549,10 +6425,6 @@ StringSet
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -6642,10 +6514,6 @@ StringSetMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6685,10 +6553,6 @@ SubtileRect
       :type arg2: :class:`SubtileRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -7211,10 +7075,6 @@ SubtileVector
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y)
 
       
@@ -7621,10 +7481,6 @@ TileRect
       :type arg2: :class:`TileRect`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y, width, height)
 
@@ -8147,10 +8003,6 @@ TileVector
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y)
 
       
@@ -8576,10 +8428,6 @@ TileVectorList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8664,10 +8512,6 @@ TileVectorSet
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8728,10 +8572,6 @@ Time
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: asMicroseconds( )
 
       
@@ -8765,10 +8605,6 @@ Timer
       :type time: int
 
       :rtype: :class:`Timer`
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( time)
 
@@ -8881,10 +8717,6 @@ Uint32List
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8968,10 +8800,6 @@ Uint32Set
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -9060,10 +8888,6 @@ Uint8List
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -9195,10 +9019,6 @@ Vector
       :type arg2: :class:`Vector`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( x, y)
 
@@ -9657,10 +9477,6 @@ Vector3
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( x, y, z)
 
       
@@ -9859,10 +9675,6 @@ Vector3List
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -9942,10 +9754,6 @@ WeightedRandomGenerator
       :type useWorldRandom: bool
 
       :rtype: int
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 

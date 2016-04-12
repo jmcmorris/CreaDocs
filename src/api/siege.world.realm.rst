@@ -109,10 +109,6 @@ ActiveTile
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2, arg3)
 
       
@@ -272,10 +268,6 @@ BiomeBackground
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( attr, value)
 
       Changes an attribute of this :class:`BiomeBackground`
@@ -411,10 +403,6 @@ BiomeDataSet
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -502,10 +490,6 @@ BiomeMap
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -766,10 +750,6 @@ CellList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -956,10 +936,6 @@ IdTilesMap
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -1693,10 +1669,6 @@ Layers
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1819,10 +1791,6 @@ LightSourceData
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: angle
 
        |      (float) The angle (in degrees) the light spreads out from the direction on each side.
@@ -1922,10 +1890,6 @@ LightSourceDataList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1999,10 +1963,6 @@ LightSourceMap
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -2084,10 +2044,6 @@ MapConflictRegionList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -2168,10 +2124,6 @@ PhysicsCollision
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( attr, value)
 
       Changes an attribute of this :class:`PhysicsCollision`
@@ -2235,10 +2187,6 @@ PhysicsComponentList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -3228,10 +3176,6 @@ RealmInfo
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( attr, value)
 
       Changes an attribute of this :class:`BiomeBackground`
@@ -3345,10 +3289,6 @@ RealmInfoList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -3798,10 +3738,6 @@ TileList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 

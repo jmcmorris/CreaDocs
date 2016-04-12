@@ -95,10 +95,6 @@ Particle
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: alpha
 
        |      TweenProperty of this particle's alpha
@@ -155,10 +151,6 @@ Tween
 .. class:: Tween
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: chain( value)
 
@@ -396,10 +388,6 @@ TweenColor
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: chain( value)
 
       
@@ -636,10 +624,6 @@ TweenUint8
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: chain( value)
 
       
@@ -875,10 +859,6 @@ TweenVector
 .. class:: TweenVector
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: chain( value)
 
@@ -1299,7 +1279,7 @@ ParticleEmitter
 
    .. attribute:: alpha
 
-       |      (:class:`:class:`Tween`Uint8`) :class:`Tween` used to determine the color of particles.
+       |      (:class:`TweenUint8`) :class:`Tween` used to determine the color of particles.
 
 
    .. attribute:: amount
@@ -1309,7 +1289,7 @@ ParticleEmitter
 
    .. attribute:: color
 
-       |      (:class:`:class:`Tween`Color`) :class:`Tween` used to determine the color of particles.
+       |      (:class:`TweenColor`) :class:`Tween` used to determine the color of particles.
 
 
    .. attribute:: lastEmission
@@ -1343,7 +1323,7 @@ ParticleEmitter
 
    .. attribute:: scale
 
-       |      (:class:`:class:`Tween`Vector`) :class:`Tween` used to determine the scale of particles.
+       |      (:class:`TweenVector`) :class:`Tween` used to determine the scale of particles.
 
 
    .. attribute:: texture

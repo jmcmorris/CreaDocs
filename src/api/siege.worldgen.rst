@@ -43,10 +43,6 @@ Biome
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __repr__( )
 
       Returns a printable representation of this object.

@@ -65,10 +65,6 @@ BlendMode
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( sourceFactor, destinationFactor[, blendEquation=siege.sfml.BlendModeEquation.Add])
 
       
@@ -189,10 +185,6 @@ VertexArray
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( type[, vertexCount=0])
 
       
@@ -256,10 +248,6 @@ RenderStates
 .. class:: RenderStates
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -334,10 +322,6 @@ Shader
 .. class:: Shader
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: isAvailable( )
 
@@ -539,10 +523,6 @@ SoundBuffer
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: loadFromFile( arg2)
 
       
@@ -635,10 +615,6 @@ Music
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: getDuration( )
 
       
@@ -713,10 +689,6 @@ Sound
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: getLoop( )
 
       
@@ -768,10 +740,6 @@ Transform
 .. class:: Transform
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: combine( arg2)
 
@@ -954,10 +922,6 @@ Transformable
 .. class:: Transformable
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: getInverseTransform( )
 
@@ -1157,10 +1121,6 @@ Vertex
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2)
 
       
@@ -1226,10 +1186,6 @@ sfEvent
 .. class:: sfEvent
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: joystickButton
 
@@ -1355,10 +1311,6 @@ sfIntRect
 
       :type arg5: int
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __repr__( )
 
       
@@ -1455,10 +1407,6 @@ sfRect
 
       :type arg5: float
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __repr__( )
 
       
@@ -1534,10 +1482,6 @@ sfTexture
 .. class:: sfTexture
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: create( arg2, arg3)
 
@@ -1683,10 +1627,6 @@ sfTileVector
 
       :type arg3: int
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __isub__( arg2)
 
       
@@ -1768,10 +1708,6 @@ sfVector
       :param arg3: 
 
       :type arg3: float
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __isub__( arg2)
 
@@ -1858,10 +1794,6 @@ sfVector3f
       :param arg4: 
 
       :type arg4: float
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __isub__( arg2)
 

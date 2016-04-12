@@ -168,10 +168,6 @@ ContentIdMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -229,10 +225,6 @@ ContentMap
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -459,10 +451,6 @@ Package
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( arg2, arg3)
 
       
@@ -621,10 +609,6 @@ PackageList
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __setattr__( arg2, arg3)
 
       
@@ -774,10 +758,6 @@ PackageMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -835,10 +815,6 @@ Packages
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -947,10 +923,6 @@ WorkshopUpdateResult
 .. class:: WorkshopUpdateResult
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: isFinished
 

@@ -205,10 +205,6 @@ ActiveEffect
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: effect
 
       
@@ -268,10 +264,6 @@ ActiveEffectMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -301,10 +293,6 @@ AnimationDetails
 .. class:: AnimationDetails
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: animating
 
@@ -380,10 +368,6 @@ AnimationDetailsMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -413,10 +397,6 @@ BodyCustomization
 .. class:: BodyCustomization
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( group, mapping[, supportsColor=True[, isOptional=False]])
 
@@ -464,159 +444,175 @@ Component
 
    
 
-   .. method:: __init__( )
-
-      
-
-   .. method:: __setattr__( attr, value)
-
-      
-
-      :param attr: 
-
-      :type attr: str
-
-      :param value: 
-
-      :type value: object
-
    .. method:: clean( )
 
-      
+      Resets the dirty flag. Override when additional data needs to be cleaned.
 
-   .. method:: create( arg2)
 
-      
+   .. method:: create( entity)
 
-      :param arg2: 
+      Called whenever a new entity with this component has finished being created.
 
-      :type arg2: :class:`Entity`
+
+      :param entity:  The newly created entity.
+
+
+      :type entity: :class:`Entity`
 
    .. method:: destroy( )
 
-      
+      Called whenever the entity this component belongs to is being destroyed.
+
 
    .. method:: dirty( )
 
-      
+      Marks this :class:`Component` as dirty. This should be called anytime data synced in :py:func:`pack` is changed.
+
 
    .. method:: freeze( )
 
-      
+      Freezes this component disallowing any further attributes to be added.
+
 
    .. method:: fullDirty( )
 
-      
+      Called whenever this :class:`Component` should be marked as fully dirty.Override when data is conditionally synced in :py:func:`pack`.
+
 
    .. method:: getCid( )
 
-      
+      Retrieves the unique :class:`Component` ID given to this component type.
+
 
       :rtype: int
 
-   .. method:: getCid( )
-
-      
 
    .. method:: getParent( )
 
-      
+      Returns the parent :class:`Entity` this component belongs to.
 
-      :rtype: :class:`Entity`
+
+      :returns: The parent entity.
+
+
+      :rtype: Entity
+
 
    .. method:: getType( )
 
-      
+      Retrieves the type of this component.
+
 
       :rtype: str
 
-   .. method:: getType( )
-
-      
 
    .. method:: getVersion( )
 
-      
+      Retrieves the current version for this component.
+
 
       :rtype: int
 
-   .. method:: getVersion( )
-
-      
 
    .. method:: isDirty( )
 
-      
+      Returns if this :class:`Component` has been marked as dirty since the last multiplayer data sync.
+
+
+      :returns: Whether this :class:`Component` is dirty or not.
+
 
       :rtype: bool
 
+
    .. method:: pack( stream)
 
-      
+      Called whenever this component needs to be synced over the network.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be written to.
+
 
       :type stream: :class:`DataStream`
 
    .. method:: read( stream, version)
 
-      
+      Called whenever this component is being read from the network.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param version: 
+      :param version:  The version of the :class:`Component` that the data was saved with.
+
 
       :type version: int
 
    .. method:: readEntities( stream, version)
 
-      
+      Called when loading a player. Override for components that stores entities and read the entities from the stream.This ensures that the entities exist before attempting to access them elsewhere.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be read from.
+
 
       :type stream: :class:`DataStream`
 
-      :param version: 
+      :param version:  The version of the :class:`Component` that the data was saved with.
+
 
       :type version: int
 
    .. method:: unpack( stream)
 
-      
+      Called whenever this component is being read from the network.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be read from.
+
 
       :type stream: :class:`DataStream`
 
    .. method:: update( frameTime)
 
-      
+      Called every frame allowing the component to update itself.
 
-      :param frameTime: 
+
+      :param frameTime:  The amount of time (ms) elapsed since the last frame.
+
 
       :type frameTime: int
 
    .. method:: validate( )
 
-      
+      Returns if this :class:`Component` data is valid - used for testing.
+
+
+      :returns: Whether this :class:`Component` is valid or not.
+
 
       :rtype: bool
 
+
    .. method:: write( stream)
 
-      
+      Called whenever this component is being written to disk (saving).
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be written to.
+
 
       :type stream: :class:`DataStream`
 
    .. method:: writeEntities( stream)
 
-      
+      Called when saving a player. Override for components that stores entities and write the entities to the stream.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be read from.
+
 
       :type stream: :class:`DataStream`
 
@@ -4447,31 +4443,21 @@ ComponentDefinition
 
    
 
-   .. method:: __init__( )
-
-      
-
-   .. method:: __setattr__( arg2, arg3)
-
-      
-
-      :param arg2: 
-
-      :type arg2: str
-
-      :param arg3: 
-
-      :type arg3: object
-
    .. method:: freeze( )
 
-      
+      Freezes this disallowing any further attributes to be added.
+
 
    .. method:: getType( )
 
-      
+      Retrieves the type of this component.
+
+
+      :returns: The given type of this component.
+
 
       :rtype: str
+
 
    .. method:: getType( )
 
@@ -4479,47 +4465,59 @@ ComponentDefinition
 
    .. method:: read( stream)
 
-      
+      Called when this is being read from the network. This is only needed when this :class:`ComponentDefinition` is dynamically added to entities.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`ComponentDefinition` data should be read from.
+
 
       :type stream: :class:`DataStream`
 
    .. method:: set( attr, kwargs)
 
-      
+      Uses the given attribute name to set the attribute on this object from the provided dictionary.
 
-      :param attr: 
+
+      :param attr:  The name of the attribute to set.
+
 
       :type attr: str
 
-      :param kwargs: 
+      :param kwargs:  The dictionary from which to retrieve the attribute value.
+
 
       :type kwargs: dict
 
-   .. method:: set( attr, kwargs)
+   .. method:: set( attrs, kwargs)
 
-      
+      Uses the given attribute names to set the attributes on this object from the provided dictionary.
 
-      :param attr: 
 
-      :type attr: list
+      :param attrs:  The names of the attribute to set.
 
-      :param kwargs: 
+
+      :type attrs:  list of str
+
+
+      :param kwargs:  The dictionary from which to retrieve the attribute value.
+
 
       :type kwargs: dict
 
    .. method:: write( stream)
 
-      
+      Called when this needs to be synced over the network. This is only needed when this :class:`ComponentDefinition` is dynamically added to entities.
 
-      :param stream: 
+
+      :param stream:  The stream that the :class:`Component` data should be written to.
+
 
       :type stream: :class:`DataStream`
 
    .. attribute:: isFrozen
 
-      
+       |      The current frozen state of this :class:`ComponentDefinition`.
+
 
 Animation
 -----------------------------------
@@ -4584,10 +4582,6 @@ Attachment
 .. class:: Attachment
 
    
-
-   .. method:: __init__( )
-
-      
 
 Bag
 -----------------------------------
@@ -4829,10 +4823,6 @@ Dropped
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( arg2, arg3)
 
       
@@ -4859,10 +4849,6 @@ Effects
 
    
 
-   .. method:: __init__( )
-
-      
-
 Event
 -----------------------------------
 .. class:: Event
@@ -4879,10 +4865,6 @@ Event
 
       :rtype: :class:`GameEvent`
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: events
 
       
@@ -4892,10 +4874,6 @@ Foliage
 .. class:: Foliage
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: compatibleTiles
 
@@ -5000,10 +4978,6 @@ Gear
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: slots
 
       
@@ -5053,10 +5027,6 @@ Item
 .. class:: Item
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( [stack=1[, useTime=100[, usable=True[, unique=False[, use=<siege.graphic.Substitution[, hold=<siege.graphic.Substitution)
 
@@ -5184,19 +5154,11 @@ Legend
 
    
 
-   .. method:: __init__( )
-
-      
-
 Light
 -----------------------------------
 .. class:: Light
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: sources
 
@@ -5408,10 +5370,6 @@ Particle
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: alpha
 
       
@@ -5481,10 +5439,6 @@ Physics
 .. class:: Physics
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: active
 
@@ -5610,10 +5564,6 @@ PlayerState
 
    
 
-   .. method:: __init__( )
-
-      
-
 RecipeSet
 -----------------------------------
 .. class:: RecipeSet
@@ -5704,10 +5654,6 @@ ExtendableRender
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( image[, contentPath=''])
 
       
@@ -5737,10 +5683,6 @@ Reserves
 .. class:: Reserves
 
    
-
-   .. method:: __init__( )
-
-      
 
 Shield
 -----------------------------------
@@ -5794,19 +5736,11 @@ Statistics
 
    
 
-   .. method:: __init__( )
-
-      
-
 Stats
 -----------------------------------
 .. class:: Stats
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: stats
 
@@ -6015,10 +5949,6 @@ Talents
 .. class:: Talents
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: talents
 
@@ -6274,10 +6204,6 @@ Toolbar
 
    
 
-   .. method:: __init__( )
-
-      
-
 Trigger
 -----------------------------------
 .. class:: Trigger
@@ -6446,10 +6372,6 @@ ComponentMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6508,10 +6430,6 @@ CooldownMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6541,10 +6459,6 @@ CraftResult
 .. class:: CraftResult
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( quality)
 
@@ -6603,10 +6517,6 @@ CraftResultList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -6682,10 +6592,6 @@ Customizations
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6760,10 +6666,6 @@ EventMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -6793,10 +6695,6 @@ EventResult
 .. class:: EventResult
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: result
 
@@ -6877,10 +6775,6 @@ FoliageNeighborList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -7022,10 +6916,6 @@ GearSlots
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7071,10 +6961,6 @@ GrapplerData
 .. class:: GrapplerData
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( id, support)
 
@@ -7129,10 +7015,6 @@ GrapplerDataList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -7208,10 +7090,6 @@ ItemBags
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7286,10 +7164,6 @@ LoopingMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7348,10 +7222,6 @@ MaterialList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7397,10 +7267,6 @@ ModularRenderSprite
 .. class:: ModularRenderSprite
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: id
 
@@ -7452,10 +7318,6 @@ ModularRenderSpriteList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7501,10 +7363,6 @@ ModularSprite
 .. class:: ModularSprite
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: flipX
 
@@ -7571,10 +7429,6 @@ ModularSpriteList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -7650,10 +7504,6 @@ ModularSpriteListMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -7711,10 +7561,6 @@ PlacementAxes
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -7842,10 +7688,6 @@ PotentialAttribute
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( type, onCreate, weight, quality])
 
       
@@ -7915,10 +7757,6 @@ PotentialAttributeList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -8038,10 +7876,6 @@ SkillDefinitionList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8115,10 +7949,6 @@ SkillList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -8194,10 +8024,6 @@ SpriteNameIdsMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8255,10 +8081,6 @@ SpriteSheet
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -8334,10 +8156,6 @@ SpriteSheetsMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8367,10 +8185,6 @@ Stat
 .. class:: Stat
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( name, fullName, start, cap, hasMax, visible)
 
@@ -8458,10 +8272,6 @@ StatDefinitionList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8535,10 +8345,6 @@ TalentDefinitionList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -8614,10 +8420,6 @@ TalentList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8692,10 +8494,6 @@ TalentMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8754,10 +8552,6 @@ ToolItemList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -8803,10 +8597,6 @@ ToolUsabilityResult
 .. class:: ToolUsabilityResult
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: entity
 
@@ -8931,10 +8721,6 @@ WeaponAttackList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 

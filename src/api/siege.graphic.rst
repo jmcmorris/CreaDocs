@@ -49,10 +49,6 @@ AnimationMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -122,10 +118,6 @@ Color
       :type arg2: :class:`Color`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( [red=0[, green=0[, blue=0[, alpha=255]]]])
 
@@ -242,10 +234,6 @@ DrawableText
 .. class:: DrawableText
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( text, font, size])
 
@@ -438,10 +426,6 @@ FrameVector
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -697,10 +681,6 @@ Renderable
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: getView( )
 
       
@@ -804,10 +784,6 @@ SpriteData
 .. class:: SpriteData
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: addAnimation( arg2)
 
@@ -955,10 +931,6 @@ SubstitutionMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1050,10 +1022,6 @@ VideoMode
       :type arg2: :class:`VideoMode`
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( width, height[, bitsPerPixel=32])
 
@@ -1165,10 +1133,6 @@ VideoModeList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1232,10 +1196,6 @@ sfView
 .. class:: sfView
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: getCenter( )
 

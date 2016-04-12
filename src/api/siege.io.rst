@@ -9,10 +9,6 @@ ActionState
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: clear( )
 
       Clears all added inputs.
@@ -83,10 +79,6 @@ DataStream
 .. class:: DataStream
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( arg2)
 
@@ -858,10 +850,6 @@ GameInput
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: isPriorityPressed( )
 
       
@@ -1072,10 +1060,6 @@ GameInputList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1122,10 +1106,6 @@ Input
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: createAction( )
 
       Returns a new :class:`ActionState`
@@ -1163,10 +1143,6 @@ Joystick
 .. class:: Joystick
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. staticmethod:: getAxisPosition( joystick, axis)
 
@@ -1308,10 +1284,6 @@ JoystickIdentification
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: name
 
       
@@ -1329,10 +1301,6 @@ Keyboard
 .. class:: Keyboard
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. staticmethod:: isKeyPressed( key)
 
@@ -1560,10 +1528,6 @@ Mouse
 .. class:: Mouse
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. staticmethod:: getPosition( )
 

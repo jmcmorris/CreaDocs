@@ -1,0 +1,8 @@
+.panel-group {
+    float: left;
+    width: 200px;
+}
+
+.clear {
+    clear: both;
+}

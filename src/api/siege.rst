@@ -151,10 +151,6 @@ ActiveTalent
 
       
 
-   .. attribute:: locked
-
-      
-
    .. attribute:: name
 
       
@@ -239,10 +235,6 @@ CharacterInfo
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. attribute:: body
 
       
@@ -269,10 +261,6 @@ ContentData
 .. class:: ContentData
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. attribute:: components
 
@@ -320,10 +308,6 @@ ContentDataMap
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -353,10 +337,6 @@ Cooldown
 .. class:: Cooldown
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( key, duration)
 
@@ -403,10 +383,6 @@ CustomizationInfo
 .. class:: CustomizationInfo
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: read( arg2)
 
@@ -469,10 +445,6 @@ CustomizationInfoList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -801,10 +773,6 @@ Entities
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 
@@ -1324,10 +1292,6 @@ EntitySet
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -1397,10 +1361,6 @@ Game
       :type attr: str
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: abort( error)
 
@@ -1746,10 +1706,6 @@ GrabbedItem
 
       :rtype: bool
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( item)
 
       
@@ -1842,10 +1798,6 @@ Integrity
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. staticmethod:: checkModule( arg1)
 
       
@@ -1917,10 +1869,6 @@ InventoryItem
       :param quantity: 
 
       :type quantity: int
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( contentName[, quantity=1])
 
@@ -2127,10 +2075,6 @@ ItemGenus
 
       :type quantity: int
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __init__( contentName[, quantity=1])
 
       
@@ -2198,10 +2142,6 @@ ToolItem
       :type arg2: :class:`ToolItem`
 
       :rtype: bool
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __init__( item)
 
@@ -2697,10 +2637,6 @@ ItemList
 
       :rtype: object
 
-   .. method:: __init__( )
-
-      
-
    .. method:: __iter__( )
 
       
@@ -2820,10 +2756,6 @@ Player
 .. class:: Player
 
    
-
-   .. method:: __init__( )
-
-      
 
    .. method:: applySubstitutions( substitutions, hsl, paths)
 
@@ -3219,10 +3151,6 @@ PythonImporter
 
    
 
-   .. method:: __init__( )
-
-      
-
    .. method:: clearModuleDependencies( arg2)
 
       
@@ -3426,10 +3354,6 @@ StatList
       :type arg2: object
 
       :rtype: object
-
-   .. method:: __init__( )
-
-      
 
    .. method:: __iter__( )
 

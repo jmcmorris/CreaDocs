@@ -1,0 +1,13 @@
+.panel-group {
+    float: left;
+    width: 300px;
+    margin: 5px;
+}
+
+.panel-body ul {
+    margin-bottom: 0px;
+}
+
+.clear {
+    clear: both;
+}
