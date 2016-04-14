@@ -10,7 +10,10 @@ Contributing
 
 You want to contribute? Great! Please follow the standard [forking](https://help.github.com/articles/fork-a-repo) and [sending pull requests](https://help.github.com/articles/using-pull-requests) procedures. The goal is to get the documentation close to something like [Python's Documentation](http://python.org/doc/). Consequently, it is highly recommended to read their [documentation guide](http://docs.python.org/devguide/documenting.html).
 
-This documentation is built using [Sphinx](http://sphinx-doc.org/). Their site is a great source for learning how to work with Sphinx.
+This documentation is built using [Sphinx](http://sphinx-doc.org/). Their site is a great source for learning how to work with Sphinx. You also will need [sphinx-bootstrap-theme](https://pypi.python.org/pypi/sphinx-bootstrap-theme/). To easily install both, via [pip](https://pypi.python.org/pypi/pip), run these two commands:
+> `pip install -U Sphinx`
+>
+> `pip install -U sphinx_bootstrap_theme`
 
 One thing to note is that the src/api folder is generated from the engine source and consequently should not be edited directly. If there are changes you'd like to suggest for these files then create an issue or contact me directly.
 

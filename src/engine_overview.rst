@@ -7,7 +7,7 @@ Engine Overview
 Understanding Crea's engine is not necessary for simple mods but can prove to be instrumental for more advanced mods.
 There are several elements at work in the engine however the most fundamental aspect of it is that it's a component-based engine.
 
-A component-based engine means that there is a single :mod:`Entity` that is composed of many :mod:`Component`.
+A component-based engine means that there is a single :mod:`Entity` that is composed of many :mod:`Components <Component>`.
 Such as a Broadsword is an Entity that consists of a :mod:`ItemComponent`, :mod:`WeaponComponent` and :mod:`EquipmentComponent`.
 Generally any combination of components can be added to a single Entity.
 
