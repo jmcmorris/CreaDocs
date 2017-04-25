@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Crea'
-copyright = u'2014, Siege Games'
+copyright = u'2016, Siege Games'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

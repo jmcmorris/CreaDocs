@@ -6,6 +6,10 @@ Status Effects
 
 Status effects can be applied to any entity that has a :mod:`EffectsComponent` - all players and monsters have one.
 Status effects can have custom logic behind them enabling a wide range of options.
+All of the data pertaining to status effects can be found in the :ref:`status effect tuning <status-effect-tuning>` section.
+
+
+.. _applying-effects:
 
 Applying Effects
 ----------------
@@ -17,6 +21,8 @@ Applying a status effect is fairly simple and is done using :mod:`EffectsCompone
     entity.effects.add(EffectTuning.BURN, level=1, duration=seconds(1), source=player.entity)
 
 
+.. _removing-effects:
+
 Removing Effects
 ----------------
 
@@ -26,6 +32,8 @@ Even simpler than adding, removing a status effect is done using :mod:`EffectsCo
 
     entity.effects.remove(EffectTuning.BURN)
 
+
+.. _creating-effects:
 
 Creating Effects
 ----------------

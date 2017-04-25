@@ -41,7 +41,24 @@ Using the :mod:`Log` is crucial to debugging issues. Logs can be used to simply 
     from siege.log import Log
     Log.info("Logging Example")
 
+
+Using Siege Module
+------------------
+
+Since the entire game engine has exposed to python it has been compiled to a binary module and is possible to import as a normal python module.
+This means that it is possible to use the siege engine in python scripts and the python interpreter.
+This can be very useful when testing code or writing a helper script such as generating dungeons.
+
+To use the siege module just drop it into whatever folder you want to import it from. Typically you would want it next to the crea game binary.
+
+**Download Siege Module**
+ * `Windows 32-bit <https://www.dropbox.com/s/yg9k4mb36zzqngk/siege.pyd?dl=0>`_
+ * `Windows 64-bit <https://www.dropbox.com/s/swxweg50trwndnl/siege.pyd?dl=0>`_
+ * `OSX <https://www.dropbox.com/s/8w30dqmbu40li0s/siege.so?dl=0>`_
+ * `Linux <https://www.dropbox.com/s/drbvzaccgjlmioc/siege.so?dl=0>`_
+
 Debugging UI
 ------------
 
-While developing UI it is extremely useful to inspect and change elements. This can be done using the `Coherent UI Debugger <coherent-debugger>`.
+While developing UI it is extremely useful to inspect and change elements.
+This can be done using the `Coherent UI Debugger <coherent-debugger>` which works exactly like the `Chrome Developmer Tools <https://developer.chrome.com/devtools>`_.

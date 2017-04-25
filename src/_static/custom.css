@@ -1,3 +1,8 @@
+.panel-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .panel-group {
     float: left;
     width: 300px;

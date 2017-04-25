@@ -196,7 +196,7 @@ Global Game Events
 
 .. py:function:: merchant_wares(wares, daily)
 
-   Called when the merchant wares have been populated.
+   Called when the merchant wares have been setup. These lists may be modified but cannot exceed core.tuning.NpcTuning.MERCHANT.MAX_WARES and core.tuning.NpcTuning.MERCHANT.MAX_DAILY.
 
    :param wares: The default wares the merchant NPC has for sale.
    :type wares: list of :class:`InventoryItem`
@@ -302,6 +302,14 @@ Global Game Events
 .. py:function:: registration_finished()
 
    Called after game registration has completely finished. This means all mods have registered and should be initialized.
+
+
+.. py:function:: setup_body(template, identifier)
+
+    Called when a body content is nearly finished being setup. This allows for manipulation on the body content before it is finalized.
+
+    :param core.template.template.Template template: The body content :ref:`template <content-templates>`.
+    :param str identifier: The unique body identifier that is being created.
 
 
 .. py:function:: tick()
@@ -804,7 +812,7 @@ Below is a list of entity events that are triggered if supported.
     :param EventResult canCollect: Stores whether the item can be collected or not using canCollect.result.
 
 
-.. py:function:: can_place_item(player, entity, item, canPerform):
+.. py:function:: can_place_item(player, entity, item, canPerform)
 
     When provided this checks to see if an item can be place in or on an entity.
 
